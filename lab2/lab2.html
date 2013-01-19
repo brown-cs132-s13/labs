@@ -1,0 +1,639 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #444;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: #444;
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#444;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>Lab 2: Javascript and the DOM</title>
+
+</head>
+<body>
+<script src="./highlight.pack.js"></script>
+
+
+<p><link rel="stylesheet" href="github.css"/></p>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<h1>Lab 2: Javascript and the DOM</h1>
+
+<h3>What you'll get to know</h3>
+
+<ul>
+<li>Javascript</li>
+<li>Javascript's quirks</li>
+<li>the Document Object Model</li>
+</ul>
+
+
+<h3>Installation</h3>
+
+<ol>
+<li>run <code>cs132_install lab1</code>. This will install the support code for the lab in <code>/web/cs132/yourLogin/lab1</code></li>
+<li>enter <code>http://your-login.proj132.cs.brown.edu/lab1</code> in your browser.</li>
+</ol>
+
+
+<h4>Warning: we're going to be giving you a lot of sample code in this lab, but we recommend <em>typing it in</em> instead of copy/pasting; it'll help you learn the syntax.</h4>
+
+<h2>What is Javascript?</h2>
+
+<p>From the <a href="https://developer.mozilla.org/en-US/docs/JavaScript">mozilla developer network</a> (a great site for help with JS):</p>
+
+<pre><code>JavaScript® (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, most known as the scripting language for Web pages, but used in many non-browser environments as well
+</code></pre>
+
+<p>Javascript is the only language* you can use in the browser to control the web page (e.g. make pop-ups, create an image slider, build infinite scroll). To control the web page, you use the DOM, which is an API for the browser's inner representation of the web page.</p>
+
+<h2>What is the DOM?</h2>
+
+<p>From the w3c (the people who design web standards):</p>
+
+<pre><code>The Document Object Model (DOM) is an application programming interface (API) for valid HTML and well-formed XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. In the DOM specification, the term "document" is used in the broad sense.
+</code></pre>
+
+<ul>
+<li><a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">w3c "what is the DOM?"</a></li>
+</ul>
+
+
+<p>The DOM represents elements (i.e. <code>&lt;a&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>) as nodes in a tree. These nodes are available as objects in Javascript.</p>
+
+<h2>What is jQuery?</h2>
+
+<p>You're probably heard of jQuery. Some people get it confused with javascript, or think it's a language. JQuery is library that wraps the DOM and creates a simpler API for interacting with the webpage. Let's start with an example so you can get an idea of what we're talking about.</p>
+
+<h2>Clicking A Link</h2>
+
+<h3>1. Open <code>index.html</code> in your favorite text editor. Add this in between the <code>&lt;body&gt;&lt;/body&gt;</code> tags</h3>
+
+<pre><code>&lt;a id="mylink" href="#"&gt;this is my link&lt;/a&gt;
+</code></pre>
+
+<p>This markup defines a link (<code>&lt;a&gt;</code>) element with the text "this is my link" that goes to "#" (nowhere!). So lets make this link do something! Add this where it says <code>//this is where you can add inline javascript</code>:</p>
+
+<pre><code>var myLink = document.getElementById('mylink');
+
+function clickMyLink (event) {
+  alert("you clicked my link!");
+}
+
+myLink.onclick = clickMyLink;
+</code></pre>
+
+<p>What's going on here?</p>
+
+<ol>
+<li>You ask the document for an element with the id <code>mylink</code> and save it in a variable <code>myLink</code>.</li>
+<li>You tell the element that when it receives a "click" event, it should call the function <code>clickMyLink</code> and pass it an <a href="https://developer.mozilla.org/en-US/docs/DOM/event">event object</a>.</li>
+<li><code>clickMyLink</code> is going to use javascript's <code>alert</code> function to open a dialog window.</li>
+</ol>
+
+
+<p>Now refresh the page in your browser and try clicking your link. Awesome. But lets see how to do this with jQuery. Go back to <code>index.html</code> and replace the javascript you just wrote with this:</p>
+
+<pre><code>function clickMyLink (event) {
+  alert("you clicked my link!");
+}
+
+$(document).ready(function() {
+
+  $('#mylink').on('click', clickMyLink);
+
+});
+</code></pre>
+
+<p>What jQuery does here is abstract the process of selecting an element from the DOM. <code>mylink</code> can be identified in the DOM a few different ways:</p>
+
+<ol>
+<li>an element with id of <code>#mylink</code>: <code>$('#mylink")</code>, DOM: <code>document.getElementById('mylink');</code></li>
+<li>the first <code>&lt;a&gt;</code> element: <code>$('a')[0]</code>, DOM: <code>document.getElementsByTagName('a')[0]</code></li>
+<li>the first child of <code>&lt;body&gt;</code>: <code>$('body:first-child')</code>, DOM: <code>document.getElementsByTagName('body')[0].firstChild()</code></li>
+</ol>
+
+
+<p>All selectors are not equal! These are listed in decreasing order of performance (by id is the fastest). Also, keep in mind that jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).</p>
+
+<p>You're probably thinking--what's that <code>$(document).ready(function() {...</code>? Because the browser parses the page from top-to-bottom, and executes all the javascript as it works its way down, you can't ask jQuery to find elements that it doesn't know about yet (since they haven't been created yet). The solution? Wait for the browser to tell indicate that it's <code>ready</code>, and execute your code then (using an <a href="http://helephant.com/2008/08/23/javascript-anonymous-functions/">anonymous function</a>).</p>
+
+<h2>Events</h2>
+
+<p>So we saw a bit of events with <code>onclick</code> and jQuery's <code>on('click'</code>, but <em>what are events</em>? The DOM makes a ton of use of the <a href="http://en.wikipedia.org/wiki/Event_model#Delegate_event_model">delagate event model</a>, meaning that when something happens in the browser, it emits events, which can be picked up (and modified) by any code that's listening. This makes it easy for programmers to add additional code to a page without worrying about other scripts (e.g. plugins, bookmarklets, frames), and allows for really decoupled design. Let's see another example:</p>
+
+<p>This is another syntax for add <strong>event listeners</strong> to an object (besides assigning to <code>on[eventname]</code>). It's nice because you can add and remove multiple listeners for the same event:
+Add this HTML between your body tags:
+<code>&lt;div id="display"&gt;press a key&lt;/div&gt;</code>
+We're going to set up event listeners for <code>keyup</code>, so you can see when the user presses a key:
+```</p>
+
+<p>var display = document.getElementById('display');
+document.addEventListener('keyup', function (event) {
+  // the event object can tell us which key is pressed
+  display.innerHTML = "you clicked key #" + event.keyCode;</p>
+
+<p>});
+```
+Keys in javascript are identified by their <strong>key codes</strong> (<a href="http://unixpapa.com/js/key.html">here's a ton of crazy info on it</a>). For example, the enter key is 13. So to only do something when the user hits "enter":</p>
+
+<pre><code>document.addEventListener('keyup', function (event) {
+
+  if (event.keyCode === 13) {
+    display.innerHTML = "you hit enter!";
+  }
+});
+</code></pre>
+
+<p>Notice that we're adding the event listener to <code>document</code>. The <code>document</code> is an element like any other, we're just adding the listener there because we want to call it on a keypress <em>anywhere on the page</em>. Events bubble up the DOM tree: if you click a button, you can listen to that event on any parent element of the button (just be careful, since a listener lower down may be able to stop the event from reaching yoU!)</p>
+
+<p><code>innerHTML</code> is the property of an element that contains a string of the HTML inside it. It's one of the ways to programatically change the content of a webpage (or element). Here's the same thing with jQuery:</p>
+
+<pre><code>var $display = $('#display'); // we prefix the variable with $ to remind ourselves it's a jQuery object
+$(document).on('keyup', function (event) {
+  $display.html("you just clicked: " + event.which); // which is the same as keyCode, it's just a cross-browser trick that jQuery does since IE&lt;9 uses which...
+});
+</code></pre>
+
+<p>For more info on events, check out <a href="http://www.quirksmode.org/js/introevents.html">this page on quirksmode</a></p>
+
+<h2>Javascript Syntax</h2>
+
+<p>You've seen plenty of javascript so far, but without a proper introduction! Javascript is a pretty crazy language, at least because it supports procedural, object-oriented, and functional programming. Here's a little cheat-sheet.</p>
+
+<h3>Variables</h3>
+
+<p>You declare a variable in javascript using <code>var</code>. Javascript has totally dynamic typing:</p>
+
+<pre><code>var lol = "laughing out loud"; // strings can be single or double quoted, nbd.
+var satan = 666;
+var floatNum = 665.0; // all numbers in js are type "number" (a float) so don't worry about it!
+</code></pre>
+
+<h3>Arrays &amp; Objects (maps)</h3>
+
+<p>Arrays can be of mixed type, and are declared through a simple literaly syntax that's similar to Python or Ruby:</p>
+
+<p><code>var myArray = [ 1, 4, 'cool', myFunction ]; // myFunction is a function</code>
+Working with arrays:</p>
+
+<pre><code>myArray[0] // 1
+myArray.length // 3
+myArray.slice(0,2) // [ 1, 4, 'cool' ]
+myArray.concat(['horse']) // [ 1, 4, 'cool', myFunction, 'horse']
+</code></pre>
+
+<p>And there's <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array">a lot more</a></p>
+
+<p>An <strong>object</strong> in javascript is an associative array--a dictionary/hashmap/map, etc. They're easy to use, and can also have mixed types:</p>
+
+<pre><code>var csStudent = {
+  name: 'CS Student',
+  age: 24,
+  sex: 't',
+  location: { // you can have nested objects!
+    city: 'Providence',
+    state: 'Rhode Island'
+  }
+};
+</code></pre>
+
+<p>Write a similar object for yourself in the <code>&lt;script&gt;</code> tags in your index.html. Now open up your page in the browser in check out the javascript console <a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console?redirectlocale=en-US&amp;redirectslug=Using_the_Web_Console">firefox instructions</a>, <a href="https://developers.google.com/chrome-developer-tools/docs/overview">chrome instructions</a>. Now typethe name of the variable you just made into the console. You should see the name come up with a little arrow to let you check out the object. You can see all the properties you just defined.</p>
+
+<p>There are two ways to access a property on an object:</p>
+
+<pre><code>csStudent['name'] // 'CS Student'
+// or
+csStudent.name // 'CS Student'
+</code></pre>
+
+<p>FYI: dot notation only works with object properties that aren't keywords and are single words. You can remove a property by using <code>delete csStudent.name</code>, but often you really just need to set it to <code>undefined</code> (javascript's internal representation of an undefined property), so <code>csStudent.name = undefined;</code>.</p>
+
+<h3>Printing to the Console</h3>
+
+<p>If you open up the javascript console (described above), you can print to it by passing a string to <code>console.log</code>. Try this in your code with the console open:  <code>console.log(csStudent);</code></p>
+
+<h3><code>==</code> vs. <code>===</code></h3>
+
+<p>One of the most common bugs in javascript is getting <code>==</code> confusing with <code>===</code>. Javascript does <em>type coercion</em>, so <code>1 == "1"</code> is <code>true</code>, but <code>1 === "1"</code> is false, since <code>1</code> is a <code>number</code> and <code>"1"</code> is a <code>string</code>. It's a best practice to always use <code>===</code> so you don't get any surprises.</p>
+
+<h3>Flavors of False</h3>
+
+<p>In javascript, variables are "falsy" or "truthy", meaning that you can do <code>if (myNonBooleanVariable)...</code>. Here are the main falsy values.</p>
+
+<h4>1. <code>null</code></h4>
+
+<p>an instant classic. This is usually used to indicate a nonexistent object (null is actually of type <code>object</code>), which leads to some confusing things like this:</p>
+
+<pre><code>var bigMistake = null;
+
+if (typeof bigMistake === 'object') {
+  alert("javascript is weird!");
+}
+</code></pre>
+
+<p>What happens if you put that in your <code>&lt;script&gt;&lt;/script&gt;</code> tags. Is that what you'd expect?</p>
+
+<h4>2.<code>undefined</code></h4>
+
+<p>When you try to access a property on an object or a variable that isn't defined, you'll get the value <code>undefined</code>. Say you have this:</p>
+
+<pre><code>function sayHi(name) {
+  if (name !== undefined) {
+    alert("Hello " + name);
+  }
+}
+sayHi() // name is undefined
+sayHi("CS Student"); // name is "CS Student", you'll get an alert
+</code></pre>
+
+<p>If you're accessing a property and an object and you're not sure if it'll be there, you should check for <code>undefined</code>:</p>
+
+<pre><code>var myObj = {}; // empty object
+
+if (myObj.name === undefined) {
+  console.log("no name!"); // this will always be called
+}
+</code></pre>
+
+<h4>3.<code>false</code></h4>
+
+<p>False isn't nothing! But it is <strong>not</strong>. Javascript lets you do this:</p>
+
+<pre><code>if (foo) {
+  // if foo is "truthy"
+} else {
+  // if foo is "falsy"
+}
+</code></pre>
+
+<p>So as with <code>undefined</code> and <code>null</code>, <code>foo = false</code> would be <em>falsy</em>. So is <code>0</code>. This is all important because you might want to have input that's falsy but not nonexistent. So you'd only want <code>null</code> or <code>undefined</code>. This is one case where you can get away with loose comparison (<code>==</code>):</p>
+
+<pre><code>if (parameter != null) {
+  // if parameter is null or undefined, but not 0 or false
+}
+</code></pre>
+
+<h3>Surprisingly Truthy</h3>
+
+<p>Just an FYI: empty arrays an objects are always <code>true</code>. This is good to know for jQuery, where if you select something that doesn't exist, you'll still end up with a jQuery object (which is truthy). So:</p>
+
+<pre><code>var $nonExistent = $("#my-box.non-existent");
+
+if ($nonExistent) {
+  console.log("true!");
+}
+</code></pre>
+
+<p>Just keep this in mind when you're using jQuery. When you use the DOM itself, you'll always get <code>null</code> if the DOM can't find what you're looking for.</p>
+
+<h3>Functions</h3>
+
+<p>Functions are first-class citizens of javascript; they're objects. You can defined properties on them, and they're capable of inheritence. Here's some <a href="http://www.quirksmode.org/js/function.html">advanced information about javascript functions</a>. The gist is:</p>
+
+<h4>Declaring Functions</h4>
+
+<p>There are two normal ways:</p>
+
+<pre><code>var myFunction = function (arg1, arg2, arg3) { ... }; 
+// or
+function myFunction (arg1, arg2, arg3) { ... };
+</code></pre>
+
+<p>The first is called an anonymous function, which you're assigning to a variable called <code>myFunction</code>. The second is a named function <em>called</em> <code>myFunction</code>. They both declare the function in the same scope. Since a function is just an object, you can declare one with the <code>Function</code> constructor, but this is pretty slow, so don't try that unless you're doing some weird runtime declaration... don't worry about it.</p>
+
+<h4>Calling Functions and <code>this</code></h4>
+
+<p>Javascript has some cool ways to call functions. Of course, you can call a function by name, or dynamically on an object:</p>
+
+<pre><code>var fn = "foo";
+
+obj[fn](args); // you could assign fn at runtime
+</code></pre>
+
+<p>But what is <code>this</code> in a js function? Most of the time, <code>this</code> is the function itself. Remember that functions can have properties, so that's kind of useful</p>
+
+<pre><code>function Foo(name) {
+  this.name = name;
+  alert(this.name);
+}
+</code></pre>
+
+<p>If you want, you can call a function with a different <code>context</code>, meaning that <code>this</code> can be set to whatever object you want. You do that with <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/call"><code>call</code></a> and <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply"><code>apply</code></a>:</p>
+
+<pre><code>foo.apply(otherObj, [ arg1, arg2, arg3 ]); // call foo where this === otherObj
+foo.call(otherObj, arg1, arg2, arg3); 
+</code></pre>
+
+<p>The difference is how you supply arguments to the function you're calling. <code>apply</code> takes an array, call takes individual arguments.</p>
+
+<h4>Scoping</h4>
+
+<p>Javascript scope is really crazy. The only way you can declare scope is with a function. So <code>if</code> statements, <code>while</code> loops, etc. do not create a scope (like they do in C). Javascript also has <a href="http://stackoverflow.com/questions/1047454/what-is-lexical-scope">lexical scoping</a>, which really means that what variabels in an outer scope are available in an inner scope, which lets you do this:</p>
+
+<p>Try adding this to your <code>&lt;script&gt;</code> tag:</p>
+
+<pre><code>var display = document.getElementById("display");
+
+function greeter(name) {
+  return function sayHi() {
+    display.innerHTML = "hi " + name;
+  }
+}
+
+var greetMe = greeter("your name here");
+greetMe();
+</code></pre>
+
+<p>Notice how the function returned by <code>greeter</code> has a reference to the <code>name</code> variable in <code>greeter's</code> scope? That's lexical scoping. <code>sayHi</code> is what's called a <strong>closure</strong>. (siiiiiiiicckkkk).</p>
+
+<h4>Inheritence</h4>
+
+<p>Javascript doesn't do inheritence the same way C/Java/Python/Ruby does (classically). It uses <em>prototypical</em> inheritence. It looks a little bit confusing (considering there's no <code>inherits</code> or <code>extends</code> keyword. There aren't even classes! But it's actually a really simple concept: when you call a method on an object, javascript goes up that object's prototype chain (its parents' prototypes) looking for a method with that name. While that sounds a lot like classical inheritence, it's actually a lot simpler, since it doesn't require any classes or interfaces. You don't really need multiple inheritence since you can inherit from any list of prototypes in any order you want; they don't have to implement the same methods! Try this out:</p>
+
+<p>(in your script tags):</p>
+
+<pre><code>// this is the constructor
+function Friend (age, sex, location) {
+  this.age = age;
+  this.sex = sex;
+  this.location = location;
+}
+
+// let's define a method for Friend; the prototype is just an object
+Friend.prototype = {
+
+  info : function () {
+    return this.age + "/" + this.sex + "/" + this.location;
+  }
+
+};
+</code></pre>
+
+<p>Cool. Now write this somewhere below in your script tag (assuming you still have the <code>&lt;div id="display"&gt;&lt;/div&gt;</code> in your HTML:</p>
+
+<pre><code>var $display = $('#display');
+var oldMan = new Friend(90, "m", "Providence);
+$display.html(oldMan.info());
+</code></pre>
+
+<p>But what if we want to create an object that inherits from <code>Friend</code>, say, a <code>CyberFriend</code>? Since we're working with Functions, calling the super-object is as easy as calling a function with the context (<code>this</code>) set to our new object:</p>
+
+<pre><code>function CyberFriend (age, sex, location, screenname) {
+  Friend.call(this, arge, sex, location); // call the parent; now when Friend sets this.age, "this" will be a CyberFriend
+  this.screenname = screenname;
+}
+</code></pre>
+
+<p>Now we want to set CyberFriend's prototype to an instance of Friend's <code>prototype</code>. We don't want to use it's <code>prototype</code> because then we'd be messing with <code>Friend</code>. So we create a dummy function with a blank constructor so we can instantiate a new Friend prototype:</p>
+
+<pre><code>function dummy() {}; // blank function
+dummy.prototype = Friend.prototype;
+
+CyberFriend.prototype = new dummy(); // a new instance of the prototype
+CyberFriend.prototype.constructor = CyberFriend; // that's the function that the new keyword calls
+</code></pre>
+
+<p>Nice! Now we've got a CyberFriend using it's constructor but Friend's prototype. How do we add new methods? Just define them on the prototype object:</p>
+
+<pre><code>CyberFriend.prototype.profile = function () {
+  return this.info() + "/" + this.screenname;
+}
+</code></pre>
+
+<p>Now if you've been following along, you should be able to do this:</p>
+
+<pre><code>var myCyberBuddy = new CyberFriend(19, "P", "Cyberspace", "kevinm1tn1k");
+$display.html(myCyberBuddy.profile()); 
+</code></pre>
+
+<h3>Other Syntax</h3>
+
+<h4>Conditionals</h4>
+
+<p>Javascript conditionals are a lot like C. There is <code>if</code>, <code>else if</code>, and <code>else</code>. We already talked about truthy and falsy values. Just know that you can convert a variable to a boolean type with <code>!!</code>(not not), so <code>!!1 === true</code>. This is a good way to determine if a value is "truthy" or "falsy" (just do <code>console.log(!!myValue);</code>.</p>
+
+<h4>Loops</h4>
+
+<p>Similar deal here. It looks just like C. The only difference is how you can iterate over an object:</p>
+
+<pre><code>for (var key in object) {
+  console.log("key: " + key + " value: " + object[key]);
+}
+</code></pre>
+
+<p>You can use that syntax with arrays too, but it's pretty pointless, since <code>key</code> would just be the index in the array, and this type of loop is slower. Javascript also has <code>while</code> loops just like C/java, and you can use <code>++/--</code> unary operators on values. Javascript also has a <code>break</code> keyword for getting out of a loop and a <code>continue</code> statement for going to the next iteration.</p>
+
+<h2>Cool Demo</h2>
+
+<p>Let's use some of your javascript knowledge. Get some HTML like this:</p>
+
+<pre><code>&lt;h1&gt;Age Store&lt;/h1&gt;
+&lt;label for="name"&gt;please input your name:&lt;/label&gt;
+&lt;input type="text" id="name" /&gt;
+
+&lt;div id="input" style="display:none;"&gt;
+  &lt;label type="text" id="age" /&gt;
+  &lt;button id="save"&gt;save&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id="result" style="display:none;"&gt;
+  Your age: &lt;span id="display"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;button id="find"&gt;search&lt;/div&gt;
+</code></pre>
+
+<p>We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the <code>result</code> and <code>input</code> div's are set to <code>display:none;</code>. That's CSS's way of saying that they're hidden.</p>
+
+<p>First, we need to wrap our code as a callback from jQuery's <code>ready()</code> event. Then we want to save references to the name input, the age input, and the result box.</p>
+
+<pre><code>$(document).ready(function() {
+
+  var $nameInput = $('#name');
+  var $ageInput = $('#age');
+  var $inputBox = $('#input');
+
+  var $saveBtn = $('#save');
+
+  var $resultBox = $('#result');
+  var $display = $('#display');
+  var $searchBtn = $('#find');
+
+  var data = {}; // this is where we store the age data
+
+  function showAge (name) {
+    $inputBox.hide();
+    $display.html(data[name]);
+    $resultBox.fadeIn();
+  }
+
+  // now let's set up a listener for when someone searches
+  $searchBtn.on('click', function (event) {
+    var name = $nameInput.val() // get a value of an input using jQuery
+
+    // check if it's in the data object:
+    if (data[name] !== undefined) {
+      showAge(name);
+    } else {
+      $resultBox.hide(); // in case it was showing before
+
+      $inputBox.fadeIn();
+      $saveBtn.on('click', function (e) {
+        data[name] = $ageInput.val();
+        showAge(name);
+      });
+
+    }
+
+  });
+</code></pre>
+
+<p>Great! When you've gotten to this stage in the lab, ask your TA to check you off.</p>
+
+<h2>Javascript Resources</h2>
+
+<h3>Beginner</h3>
+
+<ul>
+<li><a href="http://www.khanacademy.org/cs/tutorials/user-interaction">Kahn Academy CS</a></li>
+<li><a href="http://www.codecademy.com/tracks/javascript">Codecademy Javascript</a></li>
+</ul>
+
+
+<h3>Intermediate</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla Developer Network: Javascript</a></li>
+<li><a href="http://www.w3schools.com/js/default.asp">W3 School Javascript</a></li>
+</ul>
+
+
+<h3>Advanced</h3>
+
+<ul>
+<li><a href="http://www.quirksmode.org/js/contents.html">Quirksmode Javascript</a></li>
+<li><a href="http://ejohn.org/apps/learn/">John Resig: Learn Advanced Javascript</a></li>
+<li><a href="http://javascript.crockford.com">Douglas Crockford: Javascript</a></li>
+</ul>
+
+</body>
+</html>
