@@ -36,9 +36,7 @@ From the w3c (the people who design web standards):
 The DOM represents elements (i.e. `<a>`, `<div>`, `<p>`) as nodes in a tree. These nodes are available as objects in Javascript.
 
 ## What is jQuery?
-
-You're probably heard of jQuery. Some people get it confused with javascript, or think it's a language. JQuery is library that wraps the DOM and creates a simpler API for interacting with the webpage. Let's start with an example so you can get an idea of what we're talking about.
-
+JQuery is library that wraps the DOM and creates a simpler API for interacting with the webpage. Let's start with an example so you can get an idea of what we're talking about.
 ## Clicking A Link
 
 ### 1. Open `index.html` in your text editor. Add this in between the `<body></body>` tags
@@ -81,24 +79,26 @@ $(document).ready(function() {
 
 What jQuery does here is abstract the process of selecting an element from the DOM. `mylink` can be identified in the DOM a few different ways:
 
-1. an element with id of `#mylink`: `$('#mylink")`, DOM: `document.getElementById('mylink');`
-2. the first `<a>` element: `$('a')[0]`, DOM: `document.getElementsByTagName('a')[0]`
-3. the first child of `<body>`: `$('body:first-child')`, DOM: `document.getElementsByTagName('body')[0].firstChild()`
+Element | jQuery | DOM
+--------|--------|----
+`#mylink`| `$('#mylink)`| `document.getElementById('mylink')`
+first `a` element | `$('a')[0]` | `document.getElementsByTagName('a')[0]`
+first child of `body` | `$('body:first-child')` | `document.getElementByTagName('body')[0].firstChild()`
 
-All selectors are not equal! These are listed in decreasing order of performance (by id is the fastest). Also, keep in mind that jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).
+All selectors are not equal! These are listed in decreasing order of performance. jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).
 
 You're probably thinking--what's that `$(document).ready(function() {...`? Because the browser parses the page from top-to-bottom, and executes all the javascript as it works its way down, you can't ask jQuery to find elements that it doesn't know about yet (since they haven't been created yet). The solution? Wait for the browser to tell indicate that it's `ready`, and execute your code then (using an [anonymous function](http://helephant.com/2008/08/23/javascript-anonymous-functions/)).
 
 ## Events
 
-So we saw a bit of events with `onclick` and jQuery's `on('click'`, but *what are events*? The DOM makes a ton of use of the [delagate event model](http://en.wikipedia.org/wiki/Event_model#Delegate_event_model), meaning that when something happens in the browser, it emits events, which can be picked up (and modified) by any code that's listening. This makes it easy for programmers to add additional code to a page without worrying about other scripts (e.g. plugins, bookmarklets, frames), and allows for really decoupled design. Let's see another example:
+So we saw events with `onclick` and jQuery's `on('click'`, but *what are events*? The DOM makes a ton of use of the [delagate event model](http://en.wikipedia.org/wiki/Event_model#Delegate_event_model), meaning that when something happens in the browser, it emits events, which can be picked up (and modified) by any code that's listening. This makes it easy for programmers to add additional code to a page without worrying about other scripts (e.g. plugins, bookmarklets, frames), and allows for really decoupled design. Let's see another example:
 
 This is another syntax for add **event listeners** to an object (besides assigning to `on[eventname]`). It's nice because you can add and remove multiple listeners for the same event:
 Add this HTML between your body tags:
 `<div id="display">press a key</div>`
 We're going to set up event listeners for `keyup`, so you can see when the user presses a key:
-```
 
+```
 var display = document.getElementById('display');
 document.addEventListener('keyup', function (event) {
   // the event object can tell us which key is pressed
@@ -106,6 +106,7 @@ document.addEventListener('keyup', function (event) {
 
 });
 ```
+
 Keys in javascript are identified by their **key codes** ([here's a ton of crazy info on it](http://unixpapa.com/js/key.html)). For example, the enter key is 13. So to only do something when the user hits "enter":
 
 ```
@@ -179,7 +180,10 @@ There are two ways to access a property on an object:
 
 ```
 csStudent['name'] // 'CS Student'
-// or
+```
+or
+
+```
 csStudent.name // 'CS Student'
 
 ```
@@ -283,7 +287,6 @@ Javascript has some cool ways to call functions. Of course, you can call a funct
 
 ```
 var fn = "foo";
-
 obj[fn](args); // you could assign fn at runtime
 ```
 
@@ -326,9 +329,11 @@ greetMe();
 Notice how the function returned by `greeter` has a reference to the `name` variable in `greeter's` scope? That's lexical scoping. `sayHi` is what's called a **closure**. (siiiiiiiicckkkk).
 
 #### Inheritence
-Javascript doesn't do inheritence the same way C/Java/Python/Ruby does (classically). It uses *prototypical* inheritence. It looks a little bit confusing (considering there's no `inherits` or `extends` keyword. There aren't even classes! But it's actually a really simple concept: when you call a method on an object, javascript goes up that object's prototype chain (its parents' prototypes) looking for a method with that name. While that sounds a lot like classical inheritence, it's actually a lot simpler, since it doesn't require any classes or interfaces. You don't really need multiple inheritence since you can inherit from any list of prototypes in any order you want; they don't have to implement the same methods! Try this out:
+Javascript doesn't do inheritence the same way C/Java/Python/Ruby does (classically). It uses *prototypical* inheritence. It looks a little bit confusing (considering there's no `inherits` or `extends` keyword. There aren't even classes! But it's actually a really simple concept: when you call a method on an object, javascript goes up that object's prototype chain (its parents' prototypes) looking for a method with that name. While that sounds a lot like classical inheritence, it's actually a lot simpler, since it doesn't require any classes or interfaces. 
 
-(in your script tags):
+You don't really need multiple inheritence since you can inherit from any list of prototypes in any order you want; they don't have to implement the same methods! Try this out:
+
+Put this in your `<script>` tag:
 
 ```
 // this is the constructor
@@ -337,7 +342,6 @@ function Friend (age, sex, location) {
   this.sex = sex;
   this.location = location;
 }
-
 // let's define a method for Friend; the prototype is just an object
 Friend.prototype = {
 
@@ -348,7 +352,7 @@ Friend.prototype = {
 };
 ```
 
-Cool. Now write this somewhere below in your script tag (assuming you still have the `<div id="display"></div>` in your HTML:
+Now write this somewhere below in your script tag (assuming you still have the `<div id="display"></div>` in your HTML:
 
 ```
 var $display = $('#display');
@@ -360,12 +364,12 @@ But what if we want to create an object that inherits from `Friend`, say, a `Cyb
 
 ```
 function CyberFriend (age, sex, location, screenname) {
-  Friend.call(this, arge, sex, location); // call the parent; now when Friend sets this.age, "this" will be a CyberFriend
+  Friend.call(this, arge, sex, location); // call the parent (super)
   this.screenname = screenname;
 }
 ```
 
-Now we want to set CyberFriend's prototype to an instance of Friend's `prototype`. We don't want to use it's `prototype` because then we'd be messing with `Friend`. So we create a dummy function with a blank constructor so we can instantiate a new Friend prototype:
+Now we want to set CyberFriend's prototype to an instance of Friend's `prototype`. We don't want to use it's `prototype` because then we'd be messing with `Friend`. So we create a dummy function with a blank constructor so we can instantiate a new `Friend` prototype:
 
 ```
 function dummy() {}; // blank function
@@ -394,6 +398,30 @@ $display.html(myCyberBuddy.profile());
 
 #### Conditionals
 Javascript conditionals are a lot like C. There is `if`, `else if`, and `else`. We already talked about truthy and falsy values. Just know that you can convert a variable to a boolean type with `!!`(not not), so `!!1 === true`. This is a good way to determine if a value is "truthy" or "falsy" (just do `console.log(!!myValue);`.
+
+Javascript also has a switch statement. This isn't super popular:
+
+```
+function legal (age) {
+  var ableTo = [];
+  
+  switch (age) {
+    case 18:
+      ableTo.push('vote', 'fight', 'get real estate license');
+      break;
+    case 21:
+      ableTo.push('drink', 'patronize adult establishments');
+      break;
+    case 65:
+      ableTo.push('retire');
+      break;
+    default:
+      ableTo.push('be free');
+  }
+  
+  return ableTo;
+}
+```
 
 #### Loops
 Similar deal here. It looks just like C. The only difference is how you can iterate over an object:
@@ -485,6 +513,8 @@ Great! When you've gotten to this stage in the lab, ask your TA to check you off
 ### Intermediate
 * [Mozilla Developer Network: Javascript](https://developer.mozilla.org/en-US/docs/JavaScript)
 * [W3 School Javascript](http://www.w3schools.com/js/default.asp)
+* [Intro to Javascript For Coders](http://madebyevan.com/jsintro/)
+* [Javascript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
 
 ### Advanced
 * [Quirksmode Javascript](http://www.quirksmode.org/js/contents.html)
