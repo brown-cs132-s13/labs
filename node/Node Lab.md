@@ -257,7 +257,7 @@ app.listen(8080, function(){
 });
 ```
 
-A little bit longer, but simpler to understand, and more extensible. Note that the order routes are defined is important.
+A little bit longer, but simpler to understand, and more extensible. Note that the order routes are defined is important, and the `server.listen(...)` line has been replaced with `app.listen(...)`.
 
 ### Adding Features
 Express packs in a ton of handy features. For instance, let's say we want to expose the source of our server to the outside world (generally not recommended, but hey, what's the harm?). Response objects now have a `sendfile(...)` method, which can be used like so:
