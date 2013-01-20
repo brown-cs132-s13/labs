@@ -1,5 +1,7 @@
-#HTML (HyperText Markup Language)
 
+#LAB 1: HTML and CSS
+<br>
+#HTML (HyperText Markup Language)
 What is HTML?
 ----
 From the w3schools.com html course which you can find [here](http://w3schools.com/html/html_intro.asp)
@@ -19,28 +21,25 @@ Below is an example of a HTML document. Let’s study it and learn about the dif
 
 __HTML Example 1__
 
-```html
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Page title. Shown in tabs.</title>
-	</head>
-	<body>
-		<h1>Simple Page!</h1>
-		<p>This is a totally bare-bones page.</p>
-	</body>
-</html>
-```
+
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8" />
+			<title>Page title. Shown in tabs.</title>
+		</head>
+		<body>
+			<h1>Simple Page!</h1>
+			<p>This is a totally bare-bones page.</p>
+		</body>
+	</html>
 
 
 As you can see, the example HTML document consists of tags and plain text. Tags are surrounded by angle brackets `<` and `>`. Tags come in pairs, such as `<head>` and `</head>`, and they are called the start tag and end tag, respectively. The end tag is written like the start tag, but with a forward slash `/` before the tag name. Tags denote the function of their contents and form the structure of an html document. In an HTML document with good syntax, such as in the example above, corresponding start and end tags are aligned in a way that is easy to identify.
 
 An HTML element is defined by a pair of start and end tags. For example, this is an HTML element:
 
-```html
-<p>This is a paragraph</p>
-```
+	<p>This is a paragraph</p>
 
 Now, let’s take a look at the HTML elements in Example 1 above. The first line is a declaration. Declarations tell the browser which HTML version you are writing in, and it is important to always include this at the top of every HTML document. Since we are using HTML5 (which is the standard today), the declaration is simply `<!DOCTYPE html>`.
 
@@ -48,17 +47,15 @@ The `<html>` tag defines an HTML document. The `<head>` tag denotes an area wher
 
 Note that an HTML document must only have one `<html>` element, one `<head>` element, and one `<body>` element. To be valid, the document must be in the following format:
 
-```html
-<!DOCTYPE html>
-<html>
-	<head>
-		//information about the page
-	</head>
-	<body>
-		//content of the page
-	</body>
-</html>
-```
+	<!DOCTYPE html>
+	<html>
+		<head>
+			//information about the page
+		</head>
+		<body>
+			//content of the page
+		</body>
+	</html>
 	
 This is how HTML Example 1 looks on a webpage (notice you can only see what is in the body of the document):
 
@@ -76,10 +73,7 @@ This is how HTML Example 1 looks on a webpage (notice you can only see what is i
 Before we learn some other common HTML tags, you should learn about **attributes**. Some tags have attributes, which provide additional semantic information about that tag. In the `<meta>` tag in Example 1, you have already seen an example of attributes to specify which character set the document uses. Attributes are of the form `name="value"`, where the value must always be enclosed in double-quotes.
 
 
-
-```html
-<tag attribute="value" foo="bar">
-```
+	<tag attribute="value" foo="bar">
 
 You will learn more about attributes as we go along.
 
@@ -98,9 +92,9 @@ We have already mentioned the header tags (h1 - h6) and the `<p>` tag, which are
 To insert images, you can use the `<img>` tag.
 
 Example: 
-```html
-<img src="url" alt="alternate_name">
-```
+
+	<img src="url" alt="alternate_name">
+
 
 `<img>` tags have two essential attributes.
 
@@ -116,9 +110,9 @@ The `alt` attribute indicates a textual name that shows up in the place of the i
 A hyperlink (or link) is some text or an image that you can click on to jump to another URL. These can be created with the `<a>` tag.
 
 Example: 
-```html
-<a href="http://some_webpage.com">Some text displayed to represent the link</a>
-```
+
+	<a href="http://some_webpage.com">Some text displayed to represent the link</a>
+
 
 The `<a>` tag must use an `href` attribute with an URL to indicate where the hyperlink will direct the user to.
 
@@ -128,18 +122,18 @@ To insert a table, use a `<table>` tag. A table element is divided into rows wit
 
 Example:
 
-```html
-<table>
-<tr>
-<td>row 1, cell 1</td>
-<td>row 1, cell 2</td>
-</tr>
-<tr>
-<td>row 2, cell 1</td>
-<td>row 2, cell 2</td>
-</tr>
-</table>
-```
+
+	<table>
+		<tr>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+		</tr>
+		<tr>
+			<td>row 2, cell 1</td>
+			<td>row 2, cell 2</td>
+		</tr>
+	</table>
+
 
 ####--Ordered Lists and Unordered Lists
 
@@ -147,13 +141,13 @@ To insert a list, use either the `<ol>` tag for ordered lists, or the `<ul>` tag
 
 An ordered list, written as such:
 
-```html
-<ol>
-	<li>The first list item</li>
-	<li>The second list item</li>
-	<li>The third list item</li>
-</ol>
-```
+
+	<ol>
+		<li>The first list item</li>
+		<li>The second list item</li>
+		<li>The third list item</li>
+	</ol>
+
 will look like:
 
 1. The first list item
@@ -163,13 +157,12 @@ will look like:
 <br>
 An unordered list, written as such:
 
-```html
-<ul>
-	<li>List item</li>
-	<li>List item</li>
-	<li>List item</li>
-</ul>
-```
+
+	<ul>
+		<li>List item</li>
+		<li>List item</li>
+		<li>List item</li>
+	</ul>
 
 will look like:
 
@@ -205,4 +198,176 @@ Also, one very important tool in developing web content is to __use the inspecto
 Also, here is a list of good practices that help you maximize your gain from HTML and reduce mistakes. Take a look! [http://sixrevisions.com/web-standards/20-html-best-practices-you-should-follow/](http://sixrevisions.com/web-standards/20-html-best-practices-you-should-follow/)
 
 **Good luck and have fun!**
+<br><br><br><br><br>
+
+#CSS (Cascading Style Sheets)
+
+##Introduction to CSS
+Another major component of a web pages is CSS (cascading style sheets). CSS allows you to style your HTML and make it look however you please. CSS is made up of a series of style declarations. They’re applied to HTML either through a .css file linked in the head of the HTML document, or in HTML in a `<style>` element. You can have multiple of both kinds in an HTML document.  A style declaration has two parts: a selector (which elements to apply the properties to) and a set of properties (how they should look). For example:
+
+
+	p {
+		background-color: black;
+		color: white;
+	}
+
+1. The `p` selector selects all `<p>` elements (paragraphs). (There are many other types of selectors. [<a href="http://www.w3.org/TR/CSS2/selector.html">http://www.w3.org/TR/CSS2/selector.html</a>])
+2. background-color sets the background color of the element. The color is specified here by name (there are many other ways of specifying colors [<a href="http://dev.w3.org/csswg/css3-color/">http://dev.w3.org/csswg/css3-color/</a>], but many work by name).
+3. color sets the text color.
+
+To include this style in a page we could use:
+
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8" /> 
+		<title>Page title. Shown in tabs.</title> 
+		<style>
+		p {
+			background-color: black;
+			color: white;
+		}
+		</style>
+	</head> 
+	<body> 
+		<h1>Simple Page!</h1> 
+		<p>This is a totally bare-bones page.</p> 
+	</body> 
+	</html> 
+
+Or, if the style were in another file called styles.css:
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8" /> 
+		<title>Page title. Shown in tabs.</title> 
+		<link rel="stylesheet" href="styles.css" />
+	</head> 
+	<body> 
+		<h1>Simple Page!</h1> 
+		<p>This is a totally bare-bones page.</p> 
+	</body> 
+	</html> 
+
+Last, you can include CSS properties directly in a style attribute of an HTML element, like this:
+
+	<span style=”display: none;”>This text won’t show up!</span>
+
+
+This is not recommended, because this style will only apply to this specific element. It is much more efficient to declare styles that can be applied to your entire document, and that will make expanding and modifying your code a lot easier.
+
+##Selecting Elements in CSS
+
+There are several ways to select elements. The simplest is what you’ve seen above, which selects all elements of a particular name. It works for any kind of element: the entire body with the `body` tag, `img` tags, `h1` tags and so on.
+
+To make it a little more specific you can __add classes__ to an element to indicate that it’s a particular type. For example:
+
+
+	<h1 class=”headline”>Web Moves Forward!</h1>
+	<!-- this h2 also has the class subtitle -->
+	<h2 class=”headline subtitle”>Everyone is excited</h2>
+
+You can then select for all elements with that class with this syntax:
+
+
+	.headline {
+		font-size: 72pt;
+		font-weight: bold;
+	}
+
+or for only h1 elements with that class with this:
+
+```css
+h1.headline {
+	/* this is a comment in CSS so it is ignored */
+}
+```
+
+or for only h1 and h2 elements (comma specifies multiple selectors):
+
+
+	h1.headline, h2.headline {
+	
+	}
+
+To get even more specific you can give elements IDs, which must be unique within an HTML document.
+
+
+	<h1 id=”page-header”>Web Moves Forward!</h1>
+
+
+You can select that element with this syntax:
+
+	
+	#page-header {
+		font-size: 72pt;
+		font-weight: bold;
+	}
+
+
+##Cascading
+
+The cascading part of CSS is important. All browsers come with a built in stylesheet that you are effectively overriding when you define styles for your document. There is a point system for selectors to determine which property value to use when multiple selectors apply to an element and they define the same properties ([http://www.w3.org/TR/CSS21/cascade.html#specificity](http://www.w3.org/TR/CSS21/cascade.html#specificity)). The gist is that more specific selectors take precedence. 
+
+
+
+	#page-header {
+		color: black;
+	}
+	.headline {
+		color: blue;
+	}
+	
+	<!-- this h1 will be black, since #page-header is more specific than .headline -->
+	<h1 id=”page-header” class=”headline”>Web Moves Forward!</h1>
+
+
+With the cascading properties of CSS, you can be efficient with your styling by declaring general styles that can be applied to many HTML elements, then decalring more specific styles for fine-tuning.
+
+##The Box Model
+You can do a lot more than change colors using CSS. The philosophy is that HTML should convey _meaning_ and _content structure_, and CSS should control how it looks. That means CSS is also largely responsible for the positioning and layout of HTML elements. To understand layout you need to understand the box model [[http://www.w3.org/TR/CSS2/box.html](http://www.w3.org/TR/CSS2/box.html)], which is the fundamental model underlying how CSS treats elements. By manipulating properties like `display`, `position`, `float`, `margin`, `padding`, and `border`, you can change the way an element is displayed. To get familiar with these concepts, complete the Codecademy section on CSS positioning:
+
+[http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b](http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b)
+
+There are dozens of CSS properties, although not all of them are supported by every browser.
+
+A pretty complete list is available from the Mozilla Developer Network: [https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference](https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference)
+
+##Media Queries
+
+Finally, one of the most elegant things CSS allows you to do (and one of the major reasons for style / content separation) is changing styles depending on what the content is being displayed on. CSS calls these media: things like screens, TVs, printers, and so on. You can also control properties of each sort of media: screens of different sizes (think smart phones vs. laptops), color vs. black and white, and so on. The appearance will change automatically according to whatever is looking at it (e.g. the layout of the page can change in a smaller window or links can include the full-text URL when printed).
+
+This happens through evaluating media queries, which are either true or false. Some examples:
+
+Always true:
+`all`
+
+Screens or printed documents:
+`screen`, `print`
+
+Screens larger than 640px:
+`screen and (min-width: 640px)`
+
+You can use media queries in CSS documents like this:
+
+	@media screen and (min-width: 640px){
+		/* rules in this block will only apply to screens at least 640px in width */
+		#headline{
+			font-size: 120pt;
+		}
+	}
+
+
+##Practical notes about CSS
+
+###Reset Stylesheets
+Different browsers may have slight inconsistencies in their default element appearances, such as default line heights, margins and font sizes of headings. Reset stylesheets can be an useful tool to help reduce such cross-browser inconsistencies, and make your code more browser-compatible. Just include the reset stylesheet BEFORE you include any others, and it should act as a default on which you make more specific modifications. Here is a popular version of a reset stylesheet created by Eric Meyer that covers the basic inconsistencies and is fast to load: [http://meyerweb.com/eric/tools/css/reset/reset.css](http://meyerweb.com/eric/tools/css/reset/reset.css)
+
+###Meta-CSS
+
+
+###Centering is Tricky
+
 
