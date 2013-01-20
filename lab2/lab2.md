@@ -446,28 +446,36 @@ for (var key in object) {
 }
 ```
 
+Note that this syntax gives you all the keys defined on the object *including keys of its prototypes*. That can lead to some unpleasant surprises, so it's best practice to use `hasOwnProperty`, which returns `true` if and only if the property name is defined for that object directly:
+
+```
+for (var key in object) {
+  if (!object.hasOwnProperty(key)){continue;}
+  console.log("key: " + key + " value: " + object[key]);
+}
+```
+
 You can use that syntax with arrays too, but it's pretty pointless, since `key` would just be the index in the array, and this type of loop is slower. Javascript also has `while` loops just like C/java, and you can use `++/--` unary operators on values. Javascript also has a `break` keyword for getting out of a loop and a `continue` statement for going to the next iteration.
 
 ## Cool Demo
 Let's use some of your Javacript knowledge. Get some HTML like this:
 
+```
+<h1>Age Store</h1>
+<label for="name">please input your name:</label>
+<input type="text" id="name" />
 
+<div id="input" style="display:none;">
+  <label type="text" id="age" />
+  <button id="save">save</button>
+</div>
 
-	<h1>Age Store</h1>
-	<label for="name">please input your name:</label>
-	<input type="text" id="name" />
-	
-	<div id="input" style="display:none;">
-	  <label type="text" id="age" />
-	  <button id="save">save</button>
-	</div>
-	
-	<div id="result" style="display:none;">
-	  Your age: <span id="display"></span>
-	</div>
-	
-	<button id="find">search</div>
+<div id="result" style="display:none;">
+  Your age: <span id="display"></span>
+</div>
 
+<button id="find">search</div>
+```
 
 We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the `result` and `input` div's are set to `display:none;`. That's CSS's way of saying that they're hidden.
 
@@ -520,25 +528,17 @@ Great! When you've gotten to this stage in the lab, ask your TA to check you off
 
 ## Javascript Resources
 
-### Beginner
-* [Kahn Academy CS](http://www.khanacademy.org/cs/tutorials/user-interaction)
-* [Codecademy Javascript](http://www.codecademy.com/tracks/javascript)
-
-### Intermediate
+### Reference
 * [Mozilla Developer Network: Javascript](https://developer.mozilla.org/en-US/docs/JavaScript)
-* [W3 School Javascript](http://www.w3schools.com/js/default.asp)
-* [Intro to Javascript For Coders](http://madebyevan.com/jsintro/)
-* [Javascript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
-
-### Advanced
 * [Quirksmode Javascript](http://www.quirksmode.org/js/contents.html)
-* [John Resig: Learn Advanced Javascript](http://ejohn.org/apps/learn/)
-* [Douglas Crockford: Javascript](http://javascript.crockford.com)
+* [jQuery documentation](http://api.jquery.com/)
+* [jQuery source browser](http://www.james.padolsey.com/jquery/)
+* [Javascript Garden (Javascript quirks)](http://bonsaiden.github.com/JavaScript-Garden/)
 
-### jQuery
-* [jQuery Website](http://jquery.com)
-* [useful jQuery source browser](http://www.james.padolsey.com/jquery/)
-* [How jQuery Works](http://learn.jquery.com/about-jquery/how-jquery-works/?rdfrom=http%3A%2F%2Fdocs.jquery.com%2Fmw%2Findex.php%3Ftitle%3DTutorials%3AHow_jQuery_Works%26redirect%3Dno)
+### Other introductions
+* [Codecademy Javascript (beginner)](http://www.codecademy.com/tracks/javascript)
+* [John Resig: Learn Advanced Javascript](http://ejohn.org/apps/learn/)
+* [Intro to Javascript For Coders](http://madebyevan.com/jsintro/)
 
 
 
