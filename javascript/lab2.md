@@ -541,6 +541,3 @@ Great! When you've gotten to this stage in the lab, ask your TA to check you off
 * [Codecademy Javascript (beginner)](http://www.codecademy.com/tracks/javascript)
 * [John Resig: Learn Advanced Javascript](http://ejohn.org/apps/learn/)
 * [Intro to Javascript For Coders](http://madebyevan.com/jsintro/)
-
-
-
