@@ -81,7 +81,7 @@ What jQuery does here is abstract the process of selecting an element from the D
 
 Element | jQuery | DOM
 --------|--------|----
-`#mylink`| `$('#mylink)`| `document.getElementById('mylink')`
+`<a id='mylink'></a>`| `$('#mylink')`| `document.getElementById('mylink')`
 first `a` element | `$('a')[0]` | `document.getElementsByTagName('a')[0]`
 first child of `body` | `$('body:first-child')` | `document.getElementByTagName('body')[0].firstChild()`
 
@@ -91,7 +91,7 @@ You're probably thinking--what's that `$(document).ready(function() {...`? Becau
 
 ## Events
 
-So we saw events with `onclick` and jQuery's `on('click'`, but *what are events*? The DOM makes a ton of use of the [delagate event model](http://en.wikipedia.org/wiki/Event_model#Delegate_event_model), meaning that when something happens in the browser, it emits events, which can be picked up (and modified) by any code that's listening. This makes it easy for programmers to add additional code to a page without worrying about other scripts (e.g. plugins, bookmarklets, frames), and allows for really decoupled design. Let's see another example:
+So we saw events with `onclick` and jQuery's `on()`, but *what are events*? The DOM makes a ton of use of the [delagate event model](http://en.wikipedia.org/wiki/Event_model#Delegate_event_model), meaning that when something happens in the browser, it emits events, which can be picked up (and modified) by any code that's listening. This makes it easy for programmers to add additional code to a page without worrying about other scripts (e.g. plugins, bookmarklets, frames), and allows for really decoupled design. Let's see another example:
 
 This is another syntax for add **event listeners** to an object (besides assigning to `on[eventname]`). It's nice because you can add and remove multiple listeners for the same event:
 Add this HTML between your body tags:
@@ -106,8 +106,9 @@ document.addEventListener('keyup', function (event) {
 
 });
 ```
+[`addEventListener` documentation](https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener)
 
-Keys in javascript are identified by their **key codes** ([here's a ton of crazy info on it](http://unixpapa.com/js/key.html)). For example, the enter key is 13. So to only do something when the user hits "enter":
+Keyboard keys in javascript are identified by their **key codes** ([here's a ton of crazy info on it](http://unixpapa.com/js/key.html)). For example, the enter key is 13. So to only do something when the user hits "enter":
 
 ```
 document.addEventListener('keyup', function (event) {
@@ -142,7 +143,7 @@ You declare a variable in javascript using `var`. Javascript has totally dynamic
 ```
 var lol = "laughing out loud"; // strings can be single or double quoted, nbd.
 var satan = 666;
-var floatNum = 665.0; // all numbers in js are type "number" (a float) so don't worry about it!
+var preciseSatan = 666.0; // all numbers in js are type "number" (a float) so don't worry about it!
 ```
 
 ### Arrays & Objects (maps)
@@ -152,10 +153,10 @@ Arrays can be of mixed type, and are declared through a simple literaly syntax t
 Working with arrays:
 
 ```
-myArray[0] // 1
-myArray.length // 3
-myArray.slice(0,2) // [ 1, 4, 'cool' ]
-myArray.concat(['horse']) // [ 1, 4, 'cool', myFunction, 'horse']
+myArray[0] // => 1
+myArray.length // => 3
+myArray.slice(0,2) // => [ 1, 4, 'cool' ]
+myArray.concat(['horse']) // => [ 1, 4, 'cool', myFunction, 'horse']
 ```
 
 And there's [a lot more](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array)
@@ -185,7 +186,6 @@ or
 
 ```
 csStudent.name // 'CS Student'
-
 ```
 
 FYI: dot notation only works with object properties that aren't keywords and are single words. You can remove a property by using `delete csStudent.name`, but often you really just need to set it to `undefined` (javascript's internal representation of an undefined property), so `csStudent.name = undefined;`. 
@@ -196,7 +196,7 @@ If you open up the javascript console (described above), you can print to it by 
 ### `==` vs. `===`
 One of the most common bugs in javascript is getting `==` confusing with `===`. Javascript does *type coercion*, so `1 == "1"` is `true`, but `1 === "1"` is false, since `1` is a `number` and `"1"` is a `string`. It's a best practice to always use `===` so you don't get any surprises.
 
-### Flavors of False
+### Types of False
 In javascript, variables are "falsy" or "truthy", meaning that you can do `if (myNonBooleanVariable)...`. Here are the main falsy values.
 
 ####1. `null`
@@ -308,8 +308,33 @@ foo.call(otherObj, arg1, arg2, arg3);
 
 The difference is how you supply arguments to the function you're calling. `apply` takes an array, call takes individual arguments.
 
+Keep context in mind when you're using nested functions:
+
+```
+function Person (name) {
+  this.name = name;
+
+  this.talk = function () {
+    console.log(this.name) //  will be undefined
+  }
+}
+```
+
+You can fix that situation by binding the function to the outer context (using `apply` or `call`), or by assigning `this` to a variable and using it in the closure:
+
+```
+function Person (name) {
+  this.name = name;
+  var self = this;
+
+  this.talk = function () {
+    console.log(self.name);
+  }
+}
+```
+
 #### Scoping
-Javascript scope is really crazy. The only way you can declare scope is with a function. So `if` statements, `while` loops, etc. do not create a scope (like they do in C). Javascript also has [lexical scoping](http://stackoverflow.com/questions/1047454/what-is-lexical-scope), which really means that what variabels in an outer scope are available in an inner scope, which lets you do this:
+**The only way you can create a scope is with a function.** So `if` statements, `while` loops, etc. do not create a scope (like they do in C). Javascript also has [lexical scoping](http://stackoverflow.com/questions/1047454/what-is-lexical-scope), which really means that what variabels in an outer scope are available in an inner scope, which lets you do this:
 
 Try adding this to your `<script>` tag:
 
