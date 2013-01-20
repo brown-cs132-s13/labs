@@ -534,6 +534,8 @@ Great! When you've gotten to this stage in the lab, ask your TA to check you off
 * [jQuery documentation](http://api.jquery.com/)
 * [jQuery source browser](http://www.james.padolsey.com/jquery/)
 * [Javascript Garden (Javascript quirks)](http://bonsaiden.github.com/JavaScript-Garden/)
+* [jsPerf](http://jsperf.com/) - javascript performance tests
+* [jsFiddle](http://jsfiddle.net/) - in-browser javascript "sandbox"
 
 ### Other introductions
 * [Codecademy Javascript (beginner)](http://www.codecademy.com/tracks/javascript)
