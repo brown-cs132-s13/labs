@@ -188,7 +188,7 @@ pre .tex .formula {
 
 <p><strong>HTML Example 1</strong></p>
 
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;meta charset=&quot;utf-8&quot; /&gt;
@@ -198,13 +198,15 @@ pre .tex .formula {
         &lt;h1&gt;Simple Page!&lt;/h1&gt;
         &lt;p&gt;This is a totally bare-bones page.&lt;/p&gt;
     &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;
+</code></pre>
 
 <p>As you can see, the example HTML document consists of tags and plain text. Tags are surrounded by angle brackets <code>&lt;</code> and <code>&gt;</code>. Tags come in pairs, such as <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code>, and they are called the start tag and end tag, respectively. The end tag is written like the start tag, but with a forward slash <code>/</code> before the tag name. Tags denote the function of their contents and form the structure of an html document. In an HTML document with good syntax, such as in the example above, corresponding start and end tags are aligned in a way that is easy to identify.</p>
 
 <p>An HTML element is defined by a pair of start and end tags. For example, this is an HTML element:</p>
 
-<pre><code class="html">&lt;p&gt;This is a paragraph&lt;/p&gt;</code></pre>
+<pre><code>&lt;p&gt;This is a paragraph&lt;/p&gt;
+</code></pre>
 
 <p>Now, let’s take a look at the HTML elements in Example 1 above. The first line is a declaration. Declarations tell the browser which HTML version you are writing in, and it is important to always include this at the top of every HTML document. Since we are using HTML5 (which is the standard today), the declaration is simply <code>&lt;!DOCTYPE html&gt;</code>.</p>
 
@@ -212,7 +214,7 @@ pre .tex .formula {
 
 <p>Note that an HTML document must only have one <code>&lt;html&gt;</code> element, one <code>&lt;head&gt;</code> element, and one <code>&lt;body&gt;</code> element. To be valid, the document must be in the following format:</p>
 
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
         //information about the page
@@ -220,7 +222,8 @@ pre .tex .formula {
     &lt;body&gt;
         //content of the page
     &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;
+</code></pre>
 
 <p>This is how HTML Example 1 looks on a webpage (notice you can only see what is in the body of the document):</p>
 
@@ -238,7 +241,8 @@ pre .tex .formula {
 
 <p>Before we learn some other common HTML tags, you should learn about <strong>attributes</strong>. Some tags have attributes, which provide additional semantic information about that tag. In the <code>&lt;meta&gt;</code> tag in Example 1, you have already seen an example of attributes to specify which character set the document uses. Attributes are of the form <code>name=&quot;value&quot;</code>, where the value must always be enclosed in double-quotes.</p>
 
-<pre><code class="html">&lt;tag attribute=&quot;value&quot; foo=&quot;bar&quot;&gt;</code></pre>
+<pre><code>&lt;tag attribute=&quot;value&quot; foo=&quot;bar&quot;&gt;
+</code></pre>
 
 <p>You will learn more about attributes as we go along.</p>
 
@@ -258,7 +262,8 @@ pre .tex .formula {
 
 <p>Example: </p>
 
-<pre><code class="html">&lt;img src=&quot;url&quot; alt=&quot;alternate_name&quot;&gt;</code></pre>
+<pre><code>&lt;img src=&quot;url&quot; alt=&quot;alternate_name&quot;&gt;
+</code></pre>
 
 <p><code>&lt;img&gt;</code> tags have two essential attributes.</p>
 
@@ -274,7 +279,8 @@ pre .tex .formula {
 
 <p>Example: </p>
 
-<pre><code class="html">&lt;a href=&quot;http://some_webpage.com&quot;&gt;Some text displayed to represent the link&lt;/a&gt;</code></pre>
+<pre><code>&lt;a href=&quot;http://some_webpage.com&quot;&gt;Some text displayed to represent the link&lt;/a&gt;
+</code></pre>
 
 <p>The <code>&lt;a&gt;</code> tag must use an <code>href</code> attribute with an URL to indicate where the hyperlink will direct the user to.</p>
 
@@ -284,16 +290,17 @@ pre .tex .formula {
 
 <p>Example:</p>
 
-<pre><code class="html">&lt;table&gt;
-&lt;tr&gt;
-&lt;td&gt;row 1, cell 1&lt;/td&gt;
-&lt;td&gt;row 1, cell 2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;row 2, cell 1&lt;/td&gt;
-&lt;td&gt;row 2, cell 2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;</code></pre>
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;row 1, cell 1&lt;/td&gt;
+        &lt;td&gt;row 1, cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;row 2, cell 1&lt;/td&gt;
+        &lt;td&gt;row 2, cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
 
 <h4 id="orderedlistsandunorderedlists">&#8211;Ordered Lists and Unordered Lists</h4>
 
@@ -301,11 +308,12 @@ pre .tex .formula {
 
 <p>An ordered list, written as such:</p>
 
-<pre><code class="html">&lt;ol&gt;
+<pre><code>&lt;ol&gt;
     &lt;li&gt;The first list item&lt;/li&gt;
     &lt;li&gt;The second list item&lt;/li&gt;
     &lt;li&gt;The third list item&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
+&lt;/ol&gt;
+</code></pre>
 
 <p>will look like:</p>
 
@@ -318,11 +326,12 @@ pre .tex .formula {
 <p><br>
 An unordered list, written as such:</p>
 
-<pre><code class="html">&lt;ul&gt;
+<pre><code>&lt;ul&gt;
     &lt;li&gt;List item&lt;/li&gt;
     &lt;li&gt;List item&lt;/li&gt;
     &lt;li&gt;List item&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+&lt;/ul&gt;
+</code></pre>
 
 <p>will look like:</p>
 
@@ -357,18 +366,20 @@ An unordered list, written as such:</p>
 
 <p>Also, here is a list of good practices that help you maximize your gain from HTML and reduce mistakes. Take a look! <a href="http://sixrevisions.com/web-standards/20-html-best-practices-you-should-follow/">http://sixrevisions.com/web-standards/20-html-best-practices-you-should-follow/</a></p>
 
-<p><strong>Good luck and have fun!</strong></p>
-<br><br><br>
+<p><strong>Good luck and have fun!</strong>
+<br><br><br><br><br></p>
+
 <h1 id="csscascadingstylesheets">CSS (Cascading Style Sheets)</h1>
 
 <h2 id="introductiontocss">Introduction to CSS</h2>
 
 <p>Another major component of a web pages is CSS (cascading style sheets). CSS allows you to style your HTML and make it look however you please. CSS is made up of a series of style declarations. They’re applied to HTML either through a .css file linked in the head of the HTML document, or in HTML in a <code>&lt;style&gt;</code> element. You can have multiple of both kinds in an HTML document. A style declaration has two parts: a selector (which elements to apply the properties to) and a set of properties (how they should look). For example:</p>
 
-<pre><code class="css">p {
+<pre><code>p {
     background-color: black;
     color: white;
-}</code></pre>
+}
+</code></pre>
 
 <ol>
 <li>The <code>p</code> selector selects all <code>&lt;p&gt;</code> elements (paragraphs). (There are many other types of selectors. [<a href="http://www.w3.org/TR/CSS2/selector.html">http://www.w3.org/TR/CSS2/selector.html</a>])</li>
@@ -378,7 +389,7 @@ An unordered list, written as such:</p>
 
 <p>To include this style in a page we could use:</p>
 
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot; /&gt; 
@@ -394,11 +405,12 @@ An unordered list, written as such:</p>
     &lt;h1&gt;Simple Page!&lt;/h1&gt; 
     &lt;p&gt;This is a totally bare-bones page.&lt;/p&gt; 
 &lt;/body&gt; 
-&lt;/html&gt; </code></pre>
+&lt;/html&gt; 
+</code></pre>
 
 <p>Or, if the style were in another file called styles.css:</p>
 
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot; /&gt; 
@@ -409,11 +421,13 @@ An unordered list, written as such:</p>
     &lt;h1&gt;Simple Page!&lt;/h1&gt; 
     &lt;p&gt;This is a totally bare-bones page.&lt;/p&gt; 
 &lt;/body&gt; 
-&lt;/html&gt; </code></pre>
+&lt;/html&gt; 
+</code></pre>
 
 <p>Last, you can include CSS properties directly in a style attribute of an HTML element, like this:</p>
 
-<pre><code class="html">&lt;span style=&rdquo;display: none;&rdquo;&gt;This text won&rsquo;t show up!&lt;/span&gt;</code></pre>
+<pre><code>&lt;span style=”display: none;”&gt;This text won’t show up!&lt;/span&gt;
+</code></pre>
 
 <p>This is not recommended, because this style will only apply to this specific element. It is much more efficient to declare styles that can be applied to your entire document, and that will make expanding and modifying your code a lot easier.</p>
 
@@ -423,16 +437,18 @@ An unordered list, written as such:</p>
 
 <p>To make it a little more specific you can <strong>add classes</strong> to an element to indicate that it’s a particular type. For example:</p>
 
-<pre><code class="html">&lt;h1 class=&rdquo;headline&rdquo;&gt;Web Moves Forward!&lt;/h1&gt;
+<pre><code>&lt;h1 class=”headline”&gt;Web Moves Forward!&lt;/h1&gt;
 &lt;!-- this h2 also has the class subtitle --&gt;
-&lt;h2 class=&rdquo;headline subtitle&rdquo;&gt;Everyone is excited&lt;/h2&gt;</code></pre>
+&lt;h2 class=”headline subtitle”&gt;Everyone is excited&lt;/h2&gt;
+</code></pre>
 
 <p>You can then select for all elements with that class with this syntax:</p>
 
-<pre><code class="css">.headline {
+<pre><code>.headline {
     font-size: 72pt;
     font-weight: bold;
-}</code></pre>
+}
+</code></pre>
 
 <p>or for only h1 elements with that class with this:</p>
 
@@ -442,26 +458,29 @@ An unordered list, written as such:</p>
 
 <p>or for only h1 and h2 elements (comma specifies multiple selectors):</p>
 
-<pre><code class="css">h1.headline, h2.headline {
+<pre><code>h1.headline, h2.headline {
 
-}</code></pre>
+}
+</code></pre>
 
 <p>To get even more specific you can give elements IDs, which must be unique within an HTML document.</p>
 
-<pre><code class="html">&lt;h1 id=&rdquo;page-header&rdquo;&gt;Web Moves Forward!&lt;/h1&gt;</code></pre>
+<pre><code>&lt;h1 id=”page-header”&gt;Web Moves Forward!&lt;/h1&gt;
+</code></pre>
 
 <p>You can select that element with this syntax:</p>
 
-<pre><code class="css">#page-header {
+<pre><code>#page-header {
     font-size: 72pt;
     font-weight: bold;
-}</code></pre>
+}
+</code></pre>
 
 <h2 id="cascading">Cascading</h2>
 
 <p>The cascading part of CSS is important. All browsers come with a built in stylesheet that you are effectively overriding when you define styles for your document. There is a point system for selectors to determine which property value to use when multiple selectors apply to an element and they define the same properties (<a href="http://www.w3.org/TR/CSS21/cascade.html#specificity">http://www.w3.org/TR/CSS21/cascade.html#specificity</a>). The gist is that more specific selectors take precedence. </p>
 
-<pre><code class="html">#page-header {
+<pre><code>#page-header {
     color: black;
 }
 .headline {
@@ -469,7 +488,8 @@ An unordered list, written as such:</p>
 }
 
 &lt;!-- this h1 will be black, since #page-header is more specific than .headline --&gt;
-&lt;h1 id=&rdquo;page-header&rdquo; class=&rdquo;headline&rdquo;&gt;Web Moves Forward!&lt;/h1&gt;</code></pre>
+&lt;h1 id=”page-header” class=”headline”&gt;Web Moves Forward!&lt;/h1&gt;
+</code></pre>
 
 <p>With the cascading properties of CSS, you can be efficient with your styling by declaring general styles that can be applied to many HTML elements, then decalring more specific styles for fine-tuning.</p>
 
@@ -500,12 +520,13 @@ An unordered list, written as such:</p>
 
 <p>You can use media queries in CSS documents like this:</p>
 
-<pre><code class="css">@media screen and (min-width: 640px){
+<pre><code>@media screen and (min-width: 640px){
     /* rules in this block will only apply to screens at least 640px in width */
     #headline{
         font-size: 120pt;
     }
-}</code></pre>
+}
+</code></pre>
 
 <h2 id="practicalnotesaboutcss">Practical notes about CSS</h2>
 
