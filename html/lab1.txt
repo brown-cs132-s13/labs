@@ -170,6 +170,13 @@ will look like:
 * List item
 * List item
 
+****
+
+***ASSIGNMENT 1: To show that you have understood the concepts we covered so far, finish this tutorial on Codecademy:*** <br>
+_[http://www.codecademy.com/courses/web-beginner-en-LceTK/0#!/exercises/0](http://www.codecademy.com/courses/web-beginner-en-LceTK/0#!/exercises/0)_
+<br>
+
+****
 
 ###Layout Tags
 
@@ -185,6 +192,13 @@ Now, your most powerful tool in adding structure to your HTML document is the `<
 
 Another handy tool for configuring inline layout is the `<span>` tag. That `<span>` tag is an inline element that can be put around a group of text, and be used to modify only the text that it contains, without interrupting the flow of the text before and after it.
 
+****
+
+***ASSIGNMENT 2: To help you better understand `div` and `span` elements, finish this tutorial on Codecademy:***<br>
+ _[http://www.codecademy.com/courses/web-beginner-en-f8mcL/2?curriculum_id=50579fb998b470000202dc8b#!/exercises/0](http://www.codecademy.com/courses/web-beginner-en-f8mcL/2?curriculum_id=50579fb998b470000202dc8b#!/exercises/0)_
+<br>
+
+****
 
 ##Final Comments
 
@@ -327,13 +341,21 @@ The cascading part of CSS is important. All browsers come with a built in styles
 With the cascading properties of CSS, you can be efficient with your styling by declaring general styles that can be applied to many HTML elements, then decalring more specific styles for fine-tuning.
 
 ##The Box Model
-You can do a lot more than change colors using CSS. The philosophy is that HTML should convey _meaning_ and _content structure_, and CSS should control how it looks. That means CSS is also largely responsible for the positioning and layout of HTML elements. To understand layout you need to understand the box model [[http://www.w3.org/TR/CSS2/box.html](http://www.w3.org/TR/CSS2/box.html)], which is the fundamental model underlying how CSS treats elements. By manipulating properties like `display`, `position`, `float`, `margin`, `padding`, and `border`, you can change the way an element is displayed. To get familiar with these concepts, complete the Codecademy section on CSS positioning:
+You can do a lot more than change colors using CSS. The philosophy is that HTML should convey _meaning_ and _content structure_, and CSS should control how it looks. That means CSS is also largely responsible for the positioning and layout of HTML elements. To understand layout you need to understand the box model [[http://www.w3.org/TR/CSS2/box.html](http://www.w3.org/TR/CSS2/box.html)], which is the fundamental model underlying how CSS treats elements. By manipulating properties like `display`, `position`, `float`, `margin`, `padding`, and `border`, you can change the way an element is displayed. 
 
-[http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b](http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b)
 
 There are dozens of CSS properties, although not all of them are supported by every browser.
 
 A pretty complete list is available from the Mozilla Developer Network: [https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference](https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference)
+
+****
+
+***ASSIGNMENT 3: To get familiar with these concepts, complete the Codecademy section on CSS positioning:***<br>
+_[http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b](http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b)_
+
+****
+
+<br>
 
 ##Media Queries
 
