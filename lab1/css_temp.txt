@@ -1,0 +1,179 @@
+#CSS (Cascading Style Sheets)
+
+##Introduction to CSS
+Another major component of a web pages is CSS (cascading style sheets). CSS allows you to style your HTML and make it look however you please. CSS is made up of a series of style declarations. They’re applied to HTML either through a .css file linked in the head of the HTML document, or in HTML in a `<style>` element. You can have multiple of both kinds in an HTML document.  A style declaration has two parts: a selector (which elements to apply the properties to) and a set of properties (how they should look). For example:
+
+```css
+p {
+	background-color: black;
+	color: white;
+}
+```
+
+1. The `p` selector selects all `<p>` elements (paragraphs). (There are many other types of selectors. [<a href="http://www.w3.org/TR/CSS2/selector.html">http://www.w3.org/TR/CSS2/selector.html</a>])
+2. background-color sets the background color of the element. The color is specified here by name (there are many other ways of specifying colors [<a href="http://dev.w3.org/csswg/css3-color/">http://dev.w3.org/csswg/css3-color/</a>], but many work by name).
+3. color sets the text color.
+
+To include this style in a page we could use:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" /> 
+	<title>Page title. Shown in tabs.</title> 
+	<style>
+	p {
+		background-color: black;
+		color: white;
+	}
+	</style>
+</head> 
+<body> 
+	<h1>Simple Page!</h1> 
+	<p>This is a totally bare-bones page.</p> 
+</body> 
+</html> 
+```
+
+Or, if the style were in another file called styles.css:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" /> 
+	<title>Page title. Shown in tabs.</title> 
+	<link rel="stylesheet" href="styles.css" />
+</head> 
+<body> 
+	<h1>Simple Page!</h1> 
+	<p>This is a totally bare-bones page.</p> 
+</body> 
+</html> 
+```
+
+Last, you can include CSS properties directly in a style attribute of an HTML element, like this:
+
+```html
+<span style=”display: none;”>This text won’t show up!</span>
+```
+
+This is not recommended, because this style will only apply to this specific element. It is much more efficient to declare styles that can be applied to your entire document, and that will make expanding and modifying your code a lot easier.
+
+##Selecting Elements in CSS
+
+There are several ways to select elements. The simplest is what you’ve seen above, which selects all elements of a particular name. It works for any kind of element: the entire body with the `body` tag, `img` tags, `h1` tags and so on.
+
+To make it a little more specific you can __add classes__ to an element to indicate that it’s a particular type. For example:
+
+```html
+<h1 class=”headline”>Web Moves Forward!</h1>
+<!-- this h2 also has the class subtitle -->
+<h2 class=”headline subtitle”>Everyone is excited</h2>
+```
+
+You can then select for all elements with that class with this syntax:
+
+```css
+.headline {
+	font-size: 72pt;
+	font-weight: bold;
+}
+```
+
+or for only h1 elements with that class with this:
+
+```css
+h1.headline {
+	/* this is a comment in CSS so it is ignored */
+}
+```
+
+or for only h1 and h2 elements (comma specifies multiple selectors):
+
+```css
+h1.headline, h2.headline {
+
+}
+```
+
+To get even more specific you can give elements IDs, which must be unique within an HTML document.
+
+```html
+<h1 id=”page-header”>Web Moves Forward!</h1>
+```
+
+You can select that element with this syntax:
+
+```css
+#page-header {
+	font-size: 72pt;
+	font-weight: bold;
+}
+```
+
+##Cascading
+
+The cascading part of CSS is important. All browsers come with a built in stylesheet that you are effectively overriding when you define styles for your document. There is a point system for selectors to determine which property value to use when multiple selectors apply to an element and they define the same properties ([http://www.w3.org/TR/CSS21/cascade.html#specificity](http://www.w3.org/TR/CSS21/cascade.html#specificity)). The gist is that more specific selectors take precedence. 
+
+
+```html
+#page-header {
+	color: black;
+}
+.headline {
+	color: blue;
+}
+
+<!-- this h1 will be black, since #page-header is more specific than .headline -->
+<h1 id=”page-header” class=”headline”>Web Moves Forward!</h1>
+```
+With the cascading properties of CSS, you can be efficient with your styling by declaring general styles that can be applied to many HTML elements, then decalring more specific styles for fine-tuning.
+
+##The Box Model
+You can do a lot more than change colors using CSS. The philosophy is that HTML should convey _meaning_ and _content structure_, and CSS should control how it looks. That means CSS is also largely responsible for the positioning and layout of HTML elements. To understand layout you need to understand the box model [[http://www.w3.org/TR/CSS2/box.html](http://www.w3.org/TR/CSS2/box.html)], which is the fundamental model underlying how CSS treats elements. By manipulating properties like `display`, `position`, `float`, `margin`, `padding`, and `border`, you can change the way an element is displayed. To get familiar with these concepts, complete the Codecademy section on CSS positioning:
+
+[http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b](http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b)
+
+There are dozens of CSS properties, although not all of them are supported by every browser.
+
+A pretty complete list is available from the Mozilla Developer Network: [https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference](https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference)
+
+##Media Queries
+
+Finally, one of the most elegant things CSS allows you to do (and one of the major reasons for style / content separation) is changing styles depending on what the content is being displayed on. CSS calls these media: things like screens, TVs, printers, and so on. You can also control properties of each sort of media: screens of different sizes (think smart phones vs. laptops), color vs. black and white, and so on. The appearance will change automatically according to whatever is looking at it (e.g. the layout of the page can change in a smaller window or links can include the full-text URL when printed).
+
+This happens through evaluating media queries, which are either true or false. Some examples:
+
+Always true:
+`all`
+
+Screens or printed documents:
+`screen`, `print`
+
+Screens larger than 640px:
+`screen and (min-width: 640px)`
+
+You can use media queries in CSS documents like this:
+
+```css
+@media screen and (min-width: 640px){
+	/* rules in this block will only apply to screens at least 640px in width */
+	#headline{
+		font-size: 120pt;
+	}
+}
+```
+
+##Practical notes about CSS
+
+###Reset Stylesheets
+Different browsers may have slight inconsistencies in their default element appearances, such as default line heights, margins and font sizes of headings. Reset stylesheets can be an useful tool to help reduce such cross-browser inconsistencies, and make your code more browser-compatible. Just include the reset stylesheet BEFORE you include any others, and it should act as a default on which you make more specific modifications. Here is a popular version of a reset stylesheet created by Eric Meyer that covers the basic inconsistencies and is fast to load: [http://meyerweb.com/eric/tools/css/reset/reset.css](http://meyerweb.com/eric/tools/css/reset/reset.css)
+
+###Meta-CSS
+
+
+###Centering is Tricky
+
+

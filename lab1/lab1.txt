@@ -1,0 +1,208 @@
+#HTML (HyperText Markup Language)
+
+What is HTML?
+----
+From the w3schools.com html course which you can find [here](http://w3schools.com/html/html_intro.asp)
+
+HTML is a language for describing web pages.
+
+* HTML stands for **H**yper**T**ext **M**arkup **L**anguage
+* HTML is a markup language
+* A markup language is a set of markup tags
+* The tags describe document content
+* HTML documents contain HTML tags and plain text
+* HTML documents are also called web pages
+
+Learning HTML Tags
+---
+Below is an example of a HTML document. Let’s study it and learn about the different basic components of HTML.
+
+__HTML Example 1__
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Page title. Shown in tabs.</title>
+	</head>
+	<body>
+		<h1>Simple Page!</h1>
+		<p>This is a totally bare-bones page.</p>
+	</body>
+</html>
+```
+
+
+As you can see, the example HTML document consists of tags and plain text. Tags are surrounded by angle brackets `<` and `>`. Tags come in pairs, such as `<head>` and `</head>`, and they are called the start tag and end tag, respectively. The end tag is written like the start tag, but with a forward slash `/` before the tag name. Tags denote the function of their contents and form the structure of an html document. In an HTML document with good syntax, such as in the example above, corresponding start and end tags are aligned in a way that is easy to identify.
+
+An HTML element is defined by a pair of start and end tags. For example, this is an HTML element:
+
+```html
+<p>This is a paragraph</p>
+```
+
+Now, let’s take a look at the HTML elements in Example 1 above. The first line is a declaration. Declarations tell the browser which HTML version you are writing in, and it is important to always include this at the top of every HTML document. Since we are using HTML5 (which is the standard today), the declaration is simply `<!DOCTYPE html>`.
+
+The `<html>` tag defines an HTML document. The `<head>` tag denotes an area where you provide information related to the page which is not page content. This can include any additional resources, the title of the document, encoding format, etc. The example document is encoded with UTF 8 (note that no non-ascii codepoints have been used up to this point). The `<body>` tag defines the content of the page. This is where you put information you want to be visible on the page, such as text, images, etc. The `<h1>` tag is for 1st header. h2-h6 tags also exist for headers of decreasing size. The `<p>` tag denotes a paragraph, and its contents will show up on the page with a line break above and below it.
+
+Note that an HTML document must only have one `<html>` element, one `<head>` element, and one `<body>` element. To be valid, the document must be in the following format:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		//information about the page
+	</head>
+	<body>
+		//content of the page
+	</body>
+</html>
+```
+	
+This is how HTML Example 1 looks on a webpage (notice you can only see what is in the body of the document):
+
+*****
+
+<h1>Simple Page!</h1>
+<p>This is a totally bare-bones page.</p>
+
+*****
+
+
+<br>
+##Attributes
+
+Before we learn some other common HTML tags, you should learn about **attributes**. Some tags have attributes, which provide additional semantic information about that tag. In the `<meta>` tag in Example 1, you have already seen an example of attributes to specify which character set the document uses. Attributes are of the form `name="value"`, where the value must always be enclosed in double-quotes.
+
+
+
+```html
+<tag attribute="value" foo="bar">
+```
+
+You will learn more about attributes as we go along.
+
+##More Common HTML Tags
+
+###Inline Semantic tags
+
+These are tags that you place around a block of text to change their appearances. The most basic examples are the `<strong>` tag and the `<em>` tag. `<strong>` is used to denote text with strong importance in its content, and `<em>` is used to indicate that a block of text has a stress emphasis. `<strong>` is usually rendered as bold, and `<em>` rendered as italic, but it is important not to equate `<strong>` with bold and `<em>` with italic. CSS, which we will learn later, is the preferred way of modifying the appearance of HTML elements. With CSS, any block of text can be made bold or italic, and the `<strong>` and `<em>` elements can also be restyled to do something different from the default bold and italic. Hence, these inline semantic tags should only be used as tools to label text with a certain function, and CSS is your ultimate tool in determining how these groups of text will appear.
+
+###Content Tags
+
+We have already mentioned the header tags (h1 - h6) and the `<p>` tag, which are useful tags for inserting textual content.
+
+####--Images
+
+To insert images, you can use the `<img>` tag.
+
+Example: 
+```html
+<img src="url" alt="alternate_name">
+```
+
+`<img>` tags have two essential attributes.
+
+The `src` attribute indicates the source of the image, which should be an URL indicating the location of your image. An image named “banner.jpg”, located in the “images” directory on “www.example.com” has the URL “http://www.example.com/images/banner.jpg”. 
+
+If your current html file is located in the same domain as your image, you can also use the relative locations of the image as the URL. For example, if banner.jpg is located at the root directory of www.example.com, you can use the URL “images/banner.jpg” to access your image.
+
+The `alt` attribute indicates a textual name that shows up in the place of the image if the image cannot be displayed. (This is especially useful for blind users as screen readers will read out the alt attribute.)
+
+
+####--Hyperlinks
+
+A hyperlink (or link) is some text or an image that you can click on to jump to another URL. These can be created with the `<a>` tag.
+
+Example: 
+```html
+<a href="http://some_webpage.com">Some text displayed to represent the link</a>
+```
+
+The `<a>` tag must use an `href` attribute with an URL to indicate where the hyperlink will direct the user to.
+
+####--Tables
+
+To insert a table, use a `<table>` tag. A table element is divided into rows with the `<tr>` tag, and each row is divided into data cells, where each data cell is a `<td>` tag, which stands for “table data”. You can place any other content tag within a `<td>` tag, even tables within tables.
+
+Example:
+
+```html
+<table>
+<tr>
+<td>row 1, cell 1</td>
+<td>row 1, cell 2</td>
+</tr>
+<tr>
+<td>row 2, cell 1</td>
+<td>row 2, cell 2</td>
+</tr>
+</table>
+```
+
+####--Ordered Lists and Unordered Lists
+
+To insert a list, use either the `<ol>` tag for ordered lists, or the `<ul>` tag for unordered lists. Within the `<ol>` and `<ul>` tags you will place your list items in `<li>` tags.
+
+An ordered list, written as such:
+
+```html
+<ol>
+	<li>The first list item</li>
+	<li>The second list item</li>
+	<li>The third list item</li>
+</ol>
+```
+will look like:
+
+1. The first list item
+2. The second list item
+3. The third list item
+
+<br>
+An unordered list, written as such:
+
+```html
+<ul>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+</ul>
+```
+
+will look like:
+
+* List item
+* List item
+* List item
+
+
+###Layout Tags
+
+There are tags in HTML that aid in the organization of content. Before we discuss that, we need to understand the difference between block elements and inline elements, which are the two main display styles of HTML elements.
+
+Block elements include `<h1>`, `<p>`, `<ul>`, and `<table>`. They usually start and end with a new line when displayed in a browser. Inline elements include `<td>`, `<a>` and `<img>`. They are normally displayed without starting a new line.
+
+####--The `<div>` Element
+
+Now, your most powerful tool in adding structure to your HTML document is the `<div>` tag. The `<div>` tag is a block element that you can use as a box to organize the content of your page. You can put any content within a `<div>` tag, and nest them as you see fit. When used with CSS this is your primary method of configuring the layout of a page. That said, it is important to remember to NOT use `<table>` tags to configure web layout. You will run into many difficulties and dead ends with this approach. The `<table>` element is only intended to display tabular data.
+
+####--The `<span>` Element
+
+Another handy tool for configuring inline layout is the `<span>` tag. That `<span>` tag is an inline element that can be put around a group of text, and be used to modify only the text that it contains, without interrupting the flow of the text before and after it.
+
+
+##Final Comments
+
+There is a lot to HTML, and this document is only a brief introduction to the basics. However, HTML is not too hard to get a hang of, and with a little effort you can have a good grasp of the essentials. For more information you are welcome to check out the w3schools tutorial at <a href="http://w3schools.com/html/default.asp">http://w3schools.com/html/default.asp</a>
+
+Also, one very important tool in developing web content is to __use the inspector__ in your browser. The inspector is an extremely useful tool in examining the components of and activities on your web page or web application. This will become essential in your developing/debugging process. Most major browsers have their built in inspectors. Below you can find instructions on how to open the inspector in Chrome and Firefox:
+
+[How to open inspector in Chrome](https://developers.google.com/chrome-developer-tools/docs/overview)<br>
+[How to open inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Web_Console?redirectlocale=en-US&amp;redirectslug=Using_the_Web_Console)
+
+Also, here is a list of good practices that help you maximize your gain from HTML and reduce mistakes. Take a look! [http://sixrevisions.com/web-standards/20-html-best-practices-you-should-follow/](http://sixrevisions.com/web-standards/20-html-best-practices-you-should-follow/)
+
+**Good luck and have fun!**
+
