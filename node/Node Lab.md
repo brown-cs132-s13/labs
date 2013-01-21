@@ -14,7 +14,7 @@ Node, often stylized as Node.js, is a scripting language interpreter -- like the
   [v8]: http://code.google.com/p/v8/
 
 ## Getting Started with the REPL
-The node [REPL][repl], or read--eval--print loop, is a great way to play around with Node's features without having to create any scripts. To start the REPL, just type `node` at the command line.
+The Node [REPL][repl], or read--eval--print loop, is a great way to play around with Node's features without having to create any scripts. To start the REPL, just type `node` at the command line.
 
   [repl]: http://en.wikipedia.org/wiki/Read–eval–print_loop
 
