@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>CS132 Lab Three: Node.js</title>
+  <title>Node Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 /*
@@ -133,11 +133,7 @@ pre .tex .formula {
   opacity: 0.5;
 }
 
-/* Matt Patenaude: Modifications for aesthetics */
-#wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-}
+
 </style>
 
 </head>
@@ -197,7 +193,7 @@ undefined
 <pre><code>console.log('Hello, world!');
 </code></pre>
 
-<p>You can run this application with the command <code>node demo.js</code>, and you should see the phrase &#8220;Hello, world!&#8221; printed to the command line. Easy, right?</p>
+<p>You can run this application with the command <code>node demo.js</code> in the terminal (<strong>not</strong> the REPL), and you should see the phrase &#8220;Hello, world!&#8221; printed to the command line. Easy, right?</p>
 
 <p>Let&#8217;s try to do something a little bit more interesting, though. Node gets a lot more fun when you start using additional <em>modules</em>.</p>
 
@@ -413,7 +409,9 @@ app.listen(8080, function(){
     console.log(&apos;- Server listening on port 8080&apos;.grey);
 });</code></pre>
 
-<p>A little bit longer, but simpler to understand, and more extensible. Note that the order routes are defined is important, and the <code>server.listen(...)</code> line has been replaced with <code>app.listen(...)</code>.</p>
+<p>A little bit longer, but simpler to understand, and more extensible. Note that the <code>server.listen(...)</code> line has been replaced with <code>app.listen(...)</code>.</p>
+
+<p>It&#8217;s also important to note that the order of <em>routes</em> (the URLs of incoming requests, i.e., <code>/foo/bar</code>, <code>*</code>, etc.) is significant: when a new request comes in, they&#8217;ll be checked in order from top-to-bottom of your script. So, for example, because the <code>*</code> route matches everything, if you were to define it before <code>/foo/bar</code>, your handler for <code>/foo/bar</code> will never be called. However, by defining <code>/foo/bar</code> first, you ensure that the request won&#8217;t erroneously be caught by your &#8220;catch-all&#8221; route.</p>
 
 <h3 id="addingfeatures">Adding Features</h3>
 
