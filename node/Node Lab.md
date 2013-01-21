@@ -50,7 +50,7 @@ Create a new file -- call it, for instance, "demo.js" -- and add the following t
 
     console.log('Hello, world!');
 
-You can run this application with the command `node demo.js`, and you should see the phrase "Hello, world!" printed to the command line. Easy, right?
+You can run this application with the command `node demo.js` in the terminal (**not** the REPL), and you should see the phrase "Hello, world!" printed to the command line. Easy, right?
 
 Let's try to do something a little bit more interesting, though. Node gets a lot more fun when you start using additional *modules*.
 
@@ -257,7 +257,9 @@ app.listen(8080, function(){
 });
 ```
 
-A little bit longer, but simpler to understand, and more extensible. Note that the order routes are defined is important, and the `server.listen(...)` line has been replaced with `app.listen(...)`.
+A little bit longer, but simpler to understand, and more extensible. Note that the `server.listen(...)` line has been replaced with `app.listen(...)`.
+
+It's also important to note that the order of *routes* (the URLs of incoming requests, i.e., `/foo/bar`, `*`, etc.) is significant: when a new request comes in, they'll be checked in order from top-to-bottom of your script. So, for example, because the `*` route matches everything, if you were to define it before `/foo/bar`, your handler for `/foo/bar` will never be called. However, by defining `/foo/bar` first, you ensure that the request won't erroneously be caught by your "catch-all" route.
 
 ### Adding Features
 Express packs in a ton of handy features. For instance, let's say we want to expose the source of our server to the outside world (generally not recommended, but hey, what's the harm?). Response objects now have a `sendfile(...)` method, which can be used like so:
