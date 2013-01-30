@@ -3,18 +3,20 @@
 
 Welcome to the first lab for CS132!
 
-Some logistics:
+This lab should be pretty straightforward. There are 3 checkpoints with Codecademy assignments you may need to get checked off (one is optional for concentrators). But please read it! Much of it will be review, but we've expanded the material covered in lecture a little bit to cover some important details.
+
+**Some logistics:**
 
 * Sam and Matt will be holding hours tonight from 7-9pm in the Moonlab.
 * Please register for the class if you haven't already! This will get you a CS account, on the mailing list and in the student group. Registration issues should be directed to Professor Reiss.
 * If you plan to take this course as your capstone, please let Professor Reiss know.
 * Project 1 will be out today!
 
-Final project details:
+**Final project details:**
 
-If you finish the lab early please review the projects [posted on the website](http://cs.brown.edu/courses/cs132/projects.html). #TODO.
+If you finish the lab early please review the projects [posted on the website](http://cs.brown.edu/courses/cs132/projects.html).
 
-This lab should be pretty straightforward. There are 3 checkpoints with Codecademy assignments you may need to get checked off (one is optional for concentrators). But please read it! Much of it will be review, but we've expanded the material covered in lecture a little bit to cover some important details.
+Please fill out the questionnaire on that page and we'll assign groups shortly.
 
 # HTML: Review 
 
