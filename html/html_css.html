@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        
+
+        
+	<style>
+	html,body{color:black;}*{margin:0;padding:0}body{font:18px helvetica,arial,freesans,clean,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.4;padding:30px;background:#fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px; max-width: 60em;}p{margin:1em 0}a{color:#4183c4;text-decoration:none}#wrapper{background-color:#fff;border:3px solid #eee!important;padding:0 30px;margin:15px}#wrapper{font-size:14px;line-height:1.6}#wrapper>*:first-child{margin-top:0!important}#wrapper>*:last-child{margin-bottom:0!important}h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1{margin:15px 0;padding-bottom:2px;font-size:24px;border-bottom:1px solid #eee}h2{margin:20px 0 10px 0;font-size:18px}h3{margin:20px 0 10px 0;padding-bottom:2px;font-size:14px;border-bottom:1px solid #ddd}h4{font-size:14px;line-height:26px;padding:18px 0 4px;font-weight:bold;text-transform:uppercase}h5{font-size:13px;line-height:26px;padding:14px 0 0;font-weight:bold;text-transform:uppercase}h6{color:#666;font-size:14px;line-height:26px;padding:18px 0 0;font-weight:normal;font-variant:italic}hr{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;border:0 none;color:#ccc;height:4px;margin:20px 0;padding:0}#wrapper>h2:first-child,#wrapper>h1:first-child,#wrapper>h1:first-child+h2{border:0;margin:0;padding:0}#wrapper>h3:first-child,#wrapper>h4:first-child,#wrapper>h5:first-child,#wrapper>h6:first-child{margin:0;padding:0}h4+p,h5+p,h6+p{margin-top:0}li p.first{display:inline-block}ul,ol{margin:15px 0 15px 25px}ul li,ol li{margin-top:7px;margin-bottom:7px}ul li>*:last-child,ol li>*:last-child{margin-bottom:0}ul li>*:first-child,ol li>*:first-child{margin-top:0}#wrapper>ul,#wrapper>ol{margin-top:21px;margin-left:36px}dl{margin:0;padding:20px 0 0}dl dt{font-size:14px;font-weight:bold;line-height:normal;margin:0;padding:20px 0 0}dl dt:first-child{padding:0}dl dd{font-size:13px;margin:0;padding:3px 0 0}blockquote{margin:14px 0;border-left:4px solid #ddd;padding-left:11px;color:#555}table{border-collapse:collapse;margin:20px 0 0;padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th,table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}img{max-width:100%;height:auto}code,tt{margin:0 2px;padding:2px 5px;white-space:nowrap;border:1px solid #ccc;background-color:#f8f8f8;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;font-size:12px}pre>code{margin:0;padding:0;white-space:pre;border:0;background:transparent;font-size:13px}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}#wrapper>pre,#wrapper>div.highlight{margin:10px 0 0}pre code,pre tt{background-color:transparent;border:0}#wrapper{background-color:#fff;border:1px solid #cacaca;padding:30px}.poetry pre{font-family:Georgia,Garamond,serif!important;font-style:italic;font-size:110%!important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}@media print{body{background:#fff}img,pre,blockquote,table,figure{page-break-inside:avoid}#wrapper{background:#fff;border:0}code{background-color:#fff;color:#444!important;padding:0 .2em;border:1px solid #dedede}pre code{background-color:#fff!important;overflow:visible}pre{background:#fff}}@media screen{body.inverted,.inverted #wrapper,.inverted hr .inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt,.inverted blockquote{color:#eee!important;border-color:#555}.inverted td,.inverted th{background:#333}.inverted pre,.inverted code,.inverted tt{background:#444!important}.inverted h2{border-color:#555}.inverted hr{border-color:#777;border-width:1px!important}::selection{background:rgba(157,193,200,.5)}h1::selection{background-color:rgba(45,156,208,.3)}h2::selection{background-color:rgba(90,182,224,.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,.3)}code::selection{background-color:rgba(0,0,0,.7);color:#eee}code span::selection{background-color:rgba(0,0,0,.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,.2)}.inverted a::selection{background-color:rgba(255,230,102,.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,.5)}.inverted{background:#0b2531}.inverted #wrapper,.inverted{background:rgba(37,42,42,1)}.inverted a{color:rgba(172,209,213,1)}}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k{font-weight:bold}.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#800080;font-weight:bold}.highlight .gt{color:#a00}.highlight .kc{font-weight:bold}.highlight .kd{font-weight:bold}.highlight .kn{font-weight:bold}.highlight .kp{font-weight:bold}.highlight .kr{font-weight:bold}.highlight .kt{color:#458;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:#008080}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:bold}.highlight .no{color:#008080}.highlight .ni{color:#800080}.highlight .ne{color:#900;font-weight:bold}.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:#000080}.highlight .nv{color:#008080}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf{color:#099}.highlight .mh{color:#099}.highlight .mi{color:#099}.highlight .mo{color:#099}.highlight .sb{color:#d14}.highlight .sc{color:#d14}.highlight .sd{color:#d14}.highlight .s2{color:#d14}.highlight .se{color:#d14}.highlight .sh{color:#d14}.highlight .si{color:#d14}.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc{color:#008080}.highlight .vg{color:#008080}.highlight .vi{color:#008080}.highlight .il{color:#099}.highlight .gc{color:#999;background-color:#eaf2f5}.type-csharp .highlight .k{color:#00F}.type-csharp .highlight .kt{color:#00F}.type-csharp .highlight .nf{color:#000;font-weight:normal}.type-csharp .highlight .nc{color:#2b91af}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s{color:#a31515}.type-csharp .highlight .sc{color:#a31515}
+	</style>
+	
+
+        
+        
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+    </head>
+    <body>
+	
+	<h1>Lab 1: HTML and CSS</h1>
+
+<p>Welcome to the first lab for CS132!</p>
+
+<p>Some logistics:</p>
+
+<ul>
+<li>Sam and Matt will be holding hours tonight from 7-9pm in the Moonlab.</li>
+<li>Please register for the class if you haven't already! This will get you a CS account, on the mailing list and in the student group. Registration issues should be directed to Professor Reiss.</li>
+<li>If you plan to take this course as your capstone, please let Professor Reiss know.</li>
+<li>Project 1 will be out today!</li>
+</ul>
+
+<p>Final project details:</p>
+
+<p>If you finish the lab early please review the projects <a href="http://cs.brown.edu/courses/cs132/projects.html">posted on the website</a>. #TODO.</p>
+
+<p>This lab should be pretty straightforward. There are 3 checkpoints with Codecademy assignments you may need to get checked off (one is optional for concentrators). But please read it! Much of it will be review, but we've expanded the material covered in lecture a little bit to cover some important details.</p>
+
+<h1>HTML: Review</h1>
+
+<p>HTML (HyperText Markup Language) is a language for describing web pages.</p>
+
+<ul>
+<li>HTML is made up of tags, which may be nested inside one another.</li>
+<li>HTML represents the <strong>content</strong> of pages.</li>
+<li>HTML files rendered by a web browser are called web pages.</li>
+</ul>
+
+<p>Below is an example of a HTML document:</p>
+
+<p><strong>Example 1</strong></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+        &lt;title&gt;Page title. Shown in tabs.&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Simple Page!&lt;/h1&gt;
+        &lt;p&gt;This is a totally bare-bones page.&lt;/p&gt;
+        &lt;!-- this is a comment and is totally ignored --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>As you can see, the document consists of tags and plain text. Tags are surrounded by angle brackets <code>&lt;</code> and <code>&gt;</code>. Tags come in pairs, such as <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code>, and they are called the start tag and end tag, respectively. The end tag is written like the start tag, but with a forward slash <code>/</code> before the tag name. Tags indicate the semantics of their contents. For example, the <code>&lt;h1&gt;</code> tag indicates a level 1 header (the largest). It's good style to write HTML indented in the manner above to make it easier to find corresponding tag pairs, but it's not required.</p>
+
+<p>Now, line by line:</p>
+
+<p>The first line is a document type (doctype) declaration. These tell the browser which variant of HTML you're using; it's important to include this at the top of every HTML document. You may see other doctypes, but we'll be using this one to declare our document is HTML5.</p>
+
+<p>(2) The <code>&lt;html&gt;</code> tag defines an HTML document.</p>
+
+<p>(3) The <code>&lt;head&gt;</code> tag denotes an area where you provide information related to the page which is not page content. This can include any additional resources, the title of the document, encoding format, etc.</p>
+
+<p>(4) The example document is encoded with UTF-8 (note that no non-ASCII codepoints have been used up to this point). (If this is gibberish to you -- it's not so important, just include it. Or read: <a href="http://en.wikipedia.org/wiki/Character_encoding">What is a character encoding?</a>)</p>
+
+<p>(5) The <code>&lt;title&gt;</code> tag sets the title of the page, which is primarily used to set the text in the tab bar.</p>
+
+<p>(7) The <code>&lt;body&gt;</code> tag defines the content of the page. This is where you put information you want to be visible on the page, such as text, images, etc.</p>
+
+<p>(8) The <code>&lt;h1&gt;</code> tag is for 1st header. h2-h6 tags also exist for headers of decreasing size.</p>
+
+<p>(9) The <code>&lt;p&gt;</code> tag denotes a paragraph, and its contents will show up on the page with a line break above and below it.</p>
+
+<p>This is how Example 1 looks when rendered (notice you can only see what is in the body of the document):</p>
+
+<hr />
+
+<h1>Simple Page!</h1>
+
+<p>This is a totally bare-bones page.</p>
+
+<hr />
+
+<h2>Attributes</h2>
+
+<p>Before we learn some other common HTML tags, you should learn about <strong>attributes</strong>. Some tags have attributes, which provide additional information about that tag. In the <code>&lt;meta&gt;</code> tag in Example 1, you have already seen an example of attributes to specify which character set the document uses. Attributes are of the form <code>name="value"</code>, where the value must always be enclosed in double-quotes.</p>
+
+<pre><code>&lt;tag attribute="value" foo="bar"&gt;
+</code></pre>
+
+<p>You will learn more about attributes as we go along.</p>
+
+<h2>More Common HTML Tags</h2>
+
+<h3>Inline Semantic tags</h3>
+
+<p>These are tags that you place around a block of text to change their appearances. The most basic examples are the <code>&lt;strong&gt;</code> tag and the <code>&lt;em&gt;</code> tag. <code>&lt;strong&gt;</code> is used to denote text with strong importance in its content, and <code>&lt;em&gt;</code> is used to indicate that a block of text has a stress emphasis. <code>&lt;strong&gt;</code> is usually rendered as bold, and <code>&lt;em&gt;</code> rendered as italic, but it is important not to equate <code>&lt;strong&gt;</code> with bold and <code>&lt;em&gt;</code> with italic. CSS, which we will learn later, is the preferred way of modifying the appearance of HTML elements. With CSS, any block of text can be made bold or italic, and the <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> elements can also be restyled to do something different from the default bold and italic. Hence, these inline semantic tags should only be used as tools to label text with a certain function, and CSS is your ultimate tool in determining how these groups of text will appear.</p>
+
+<h3>Content Tags</h3>
+
+<p>We have already mentioned the header tags (h1 - h6) and the <code>&lt;p&gt;</code> tag, which are useful tags for inserting textual content.</p>
+
+<h4>Images</h4>
+
+<p>To insert images, you can use the <code>&lt;img&gt;</code> tag.</p>
+
+<p>Example: </p>
+
+<pre><code>&lt;img src="http://i.imgur.com/xTOON7z.png" alt="Take CS132"&gt;
+</code></pre>
+
+<p><code>&lt;img&gt;</code> tags have two common attributes.</p>
+
+<p>The <code>src</code> attribute indicates the source of the image, which should be an URL indicating the location of your image. An image named “banner.jpg”, located in the “images” directory on “www.example.com” has the URL “http://www.example.com/images/banner.jpg”. </p>
+
+<p>If the document is being served on the same domain as your image, you can also use the relative locations of the image as the URL. If you had, for example, a document at http://example.com/page.html you could link to http://example.com/pic.jpg by just specifying "pic.jpg" in the URL.</p>
+
+<p>The <code>alt</code> attribute indicates a textual name that shows up in the place of the image if the image cannot be displayed. (This is especially useful for blind users as screen readers will read out the alt attribute.)</p>
+
+<h4>Hyperlinks</h4>
+
+<p>A hyperlink (or link) is some text or an image that you can click on to jump to another URL. These can be created with the <code>&lt;a&gt;</code> tag.</p>
+
+<p>Example: </p>
+
+<pre><code>&lt;a href="http://some_webpage.com"&gt;Some text displayed to represent the link&lt;/a&gt;
+</code></pre>
+
+<p>The <code>&lt;a&gt;</code> tag must use an <code>href</code> attribute with an URL to indicate where the hyperlink will direct the user to.</p>
+
+<h4>Tables</h4>
+
+<p>To insert a table, use a <code>&lt;table&gt;</code> tag. A table element is divided into rows with the <code>&lt;tr&gt;</code> tag, and each row is divided into data cells, where each data cell is a <code>&lt;td&gt;</code> tag, which stands for “table data”. You can place any other content tag within a <code>&lt;td&gt;</code> tag, even tables within tables.</p>
+
+<p>Example:</p>
+
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;row 1, cell 1&lt;/td&gt;
+        &lt;td&gt;row 1, cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;row 2, cell 1&lt;/td&gt;
+        &lt;td&gt;row 2, cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<h4>Ordered Lists and Unordered Lists</h4>
+
+<p>To insert a list, use either the <code>&lt;ol&gt;</code> tag for ordered lists, or the <code>&lt;ul&gt;</code> tag for unordered lists. Within the <code>&lt;ol&gt;</code> and <code>&lt;ul&gt;</code> tags you will place your list items in <code>&lt;li&gt;</code> tags.</p>
+
+<p>An ordered list:</p>
+
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;The first list item&lt;/li&gt;
+    &lt;li&gt;The second list item&lt;/li&gt;
+    &lt;li&gt;The third list item&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<p>will look like:</p>
+
+<ol>
+<li>The first list item</li>
+<li>The second list item</li>
+<li>The third list item</li>
+</ol>
+
+<p><br>
+An unordered list:</p>
+
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;List item&lt;/li&gt;
+    &lt;li&gt;List item&lt;/li&gt;
+    &lt;li&gt;List item&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>will look like:</p>
+
+<ul>
+<li>List item</li>
+<li>List item</li>
+<li>List item</li>
+</ul>
+
+<h2>Checkpoint 1</h2>
+
+<p>If you are a non-concentrator the following exercise is required: please call a TA over to check you off, or come to hours to demonstrate your work. Concentrators should complete it if they're unfamiliar with HTML.</p>
+
+<p><a href="http://www.codecademy.com/courses/web-beginner-en-LceTK/0#!/exercises/0">Codecademy: Web FTW!</a></p>
+
+<h3>Layout Tags</h3>
+
+<p>There are tags in HTML that aid in the organization of content. Before we discuss that, we need to understand the difference between block elements and inline elements, which are the two main display styles of HTML elements.</p>
+
+<p>Block elements include <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;table&gt;</code>. They usually start and end with a new line when displayed in a browser. Inline elements include <code>&lt;td&gt;</code>, <code>&lt;a&gt;</code> and <code>&lt;img&gt;</code>. They are normally displayed without starting a new line.</p>
+
+<h4>The <code>&lt;div&gt;</code> Element</h4>
+
+<p>Now, your most powerful tool in adding structure to your HTML document is the <code>&lt;div&gt;</code> tag. The <code>&lt;div&gt;</code> tag is a block element that you can use as a box to organize the content of your page. You can put any content within a <code>&lt;div&gt;</code> tag, and nest them as you see fit. When used with CSS this is your primary method of configuring the layout of a page. That said, it is important to remember to NOT use <code>&lt;table&gt;</code> tags to configure web layout. You will run into many difficulties and dead ends with this approach. The <code>&lt;table&gt;</code> element is only intended to display tabular data.</p>
+
+<h4>The <code>&lt;span&gt;</code> Element</h4>
+
+<p>Another handy tool for configuring inline layout is the <code>&lt;span&gt;</code> tag. That <code>&lt;span&gt;</code> tag is an inline element that can be put around a group of text, and be used to modify only the text that it contains, without interrupting the flow of the text before and after it.</p>
+
+<h2>Checkpoint 2</h2>
+
+<p>Please call a TA over to check you off, or come to hours to demonstrate your work.</p>
+
+<p><a href="http://www.codecademy.com/courses/web-beginner-en-f8mcL/2?curriculum_id=50579fb998b470000202dc8b#!/exercises/0">div and span</a></p>
+
+<h2>Final Comments</h2>
+
+<p>There is a lot to HTML, and this document is only a brief introduction. That said, you now know the essentials.</p>
+
+<p>One tool you'll find more and more useful is the inspector. The inspector is an extremely useful tool in examining the components of and activities on your web page or web application. This will become essential in your developing/debugging process. Most major browsers have their built in inspectors. Below you can find instructions on how to open the inspector in Chrome and Firefox:</p>
+
+<p><a href="https://developers.google.com/chrome-developer-tools/docs/overview">How to open the inspector in Chrome</a><br>
+<a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console?redirectlocale=en-US&amp;redirectslug=Using_the_Web_Console">How to open the inspector in Firefox</a></p>
+
+<h1>CSS (Cascading Style Sheets)</h1>
+
+<h2>CSS Review</h2>
+
+<p>Another major component of a web pages is CSS (cascading style sheets). CSS allows you to style your HTML and make it look however you please. CSS is made up of a series of style declarations. They’re applied to HTML either through a .css file linked in the head of the HTML document, or in HTML in a <code>&lt;style&gt;</code> element. You can have multiple of both kinds in an HTML document.  A style declaration has two parts: a selector (which elements to apply the properties to) and a set of properties (how they should look). For example:</p>
+
+<pre><code>p {
+    background-color: black;
+    color: white;
+}
+</code></pre>
+
+<ol>
+<li>The <code>p</code> selector selects all <code>&lt;p&gt;</code> elements (paragraphs). (There are many other types of selectors. [<a href="http://www.w3.org/TR/CSS2/selector.html">http://www.w3.org/TR/CSS2/selector.html</a>])</li>
+<li>background-color sets the background color of the element. The color is specified here by name (there are many other ways of specifying colors [<a href="http://dev.w3.org/csswg/css3-color/">http://dev.w3.org/csswg/css3-color/</a>], but many work by name).</li>
+<li>color sets the text color.</li>
+</ol>
+
+<p>To include this style in a page we could use:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt; 
+    &lt;title&gt;Page title. Shown in tabs.&lt;/title&gt; 
+    &lt;style&gt;
+    p {
+        background-color: black;
+        color: white;
+    }
+    &lt;/style&gt;
+&lt;/head&gt; 
+&lt;body&gt; 
+    &lt;h1&gt;Simple Page!&lt;/h1&gt; 
+    &lt;p&gt;This is a totally bare-bones page.&lt;/p&gt; 
+&lt;/body&gt; 
+&lt;/html&gt;
+</code></pre>
+
+<p>Or, if the style were in another file called styles.css:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt; 
+    &lt;title&gt;Page title. Shown in tabs.&lt;/title&gt; 
+    &lt;link rel="stylesheet" href="styles.css" /&gt;
+&lt;/head&gt; 
+&lt;body&gt; 
+    &lt;h1&gt;Simple Page!&lt;/h1&gt; 
+    &lt;p&gt;This is a totally bare-bones page.&lt;/p&gt; 
+&lt;/body&gt; 
+&lt;/html&gt;
+</code></pre>
+
+<p>Last, you can include CSS properties directly in a style attribute of an HTML element, like this:</p>
+
+<pre><code>&lt;span style=”display: none;”&gt;This text won’t show up!&lt;/span&gt;
+</code></pre>
+
+<p>This is not recommended, because this style will only apply to this specific element. It is much more efficient to declare styles that can be applied to your entire document, and that will make expanding and modifying your code a lot easier.</p>
+
+<h2>Selecting Elements in CSS</h2>
+
+<p>There are several ways to select elements. The simplest is what you’ve seen above, which selects all elements of a particular name. It works for any kind of element: the entire body with the <code>body</code> tag, <code>img</code> tags, <code>h1</code> tags and so on.</p>
+
+<p>To make it a little more specific you can <strong>add classes</strong> to an element to indicate that it’s a particular type. For example:</p>
+
+<pre><code>&lt;h1 class=”headline”&gt;Web Moves Forward!&lt;/h1&gt;
+&lt;!-- this h2 also has the class subtitle --&gt;
+&lt;h2 class=”headline subtitle”&gt;Everyone is excited&lt;/h2&gt;
+</code></pre>
+
+<p>You can then select for all elements with that class with this syntax:</p>
+
+<pre><code>.headline {
+    font-size: 72pt;
+    font-weight: bold;
+}
+</code></pre>
+
+<p>or for only h1 elements with that class with this:</p>
+
+<p><code>css
+h1.headline {
+    /* this is a comment in CSS so it is ignored */
+}
+</code></p>
+
+<p>or for only h1 and h2 elements (comma specifies multiple selectors):</p>
+
+<pre><code>h1.headline, h2.headline {
+
+}
+</code></pre>
+
+<p>To get even more specific you can give elements IDs, which must be unique within an HTML document.</p>
+
+<pre><code>&lt;h1 id=”page-header”&gt;Web Moves Forward!&lt;/h1&gt;
+</code></pre>
+
+<p>You can select that element with this syntax:</p>
+
+<pre><code>#page-header {
+    font-size: 72pt;
+    font-weight: bold;
+}
+</code></pre>
+
+<h2>Cascading</h2>
+
+<p>The cascading part of CSS is important. All browsers come with a built in stylesheet that you are effectively overriding when you define styles for your document. There is a point system for selectors to determine which property value to use when multiple selectors apply to an element and they define the same properties (<a href="http://www.w3.org/TR/CSS21/cascade.html#specificity">the gory details</a>). The gist is that more specific selectors take precedence. </p>
+
+<pre><code>#page-header {
+    color: black;
+}
+.headline {
+    color: blue;
+}
+
+&lt;!-- this h1 will be black, since #page-header is more specific than .headline --&gt;
+&lt;h1 id=”page-header” class=”headline”&gt;Web Moves Forward!&lt;/h1&gt;
+</code></pre>
+
+<p>With the cascading properties of CSS, you can be efficient with your styling by declaring general styles that can be applied to many HTML elements, then declaring more specific styles where needed.</p>
+
+<h2>The Box Model</h2>
+
+<p>You can do a lot more than change colors using CSS. The philosophy is that HTML should convey <em>meaning</em> and <em>content structure</em>, and CSS should control how it looks. That means CSS is also largely responsible for the positioning and layout of HTML elements. To understand layout you need to understand the box model [<a href="http://www.w3.org/TR/CSS2/box.html">http://www.w3.org/TR/CSS2/box.html</a>], which is the fundamental model underlying how CSS treats elements. By manipulating properties like <code>display</code>, <code>position</code>, <code>float</code>, <code>margin</code>, <code>padding</code>, and <code>border</code>, you can change the way an element is displayed. </p>
+
+<h2>Checkpoint 3</h2>
+
+<p>Please call a TA over to check you off, or come to hours to demonstrate your work.</p>
+
+<p><a href="http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b">CSS Positioning</a></p>
+
+<p>There are dozens of CSS properties, although not all of them are supported by every browser.</p>
+
+<p>A pretty complete list is available from the Mozilla Developer Network: <a href="https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference">https://developer.mozilla.org/en-US/docs/CSS/CSS_Reference</a>.</p>
+
+<h2>Media Queries</h2>
+
+<p>Finally, one of the most elegant things CSS allows you to do (and one of the major reasons for style / content separation) is changing styles depending on what the content is being displayed on. CSS calls these media: things like screens, TVs, printers, and so on. You can also change depending on properties of each sort of media: screens of different sizes (think smart phones vs. laptops), color vs. black and white, and so on. The appearance will change automatically according to whatever is looking at it (e.g. the layout of the page can change in a smaller window or links can include the full-text URL when printed).</p>
+
+<p>This happens through evaluating media queries, which are either true or false. Some examples:</p>
+
+<p>Always true:
+<code>all</code></p>
+
+<p>Screens or printed documents:
+<code>screen</code>, <code>print</code></p>
+
+<p>Screens larger than 640px:
+<code>screen and (min-width: 640px)</code></p>
+
+<p>You can use media queries in CSS documents like this:</p>
+
+<pre><code>@media screen and (min-width: 640px){
+    /* rules in this block will only apply to screens at least 640px in width */
+    #headline{
+        font-size: 120pt;
+    }
+}
+</code></pre>
+
+<h2>Practical notes about CSS</h2>
+
+<h3>Reset Stylesheets</h3>
+
+<p>Different browsers may have slight inconsistencies in their default element appearances, such as default line heights, margins and font sizes of headings. Reset stylesheets can be an useful tool to help reduce such cross-browser inconsistencies, and make your code more browser-compatible. Just include the reset stylesheet BEFORE you include any others, and it should act as a default on which you make more specific modifications. Here is a popular version of a reset stylesheet created by Eric Meyer that covers the basic inconsistencies and is very small: <a href="http://meyerweb.com/eric/tools/css/reset/reset.css">http://meyerweb.com/eric/tools/css/reset/reset.css</a></p>
+
+<h3>Meta-CSS</h3>
+
+<p>Because of CSS's simple syntax, some developers use languages like <a href="http://lesscss.org/">LESS</a> or <a href="http://sass-lang.com/">SASS</a> which let you write more sophisticated expressions in your CSS incorporating variables, logic and so on.</p>
+
+</body>
+</html>
