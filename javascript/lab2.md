@@ -1,7 +1,34 @@
-<script src="./highlight.pack.js"></script>
-<link rel="stylesheet" href="github.css"/>
-<script>hljs.initHighlightingOnLoad();</script>
 # Lab 2: Javascript and the DOM
+
+> This lab is split very differently between concentrators and non-concentrators: non-concentrators have to pick up programming *and* Javascript. Concentrators familiar with other languages should be able to pick up Javascript (mind its quirks!) fairly quickly.
+
+## For non-concentrators
+
+You'll be taking a guided tour of the Codecademy courses on Javascript and jQuery. Note that the order of those two courses on Codecademy is reversed from how we present it here (we'll do jQuery after Javascript) -- so there may be a few notes that don't quite make sense. Also don't hold back using your hints, as one or two use things we haven't covered before (such as CSS's nth-child selector).
+
+We recommend getting an account there in order to save your work more easily.
+
+[Codecademy &mdash; Getting Started with Programming](http://www.codecademy.com/courses/getting-started-v2?curriculum_id=506324b3a7dffd00020bf661)
+
+* [Getting to know you](http://www.codecademy.com/courses/getting-started-v2/0?curriculum_id=506324b3a7dffd00020bf661#!/exercises/0)
+* [Make the computer think!](http://www.codecademy.com/courses/getting-started-v2/2?curriculum_id=506324b3a7dffd00020bf661#!/exercises/0)
+* [Variables](http://www.codecademy.com/courses/getting-started-v2/4?curriculum_id=506324b3a7dffd00020bf661#!/exercises/0)
+
+[Codecademy &mdash; Javascript for Beginners](http://www.codecademy.com/tracks/javascript)
+
+* [Functions in Javascript](http://www.codecademy.com/courses/javascript-beginner-en-6LzGd?curriculum_id=506324b3a7dffd00020bf661)
+* [For loops](http://www.codecademy.com/courses/javascript-beginner-en-NhsaT?curriculum_id=506324b3a7dffd00020bf661)
+* [Arrays and Objects](http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi?curriculum_id=506324b3a7dffd00020bf661)
+* [Objects I](http://www.codecademy.com/courses/spencer-sandbox?curriculum_id=506324b3a7dffd00020bf661)
+
+[Codecademy &mdash; jQuery](http://www.codecademy.com/tracks/jquery)
+
+* [DOM & jQuery](http://www.codecademy.com/courses/web-beginner-en-bay3D/0?curriculum_id=50a3fad8c7a770b5fd0007a1#!/exercises/0)
+* [Dynamic HTML](http://www.codecademy.com/courses/web-beginner-en-v6phg/0?curriculum_id=50a3fad8c7a770b5fd0007a1#!/exercises/0)
+
+## For concentrators
+
+You'll be doing a bunch of little snippets which build up to one piece of code that gets checked off at the end.
 
 ### What you'll get to know
 
@@ -9,16 +36,11 @@
 * Javascript's quirks
 * the Document Object Model
 
-### Installation
-
-1. run `cs132_install lab1`. This will install the support code for the lab in `/web/cs132/yourLogin/lab1`
-2. enter `http://your-login.proj132.cs.brown.edu/lab1` in your browser.
-
 > Warning: we're going to be giving you a lot of sample code in this lab, but we recommend *typing it in* instead of copy/pasting; it'll help you learn the syntax.
 
 ## What is Javascript?
 
-From the [mozilla developer network](https://developer.mozilla.org/en-US/docs/JavaScript) (a great site for help with JS):
+From the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/JavaScript) (a great site for help with JS):
 
 >JavaScript® (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, most known as the scripting language for Web pages, but used in many non-browser environments as well...
 
@@ -36,6 +58,17 @@ The DOM represents elements (i.e. `<a>`, `<div>`, `<p>`) as nodes in a tree. The
 ## What is jQuery?
 jQuery is library that wraps the DOM and creates a simpler API for interacting with it. Let's start with an example so you can get an idea of what we're talking about.
 
+## Setup
+
+Make a new directory (`lab2` or whatever you please), and download:
+
+* [jquery.js](https://raw.github.com/brown-cs132-s13/labs/master/javascript/jquery.js)
+* [index.html](https://raw.github.com/brown-cs132-s13/labs/master/javascript/index.html)
+
+You can right click &rarr; "Save as..." on those links as well.
+
+Make sure you save the files with their given names.
+
 ## Clicking A Link
 
 ### 1. Open `index.html` in your text editor. Add this in between the `<body></body>` tags:
@@ -47,6 +80,7 @@ jQuery is library that wraps the DOM and creates a simpler API for interacting w
 This markup defines a link (`<a>`) element with the text "this is my link" that goes to "#" (the same page you're on now). So let's make this link do something! Add this where it says `//This is where you can add inline Javascript`:
 
 ```
+//Really, type this!
 var myLink = document.getElementById('mylink');
 
 function clickMyLink (event) {
@@ -59,8 +93,8 @@ myLink.onclick = clickMyLink;
 What's going on here?
 
 1. You ask the document for an element with the id `mylink` and save it in a variable `myLink`.
-2. You tell the element that when it receives a "click" event, it should call the function `clickMyLink` and pass it an [event object](https://developer.mozilla.org/en-US/docs/DOM/event).
-3. `clickMyLink` is going to use Javacript's `alert` function to open a dialog window.
+2. Your function `clickMyLink` is going to use Javacript's `alert` function to open a dialog window.
+3. You tell the element that when it receives a "click" event, it should call the function `clickMyLink` and pass it an [event object](https://developer.mozilla.org/en-US/docs/DOM/event).
 
 Now refresh the page in your browser and try clicking your link. Awesome.
 
@@ -80,7 +114,7 @@ Element | jQuery | DOM
 --------|--------|----
 `<a id='mylink'></a>`| `$('#mylink')`| `document.getElementById('mylink')`
 first `a` element | `$('a')[0]` | `document.getElementsByTagName('a')[0]`
-first child of `body` | `$('body:first-child')` | `document.getElementByTagName('body')[0].firstChild()`
+first child of `body` | `$('body:first-child')` | `document.getElementByTagName('body')[0].firstChild`
 
 All selectors are not equal! These are listed in decreasing order of performance. jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).
 
@@ -95,10 +129,14 @@ We're going to set up event listeners for `keyup`, so you can see when the user 
 
 ```
 var display = document.getElementById('display');
+//Here we're going to make use of an anonymous function.
+//Since functions are like any other object (number, string, etc.)
+//in Javascript, we can pass a function as an argument to another function
+//without issue!
 document.addEventListener('keyup', function (event) {
   // the event object can tell us which key is pressed
   display.textContent = "you clicked key #" + event.keyCode;
-});
+}, false);
 ```
 [`addEventListener` documentation](https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener)
 
@@ -109,7 +147,7 @@ document.addEventListener('keyup', function (event) {
   if (event.keyCode === 13) {
     display.textContent = "you hit enter!";
   }
-});
+}, false);
 ```
 
 Notice that we're adding the event listener to `document`. The `document` is an element like any other, referring to everything inside the `<html>` tags. We're just adding the listener there because we want to call it on a keypress *anywhere on the page*. Events bubble up the DOM tree: if you click a button, you can listen to that event on any parent element of the button (which can sometimes be tricky if you weren't expecting to get that event there).
@@ -137,14 +175,15 @@ You declare a variable in Javacript using `var`. Javascript has totally dynamic 
 
 ```
 var lol = "laughing out loud"; // strings can be single or double quoted, nbd.
-var satan = 666;
-var preciseSatan = 666.0; // all numbers in js are type "number" (a float) so don't worry about it!
+var bottlesOfBeerOnTheWall = 100;
+var preciseBottlesOfBeerOnTheWall = 100.0; // all numbers in Javascript are type "number" (a float) so don't worry about it!
 ```
 
 ### Arrays & Objects (maps)
 Arrays can be of mixed type, and are declared through a simple literal syntax that's similar to Python or Ruby:
 
 `var myArray = [ 1, 4, 'cool', myFunction ]; // myFunction is a function`
+
 Working with arrays:
 
 ```
@@ -193,10 +232,10 @@ If you open up the Javacript console (described above), you can print to it by p
 One of the most common bugs in Javacript comes from using `==` rather than `===`. They're both equality operators, but with a catch: Javascript does *type coercion*, so `1 == "1"` is `true`, but `1 === "1"` is false, since `1` is a `number` and `"1"` is a `string`. It's a best practice to always use `===` so you don't get any surprises.
 
 ### Types of False
-In javascript, variables are "falsy" or "truthy", meaning that you can do `if (myNonBooleanVariable)...`. Here are the main falsy values.
+In Javascript, variables are "falsy" or "truthy", meaning that you can do `if (myNonBooleanVariable)...`. Here are the main falsy values.
 
 ####1. `null`
-An instant classic. Usually used to indicate a nonexistent object, null is actually of type `object`, which leads to some confusing things like this:
+Usually used to indicate a nonexistent object, null is actually of type `object`, which leads to some confusing things like this:
 
 ```
 var bigMistake = null;
@@ -255,9 +294,9 @@ Functions are first-class citizens of Javacript; they're objects. You can define
 There are two normal ways:
 
 ```
-var myFunction = function (arg1, arg2, arg3) { ... }; 
+var myFunction = function (arg1, arg2, arg3, ...) { ... }; 
 // or
-function myFunction (arg1, arg2, arg3) { ... };
+function myFunction (arg1, arg2, arg3, ...) { ... };
 ```
 
 The first is called an anonymous function, which you're assigning to a variable called `myFunction`. The second is a named function *called* `myFunction`. They are almost exactly the same, though the anonymous function doesn't know its own name. You could also instantiate a function object with `new Function()`, but there aren't many reasons to.
@@ -269,23 +308,33 @@ Javascript has some cool ways to call functions. Of course, you can call a funct
 foo()
 ```
 
-or dynamically on an object:
+or, if it's the property of an object:
 
 ```
+var obj = {
+  foo: function(){alert('hello, world!');}
+};
+
+//by name
+obj.foo()
+
+//dynamically: you could assign fn at runtime
 var fn = "foo";
-obj[fn](args); // you could assign fn at runtime
+obj[fn]();
 ```
 
-But what is `this` in a Javascript function? Most of the time, `this` is the function itself. Remember that functions can have properties, so that's kind of useful:
+Functions have a special variable called `this` in their scope. When a function is called plain (e.g. `foo()`), `this` is the function itself. If the function is called as the property of another object (e.g. `obj.foo()`) `this` refers to the object before the `.` (`obj`). But in a special case where the function is called with the `new` keyword, `this` is bound to an object, and that object is returned. This is the normal way of declaring and instantiating an object type ("class") in Javascript:
 
 ```
-function Foo(name) {
+function Person(name) {
+  //assign the name property of the `this` object
   this.name = name;
-  alert(this.name);
 }
-```
 
-This is the traditional way of defining object types in Javascript (more on that later).
+var el_presidente = new Person('Barack');
+
+console.log('The name of the President is ' + el_presidente.name);
+```
 
 If you want, you can call a function with a different `context`, meaning that `this` can be set to whatever object you want. You do that with [`call`](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/call) and [`apply`](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply):
 
@@ -296,52 +345,63 @@ foo.call(otherObj, arg1, arg2, arg3);
 
 The difference is how you supply arguments to the function you're calling. `apply` takes an array, call takes individual arguments.
 
-Keep context in mind when you're using nested functions:
+#### Closure
+
+Javascript functions can access variables accessable but not declared within their scope at any time.
+
+The sterotypical version of this uses a function which returns another function:
 
 ```
-function Person (name) {
-  this.name = name;
-
-  this.talk = function () {
-    console.log(this.name) //  will be undefined
+function counter(){
+  var count = 0;
+  return function(){
+    //[count] here is the [count] from above
+    count++;
+    return count;
   }
 }
+
+var c = counter();
+c() // 1
+c() // 2
+c() // 3
+// ...
 ```
 
-You can fix that situation by binding the function to the outer context (using `apply` or `call`), or by assigning `this` to a variable and using it in the closure:
+This type of setup is useful especially when variables shouldn't be accessible -- there's no way for external code to change `count` (on the other hand, if it were the property of an object anything could read and write it).
+
+Another place this becomes useful is maintaining a reference to an object in event handlers and the like:
 
 ```
-function Person (name) {
-  this.name = name;
-  var self = this;
+//This defines a single Timer object (like a singleton class,
+//only one exists and you can't instantiate it).
+var Timer = {
+  count: 0,
+  render: function(){
+    $('#count-display').text(this.count);
+  },
+  initialize: function(){
+    //this puts a reference to [this] in this scope
+    //which won't be overridden by the [this] in the scope
+    //of functions defined later.
+    var manager = this;
 
-  this.talk = function () {
-    console.log(self.name);
+    //setInterval calls [argument1] every [argument2] milliseconds.
+    setInterval(function(){
+      //this reference to manager is maintained, while [this] now
+      //references the function as passed to setInterval in this
+      //scope.
+      manager.count++;
+      manager.render();
+    }, 1000);
   }
-}
+};
 ```
 
 #### Scoping
-**The only way you can create a scope is with a function.** So `if` statements, `while` loops, etc. do not create a scope (like they do in C). Javascript also has [lexical scoping](http://stackoverflow.com/questions/1047454/what-is-lexical-scope), which really means that what variables in an outer scope are available in an inner scope, which lets you do this:
+**The only way you can create a scope is with a function.** So `if` statements, `while` loops, etc. do not create a scope (like they do in C).
 
-Try adding this to your `<script>` tag:
-
-```
-var display = document.getElementById("display");
-
-function greeter(name) {
-  return function sayHi() {
-    display.innerHTML = "hi " + name;
-  }
-}
-
-var greetMe = greeter("your name here");
-greetMe();
-```
-
-Notice how the function returned by `greeter` has a reference to the `name` variable in `greeter's` scope? That's lexical scoping. `sayHi` is what's called a **closure**.
-
-#### Inheritence
+#### Inheritance
 Javascript doesn't do inheritence the same way C/Java/Python/Ruby does (classically). It uses *prototypical* inheritance. It looks a little bit confusing (considering there's no `inherits` or `extends` keyword. There aren't even classes! But it's actually a really simple concept: when you call a method on an object, Javacript goes up that object's prototype chain (its parents' prototypes) looking for a method with that name. While that sounds a lot like classical inheritence, it's actually a lot simpler, since it doesn't require any classes or interfaces. 
 
 You don't really need multiple inheritence since you can inherit from any list of prototypes in any order you want; they don't have to implement the same methods! Try this out:
@@ -438,7 +498,15 @@ function legal (age) {
 ```
 
 #### Loops
-Similar deal here. It looks just like C. The only difference is how you can iterate over an object:
+Similar deal here. It looks just like C:
+
+```
+for (var i=0; i < someArray.length; i++){
+  console.log(someArray[i]);
+}
+```
+
+The only difference is how you can iterate over an object:
 
 ```
 for (var key in object) {
@@ -455,7 +523,7 @@ for (var key in object) {
 }
 ```
 
-You can use that syntax with arrays too, but it's pretty pointless, since `key` would just be the index in the array, and this type of loop is slower. Javascript also has `while` loops just like C/java, and you can use `++/--` unary operators on values. Javascript also has a `break` keyword for getting out of a loop and a `continue` statement for going to the next iteration.
+You can use that syntax with arrays too, but it's pretty pointless, since `key` would just be the index in the array, and this type of loop is slower. Javascript also has `while` loops just like C/Java, and you can use `++/--` unary operators on values. Javascript also has a `break` keyword for getting out of a loop and a `continue` statement for going to the next iteration.
 
 ## Cool Demo
 Let's use some of your Javacript knowledge. Get some HTML like this:
@@ -477,7 +545,7 @@ Let's use some of your Javacript knowledge. Get some HTML like this:
 <button id="find">search</div>
 ```
 
-We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the `result` and `input` div's are set to `display:none;`. That's CSS's way of saying that they're hidden.
+We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the `result` and `input` div's are set to `display:none;`. (So they're hidden.)
 
 First, we need to wrap our code as a callback from jQuery's `ready()` event. Then we want to save references to the name input, the age input, and the result box.
 
@@ -525,7 +593,6 @@ $(document).ready(function() {
 
 Great! When you've gotten to this stage in the lab, ask your TA to check you off.
 
-
 ## Javascript Resources
 
 ### Reference
@@ -534,10 +601,8 @@ Great! When you've gotten to this stage in the lab, ask your TA to check you off
 * [jQuery documentation](http://api.jquery.com/)
 * [jQuery source browser](http://www.james.padolsey.com/jquery/)
 * [Javascript Garden (Javascript quirks)](http://bonsaiden.github.com/JavaScript-Garden/)
-* [jsPerf](http://jsperf.com/) - javascript performance tests
 * [jsFiddle](http://jsfiddle.net/) - in-browser javascript "sandbox"
 
 ### Other introductions
-* [Codecademy Javascript (beginner)](http://www.codecademy.com/tracks/javascript)
 * [John Resig: Learn Advanced Javascript](http://ejohn.org/apps/learn/)
 * [Intro to Javascript For Coders](http://madebyevan.com/jsintro/)

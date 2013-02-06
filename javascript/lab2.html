@@ -1,10 +1,75 @@
-<script src="./highlight.pack.js"></script>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CS132: Lab 2</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-<p><link rel="stylesheet" href="github.css"/></p>
+        
 
-<script>hljs.initHighlightingOnLoad();</script>
+        
+	<style>
+	html,body{color:black;}*{margin:0;padding:0}body{font:18px helvetica,arial,freesans,clean,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.4;padding:30px;background:#fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px; max-width: 60em;}p{margin:1em 0}a{color:#4183c4;text-decoration:none}#wrapper{background-color:#fff;border:3px solid #eee!important;padding:0 30px;margin:15px}#wrapper{font-size:14px;line-height:1.6}#wrapper>*:first-child{margin-top:0!important}#wrapper>*:last-child{margin-bottom:0!important}h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1{margin:15px 0;padding-bottom:2px;font-size:24px;border-bottom:1px solid #eee}h2{margin:20px 0 10px 0;font-size:18px}h3{margin:20px 0 10px 0;padding-bottom:2px;font-size:14px;border-bottom:1px solid #ddd}h4{font-size:14px;line-height:26px;padding:18px 0 4px;font-weight:bold;text-transform:uppercase}h5{font-size:13px;line-height:26px;padding:14px 0 0;font-weight:bold;text-transform:uppercase}h6{color:#666;font-size:14px;line-height:26px;padding:18px 0 0;font-weight:normal;font-variant:italic}hr{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;border:0 none;color:#ccc;height:4px;margin:20px 0;padding:0}#wrapper>h2:first-child,#wrapper>h1:first-child,#wrapper>h1:first-child+h2{border:0;margin:0;padding:0}#wrapper>h3:first-child,#wrapper>h4:first-child,#wrapper>h5:first-child,#wrapper>h6:first-child{margin:0;padding:0}h4+p,h5+p,h6+p{margin-top:0}li p.first{display:inline-block}ul,ol{margin:15px 0 15px 25px}ul li,ol li{margin-top:7px;margin-bottom:7px}ul li>*:last-child,ol li>*:last-child{margin-bottom:0}ul li>*:first-child,ol li>*:first-child{margin-top:0}#wrapper>ul,#wrapper>ol{margin-top:21px;margin-left:36px}dl{margin:0;padding:20px 0 0}dl dt{font-size:14px;font-weight:bold;line-height:normal;margin:0;padding:20px 0 0}dl dt:first-child{padding:0}dl dd{font-size:13px;margin:0;padding:3px 0 0}blockquote{margin:14px 0;border-left:4px solid #ddd;padding-left:11px;color:#555}table{border-collapse:collapse;margin:20px 0 0;padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th,table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}img{max-width:100%;height:auto}code,tt{margin:0 2px;padding:2px 5px;white-space:nowrap;border:1px solid #ccc;background-color:#f8f8f8;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;font-size:12px}pre>code{margin:0;padding:0;white-space:pre;border:0;background:transparent;font-size:13px}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}#wrapper>pre,#wrapper>div.highlight{margin:10px 0 0}pre code,pre tt{background-color:transparent;border:0}#wrapper{background-color:#fff;border:1px solid #cacaca;padding:30px}.poetry pre{font-family:Georgia,Garamond,serif!important;font-style:italic;font-size:110%!important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}@media print{body{background:#fff}img,pre,blockquote,table,figure{page-break-inside:avoid}#wrapper{background:#fff;border:0}code{background-color:#fff;color:#444!important;padding:0 .2em;border:1px solid #dedede}pre code{background-color:#fff!important;overflow:visible}pre{background:#fff}}@media screen{body.inverted,.inverted #wrapper,.inverted hr .inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt,.inverted blockquote{color:#eee!important;border-color:#555}.inverted td,.inverted th{background:#333}.inverted pre,.inverted code,.inverted tt{background:#444!important}.inverted h2{border-color:#555}.inverted hr{border-color:#777;border-width:1px!important}::selection{background:rgba(157,193,200,.5)}h1::selection{background-color:rgba(45,156,208,.3)}h2::selection{background-color:rgba(90,182,224,.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,.3)}code::selection{background-color:rgba(0,0,0,.7);color:#eee}code span::selection{background-color:rgba(0,0,0,.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,.2)}.inverted a::selection{background-color:rgba(255,230,102,.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,.5)}.inverted{background:#0b2531}.inverted #wrapper,.inverted{background:rgba(37,42,42,1)}.inverted a{color:rgba(172,209,213,1)}}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k{font-weight:bold}.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#800080;font-weight:bold}.highlight .gt{color:#a00}.highlight .kc{font-weight:bold}.highlight .kd{font-weight:bold}.highlight .kn{font-weight:bold}.highlight .kp{font-weight:bold}.highlight .kr{font-weight:bold}.highlight .kt{color:#458;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:#008080}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:bold}.highlight .no{color:#008080}.highlight .ni{color:#800080}.highlight .ne{color:#900;font-weight:bold}.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:#000080}.highlight .nv{color:#008080}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf{color:#099}.highlight .mh{color:#099}.highlight .mi{color:#099}.highlight .mo{color:#099}.highlight .sb{color:#d14}.highlight .sc{color:#d14}.highlight .sd{color:#d14}.highlight .s2{color:#d14}.highlight .se{color:#d14}.highlight .sh{color:#d14}.highlight .si{color:#d14}.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc{color:#008080}.highlight .vg{color:#008080}.highlight .vi{color:#008080}.highlight .il{color:#099}.highlight .gc{color:#999;background-color:#eaf2f5}.type-csharp .highlight .k{color:#00F}.type-csharp .highlight .kt{color:#00F}.type-csharp .highlight .nf{color:#000;font-weight:normal}.type-csharp .highlight .nc{color:#2b91af}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s{color:#a31515}.type-csharp .highlight .sc{color:#a31515}
+	</style>
+	<script src="./highlight.pack.js"></script>
+	<link rel="stylesheet" href="github.css"/>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
 
-<h1>Lab 2: Javascript and the DOM</h1>
+        
+        
+            <!--[if lt IE 9]>
+                <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+    </head>
+    <body>
+	
+	
+	<h1>Lab 2: Javascript and the DOM</h1>
+
+<blockquote>
+  <p>This lab is split very differently between concentrators and non-concentrators: non-concentrators have to pick up programming <em>and</em> Javascript. Concentrators familiar with other languages should be able to pick up Javascript (mind its quirks!) fairly quickly.</p>
+</blockquote>
+
+<h2>For non-concentrators</h2>
+
+<p>You'll be taking a guided tour of the Codecademy courses on Javascript and jQuery. Note that the order of those two courses on Codecademy is reversed from how we present it here (we'll do jQuery after Javascript) -- so there may be a few notes that don't quite make sense. Also don't hold back using your hints, as one or two use things we haven't covered before (such as CSS's nth-child selector).</p>
+
+<p>We recommend getting an account there in order to save your work more easily.</p>
+
+<p><a href="http://www.codecademy.com/courses/getting-started-v2?curriculum_id=506324b3a7dffd00020bf661">Codecademy &mdash; Getting Started with Programming</a></p>
+
+<ul>
+<li><a href="http://www.codecademy.com/courses/getting-started-v2/0?curriculum_id=506324b3a7dffd00020bf661#!/exercises/0">Getting to know you</a></li>
+<li><a href="http://www.codecademy.com/courses/getting-started-v2/2?curriculum_id=506324b3a7dffd00020bf661#!/exercises/0">Make the computer think!</a></li>
+<li><a href="http://www.codecademy.com/courses/getting-started-v2/4?curriculum_id=506324b3a7dffd00020bf661#!/exercises/0">Variables</a></li>
+</ul>
+
+<p><a href="http://www.codecademy.com/tracks/javascript">Codecademy &mdash; Javascript for Beginners</a></p>
+
+<ul>
+<li><a href="http://www.codecademy.com/courses/javascript-beginner-en-6LzGd?curriculum_id=506324b3a7dffd00020bf661">Functions in Javascript</a></li>
+<li><a href="http://www.codecademy.com/courses/javascript-beginner-en-NhsaT?curriculum_id=506324b3a7dffd00020bf661">For loops</a></li>
+<li><a href="http://www.codecademy.com/courses/javascript-beginner-en-9Sgpi?curriculum_id=506324b3a7dffd00020bf661">Arrays and Objects</a></li>
+<li><a href="http://www.codecademy.com/courses/spencer-sandbox?curriculum_id=506324b3a7dffd00020bf661">Objects I</a></li>
+</ul>
+
+<p><a href="http://www.codecademy.com/tracks/jquery">Codecademy &mdash; jQuery</a></p>
+
+<ul>
+<li><a href="http://www.codecademy.com/courses/web-beginner-en-bay3D/0?curriculum_id=50a3fad8c7a770b5fd0007a1#!/exercises/0">DOM &amp; jQuery</a></li>
+<li><a href="http://www.codecademy.com/courses/web-beginner-en-v6phg/0?curriculum_id=50a3fad8c7a770b5fd0007a1#!/exercises/0">Dynamic HTML</a></li>
+</ul>
+
+<h2>For concentrators</h2>
+
+<p>You'll be doing a bunch of little snippets which build up to one piece of code that gets checked off at the end.</p>
 
 <h3>What you'll get to know</h3>
 
@@ -14,20 +79,13 @@
 <li>the Document Object Model</li>
 </ul>
 
-<h3>Installation</h3>
-
-<ol>
-<li>run <code>cs132_install lab1</code>. This will install the support code for the lab in <code>/web/cs132/yourLogin/lab1</code></li>
-<li>enter <code>http://your-login.proj132.cs.brown.edu/lab1</code> in your browser.</li>
-</ol>
-
 <blockquote>
   <p>Warning: we're going to be giving you a lot of sample code in this lab, but we recommend <em>typing it in</em> instead of copy/pasting; it'll help you learn the syntax.</p>
 </blockquote>
 
 <h2>What is Javascript?</h2>
 
-<p>From the <a href="https://developer.mozilla.org/en-US/docs/JavaScript">mozilla developer network</a> (a great site for help with JS):</p>
+<p>From the <a href="https://developer.mozilla.org/en-US/docs/JavaScript">Mozilla Developer Network</a> (a great site for help with JS):</p>
 
 <blockquote>
   <p>JavaScript® (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, most known as the scripting language for Web pages, but used in many non-browser environments as well...</p>
@@ -41,7 +99,7 @@
 
 <blockquote>
   <p>The Document Object Model (DOM) is an application programming interface (API) for valid HTML and well-formed XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. In the DOM specification, the term "document" is used in the broad sense.
-- <a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">W3C "What is the DOM?"</a></p>
+  - <a href="http://www.w3.org/TR/DOM-Level-2-Core/introduction.html">W3C "What is the DOM?"</a></p>
 </blockquote>
 
 <p>The DOM represents elements (i.e. <code>&lt;a&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>) as nodes in a tree. These nodes are available as objects in Javascript.</p>
@@ -50,45 +108,56 @@
 
 <p>jQuery is library that wraps the DOM and creates a simpler API for interacting with it. Let's start with an example so you can get an idea of what we're talking about.</p>
 
+<h2>Setup</h2>
+
+<p>Make a new directory (<code>lab2</code> or whatever you please), and download:</p>
+
+<ul>
+<li><a href="https://raw.github.com/brown-cs132-s13/labs/master/javascript/jquery.js">jquery.js</a></li>
+<li><a href="https://raw.github.com/brown-cs132-s13/labs/master/javascript/index.html">index.html</a></li>
+</ul>
+
+<p>You can right click &rarr; "Save as..." on those links as well.</p>
+
+<p>Make sure you save the files with their given names.</p>
+
 <h2>Clicking A Link</h2>
 
 <h3>1. Open <code>index.html</code> in your text editor. Add this in between the <code>&lt;body&gt;&lt;/body&gt;</code> tags:</h3>
 
-<p><code>
-&lt;a id="mylink" href="#"&gt;this is my link&lt;/a&gt;
-</code></p>
+<pre><code>&lt;a id="mylink" href="#"&gt;this is my link&lt;/a&gt;
+</code></pre>
 
 <p>This markup defines a link (<code>&lt;a&gt;</code>) element with the text "this is my link" that goes to "#" (the same page you're on now). So let's make this link do something! Add this where it says <code>//This is where you can add inline Javascript</code>:</p>
 
-<p>```
-var myLink = document.getElementById('mylink');</p>
+<pre><code>//Really, type this!
+var myLink = document.getElementById('mylink');
 
-<p>function clickMyLink (event) {
+function clickMyLink (event) {
   alert("you clicked my link!");
-}</p>
+}
 
-<p>myLink.onclick = clickMyLink;
-```</p>
+myLink.onclick = clickMyLink;
+</code></pre>
 
 <p>What's going on here?</p>
 
 <ol>
 <li>You ask the document for an element with the id <code>mylink</code> and save it in a variable <code>myLink</code>.</li>
+<li>Your function <code>clickMyLink</code> is going to use Javacript's <code>alert</code> function to open a dialog window.</li>
 <li>You tell the element that when it receives a "click" event, it should call the function <code>clickMyLink</code> and pass it an <a href="https://developer.mozilla.org/en-US/docs/DOM/event">event object</a>.</li>
-<li><code>clickMyLink</code> is going to use Javacript's <code>alert</code> function to open a dialog window.</li>
 </ol>
 
 <p>Now refresh the page in your browser and try clicking your link. Awesome.</p>
 
 <p>Let's see how to do this with jQuery. Go back to <code>index.html</code> and replace the Javascript you just wrote with this:</p>
 
-<p>```
-function clickMyLink (event) {
+<pre><code>function clickMyLink (event) {
   alert("you clicked my link!");
-}</p>
+}
 
-<p>$('#mylink').on('click', clickMyLink);
-```</p>
+$('#mylink').on('click', clickMyLink);
+</code></pre>
 
 <p>What jQuery does here is abstract the process of selecting an element from the DOM. <code>mylink</code> can be identified in the DOM a few different ways:</p>
 
@@ -96,7 +165,7 @@ function clickMyLink (event) {
 --------|--------|----
 <code>&lt;a id='mylink'&gt;&lt;/a&gt;</code>| <code>$('#mylink')</code>| <code>document.getElementById('mylink')</code>
 first <code>a</code> element | <code>$('a')[0]</code> | <code>document.getElementsByTagName('a')[0]</code>
-first child of <code>body</code> | <code>$('body:first-child')</code> | <code>document.getElementByTagName('body')[0].firstChild()</code></p>
+first child of <code>body</code> | <code>$('body:first-child')</code> | <code>document.getElementByTagName('body')[0].firstChild</code></p>
 
 <p>All selectors are not equal! These are listed in decreasing order of performance. jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).</p>
 
@@ -109,24 +178,27 @@ Add this HTML between your body tags:
 <code>&lt;div id="display"&gt;press a key&lt;/div&gt;</code>
 We're going to set up event listeners for <code>keyup</code>, so you can see when the user presses a key:</p>
 
-<p><code>
-var display = document.getElementById('display');
+<pre><code>var display = document.getElementById('display');
+//Here we're going to make use of an anonymous function.
+//Since functions are like any other object (number, string, etc.)
+//in Javascript, we can pass a function as an argument to another function
+//without issue!
 document.addEventListener('keyup', function (event) {
   // the event object can tell us which key is pressed
   display.textContent = "you clicked key #" + event.keyCode;
-});
-</code>
-<a href="https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener"><code>addEventListener</code> documentation</a></p>
+}, false);
+</code></pre>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener"><code>addEventListener</code> documentation</a></p>
 
 <p>Keyboard keys in javascript are identified by their <strong>key codes</strong> (<a href="http://unixpapa.com/js/key.html">here's a ton of crazy info on it</a>). For example, the enter key is 13. So to only do something when the user hits "enter":</p>
 
-<p><code>
-document.addEventListener('keyup', function (event) {
+<pre><code>document.addEventListener('keyup', function (event) {
   if (event.keyCode === 13) {
     display.textContent = "you hit enter!";
   }
-});
-</code></p>
+}, false);
+</code></pre>
 
 <p>Notice that we're adding the event listener to <code>document</code>. The <code>document</code> is an element like any other, referring to everything inside the <code>&lt;html&gt;</code> tags. We're just adding the listener there because we want to call it on a keypress <em>anywhere on the page</em>. Events bubble up the DOM tree: if you click a button, you can listen to that event on any parent element of the button (which can sometimes be tricky if you weren't expecting to get that event there).</p>
 
@@ -134,12 +206,11 @@ document.addEventListener('keyup', function (event) {
 
 <p>Here's the same thing with jQuery:</p>
 
-<p><code>
-var $display = $('#display'); // we prefix the variable with $ to remind ourselves it's a jQuery object
+<pre><code>var $display = $('#display'); // we prefix the variable with $ to remind ourselves it's a jQuery object
 $(document).on('keyup', function (event) {
   $display.text("you just clicked: " + event.which); // which is the same as keyCode but patched up to be more consistent between different browsers
 });
-</code></p>
+</code></pre>
 
 <p>For more info on events, check out <a href="http://www.quirksmode.org/js/introevents.html">this page on Quirksmode</a></p>
 
@@ -151,32 +222,30 @@ $(document).on('keyup', function (event) {
 
 <p>You declare a variable in Javacript using <code>var</code>. Javascript has totally dynamic typing:</p>
 
-<p><code>
-var lol = "laughing out loud"; // strings can be single or double quoted, nbd.
-var satan = 666;
-var preciseSatan = 666.0; // all numbers in js are type "number" (a float) so don't worry about it!
-</code></p>
+<pre><code>var lol = "laughing out loud"; // strings can be single or double quoted, nbd.
+var bottlesOfBeerOnTheWall = 100;
+var preciseBottlesOfBeerOnTheWall = 100.0; // all numbers in Javascript are type "number" (a float) so don't worry about it!
+</code></pre>
 
 <h3>Arrays &amp; Objects (maps)</h3>
 
 <p>Arrays can be of mixed type, and are declared through a simple literal syntax that's similar to Python or Ruby:</p>
 
-<p><code>var myArray = [ 1, 4, 'cool', myFunction ]; // myFunction is a function</code>
-Working with arrays:</p>
+<p><code>var myArray = [ 1, 4, 'cool', myFunction ]; // myFunction is a function</code></p>
 
-<p><code>
-myArray[0] // =&gt; 1
+<p>Working with arrays:</p>
+
+<pre><code>myArray[0] // =&gt; 1
 myArray.length // =&gt; 3
 myArray.slice(0,2) // =&gt; [ 1, 4, 'cool' ]
 myArray.concat(['horse']) // =&gt; [ 1, 4, 'cool', myFunction, 'horse']
-</code></p>
+</code></pre>
 
 <p>And there's <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array">a lot more</a></p>
 
 <p>An <strong>object</strong> in Javacript is an associative array--a dictionary/hashmap/map, etc. They're easy to use, and can also have mixed types:</p>
 
-<p><code>
-var csStudent = {
+<pre><code>var csStudent = {
   name: 'CS Student',
   age: 24,
   sex: 't',
@@ -185,20 +254,19 @@ var csStudent = {
     state: 'Rhode Island'
   }
 };
-</code></p>
+</code></pre>
 
 <p>Write a similar object for yourself in the <code>&lt;script&gt;</code> tags in your index.html. Now open up your page in the browser in check out the Javacript console <a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console?redirectlocale=en-US&amp;redirectslug=Using_the_Web_Console">Firefox instructions</a>, <a href="https://developers.google.com/chrome-developer-tools/docs/overview">Chrome instructions</a>. Now type the name of the variable you just made into the console. You should see the name come up with a little arrow to let you check out the object. You can see all the properties you just defined.</p>
 
 <p>There are two ways to access a property on an object:</p>
 
-<p><code>
-csStudent['name'] // 'CS Student'
-</code>
-or</p>
+<pre><code>csStudent['name'] // 'CS Student'
+</code></pre>
 
-<p><code>
-csStudent.name // 'CS Student'
-</code></p>
+<p>or</p>
+
+<pre><code>csStudent.name // 'CS Student'
+</code></pre>
 
 <p>Note: dot notation only works with object properties that are valid identifiers (they must start with a letter and not contain spaces, hyphens, or be keywords like <code>for</code>). </p>
 
@@ -212,45 +280,40 @@ csStudent.name // 'CS Student'
 
 <h3>Types of False</h3>
 
-<p>In javascript, variables are "falsy" or "truthy", meaning that you can do <code>if (myNonBooleanVariable)...</code>. Here are the main falsy values.</p>
+<p>In Javascript, variables are "falsy" or "truthy", meaning that you can do <code>if (myNonBooleanVariable)...</code>. Here are the main falsy values.</p>
 
-<h4>1. <code>null</code></h4>
+<p>####1. <code>null</code>
+Usually used to indicate a nonexistent object, null is actually of type <code>object</code>, which leads to some confusing things like this:</p>
 
-<p>An instant classic. Usually used to indicate a nonexistent object, null is actually of type <code>object</code>, which leads to some confusing things like this:</p>
+<pre><code>var bigMistake = null;
 
-<p>```
-var bigMistake = null;</p>
-
-<p>if (typeof bigMistake === 'object') {
+if (typeof bigMistake === 'object') {
   alert("Javacript is weird!");
 }
-```</p>
+</code></pre>
 
 <p>What happens if you put that in your <code>&lt;script&gt;&lt;/script&gt;</code> tags. Is that what you'd expect?</p>
 
-<h4>2.<code>undefined</code></h4>
+<p>####2.<code>undefined</code>
+When you try to access a property on an object or a variable that isn't defined, you'll get the value <code>undefined</code>. Say you have this:</p>
 
-<p>When you try to access a property on an object or a variable that isn't defined, you'll get the value <code>undefined</code>. Say you have this:</p>
-
-<p><code>
-function sayHi(name) {
+<pre><code>function sayHi(name) {
   if (name !== undefined) {
     alert("Hello " + name);
   }
 }
 sayHi() // name is undefined
 sayHi("CS Student"); // name is "CS Student", you'll get an alert
-</code></p>
+</code></pre>
 
 <p>If you're accessing a variable and you're not sure if it'll be there (because, for example, all function arguments are optional in Javascript), you should check for <code>undefined</code>:</p>
 
-<p>```
-var myObj = {}; // empty object</p>
+<pre><code>var myObj = {}; // empty object
 
-<p>if (myObj.name === undefined) {
+if (myObj.name === undefined) {
   console.log("no name!"); // this will always be called
 }
-```</p>
+</code></pre>
 
 <h4>3.<code>false</code></h4>
 
@@ -260,13 +323,12 @@ var myObj = {}; // empty object</p>
 
 <p>Just an FYI: empty arrays and objects are always <code>true</code>. This is good to know for jQuery, where if you select something that doesn't exist, you'll still end up with a jQuery object (which is truthy). So:</p>
 
-<p>```
-var $nonExistent = $("#my-box.non-existent");</p>
+<pre><code>var $nonExistent = $("#my-box.non-existent");
 
-<p>if ($nonExistent) {
+if ($nonExistent) {
   console.log("true!");
 }
-```</p>
+</code></pre>
 
 <p>Just keep this in mind when you're using jQuery. When you use the DOM APIs you'll always get <code>null</code> if the DOM can't find what you're looking for.</p>
 
@@ -278,11 +340,10 @@ var $nonExistent = $("#my-box.non-existent");</p>
 
 <p>There are two normal ways:</p>
 
-<p><code>
-var myFunction = function (arg1, arg2, arg3) { ... }; 
+<pre><code>var myFunction = function (arg1, arg2, arg3, ...) { ... }; 
 // or
-function myFunction (arg1, arg2, arg3) { ... };
-</code></p>
+function myFunction (arg1, arg2, arg3, ...) { ... };
+</code></pre>
 
 <p>The first is called an anonymous function, which you're assigning to a variable called <code>myFunction</code>. The second is a named function <em>called</em> <code>myFunction</code>. They are almost exactly the same, though the anonymous function doesn't know its own name. You could also instantiate a function object with <code>new Function()</code>, but there aren't many reasons to.</p>
 
@@ -290,84 +351,99 @@ function myFunction (arg1, arg2, arg3) { ... };
 
 <p>Javascript has some cool ways to call functions. Of course, you can call a function by name:</p>
 
-<p><code>
-foo()
-</code></p>
+<pre><code>foo()
+</code></pre>
 
-<p>or dynamically on an object:</p>
+<p>or, if it's the property of an object:</p>
 
-<p><code>
+<pre><code>var obj = {
+  foo: function(){alert('hello, world!');}
+};
+
+//by name
+obj.foo()
+
+//dynamically: you could assign fn at runtime
 var fn = "foo";
-obj[fn](args); // you could assign fn at runtime
-</code></p>
+obj[fn]();
+</code></pre>
 
-<p>But what is <code>this</code> in a Javascript function? Most of the time, <code>this</code> is the function itself. Remember that functions can have properties, so that's kind of useful:</p>
+<p>Functions have a special variable called <code>this</code> in their scope. When a function is called plain (e.g. <code>foo()</code>), <code>this</code> is the function itself. If the function is called as the property of another object (e.g. <code>obj.foo()</code>) <code>this</code> refers to the object before the <code>.</code> (<code>obj</code>). But in a special case where the function is called with the <code>new</code> keyword, <code>this</code> is bound to an object, and that object is returned. This is the normal way of declaring and instantiating an object type ("class") in Javascript:</p>
 
-<p><code>
-function Foo(name) {
+<pre><code>function Person(name) {
+  //assign the name property of the `this` object
   this.name = name;
-  alert(this.name);
 }
-</code></p>
 
-<p>This is the traditional way of defining object types in Javascript (more on that later).</p>
+var el_presidente = new Person('Barack');
+
+console.log('The name of the President is ' + el_presidente.name);
+</code></pre>
 
 <p>If you want, you can call a function with a different <code>context</code>, meaning that <code>this</code> can be set to whatever object you want. You do that with <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/call"><code>call</code></a> and <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply"><code>apply</code></a>:</p>
 
-<p><code>
-foo.apply(otherObj, [ arg1, arg2, arg3 ]); // call foo where this === otherObj
-foo.call(otherObj, arg1, arg2, arg3);
-</code></p>
+<pre><code>foo.apply(otherObj, [ arg1, arg2, arg3 ]); // call foo where this === otherObj
+foo.call(otherObj, arg1, arg2, arg3); 
+</code></pre>
 
 <p>The difference is how you supply arguments to the function you're calling. <code>apply</code> takes an array, call takes individual arguments.</p>
 
-<p>Keep context in mind when you're using nested functions:</p>
+<h4>Closure</h4>
 
-<p>```
-function Person (name) {
-  this.name = name;</p>
+<p>Javascript functions can access variables accessable but not declared within their scope at any time.</p>
 
-<p>this.talk = function () {
-    console.log(this.name) //  will be undefined
+<p>The sterotypical version of this uses a function which returns another function:</p>
+
+<pre><code>function counter(){
+  var count = 0;
+  return function(){
+    //[count] here is the [count] from above
+    count++;
+    return count;
   }
 }
-```</p>
 
-<p>You can fix that situation by binding the function to the outer context (using <code>apply</code> or <code>call</code>), or by assigning <code>this</code> to a variable and using it in the closure:</p>
+var c = counter();
+c() // 1
+c() // 2
+c() // 3
+// ...
+</code></pre>
 
-<p>```
-function Person (name) {
-  this.name = name;
-  var self = this;</p>
+<p>This type of setup is useful especially when variables shouldn't be accessible -- there's no way for external code to change <code>count</code> (on the other hand, if it were the property of an object anything could read and write it).</p>
 
-<p>this.talk = function () {
-    console.log(self.name);
+<p>Another place this becomes useful is maintaining a reference to an object in event handlers and the like:</p>
+
+<pre><code>//This defines a single Timer object (like a singleton class,
+//only one exists and you can't instantiate it).
+var Timer = {
+  count: 0,
+  render: function(){
+    $('#count-display').text(this.count);
+  },
+  initialize: function(){
+    //this puts a reference to [this] in this scope
+    //which won't be overridden by the [this] in the scope
+    //of functions defined later.
+    var manager = this;
+
+    //setInterval calls [argument1] every [argument2] milliseconds.
+    setInterval(function(){
+      //this reference to manager is maintained, while [this] now
+      //references the function as passed to setInterval in this
+      //scope.
+      manager.count++;
+      manager.render();
+    }, 1000);
   }
-}
-```</p>
+};
+</code></pre>
 
 <h4>Scoping</h4>
 
-<p><strong>The only way you can create a scope is with a function.</strong> So <code>if</code> statements, <code>while</code> loops, etc. do not create a scope (like they do in C). Javascript also has <a href="http://stackoverflow.com/questions/1047454/what-is-lexical-scope">lexical scoping</a>, which really means that what variables in an outer scope are available in an inner scope, which lets you do this:</p>
+<p><strong>The only way you can create a scope is with a function.</strong> So <code>if</code> statements, <code>while</code> loops, etc. do not create a scope (like they do in C).</p>
 
-<p>Try adding this to your <code>&lt;script&gt;</code> tag:</p>
-
-<p>```
-var display = document.getElementById("display");</p>
-
-<p>function greeter(name) {
-  return function sayHi() {
-    display.innerHTML = "hi " + name;
-  }
-}</p>
-
-<p>var greetMe = greeter("your name here");
-greetMe();
-```</p>
-
-<p>Notice how the function returned by <code>greeter</code> has a reference to the <code>name</code> variable in <code>greeter's</code> scope? That's lexical scoping. <code>sayHi</code> is what's called a <strong>closure</strong>.</p>
-
-<h4>Inheritence</h4>
+<h4>Inheritance</h4>
 
 <p>Javascript doesn't do inheritence the same way C/Java/Python/Ruby does (classically). It uses <em>prototypical</em> inheritance. It looks a little bit confusing (considering there's no <code>inherits</code> or <code>extends</code> keyword. There aren't even classes! But it's actually a really simple concept: when you call a method on an object, Javacript goes up that object's prototype chain (its parents' prototypes) looking for a method with that name. While that sounds a lot like classical inheritence, it's actually a lot simpler, since it doesn't require any classes or interfaces. </p>
 
@@ -375,65 +451,59 @@ greetMe();
 
 <p>Put this in your <code>&lt;script&gt;</code> tag:</p>
 
-<p>```
-// this is the constructor for a Friend object
+<pre><code>// this is the constructor for a Friend object
 function Friend (age, sex, location) {
   this.age = age;
   this.sex = sex;
   this.location = location;
-}</p>
+}
 
-<p>// let's define a method for Friend; the prototype is just an object
-Friend.prototype = {</p>
+// let's define a method for Friend; the prototype is just an object
+Friend.prototype = {
 
-<p>info : function () {
+  info : function () {
     return this.age + "/" + this.sex + "/" + this.location;
-  }</p>
+  }
 
-<p>};
-```</p>
+};
+</code></pre>
 
 <p>Now write this somewhere below in your script tag (assuming you still have the <code>&lt;div id="display"&gt;&lt;/div&gt;</code> in your HTML:</p>
 
-<p><code>
-var $display = $('#display');
+<pre><code>var $display = $('#display');
 var oldMan = new Friend(90, "m", "Providence");
 $display.html(oldMan.info());
-</code></p>
+</code></pre>
 
 <p>But what if we want to create an object that inherits from <code>Friend</code>, say, a <code>CyberFriend</code>? Since we're working with Functions, calling the super-object is as easy as calling a function with the context (<code>this</code>) set to our new object:</p>
 
-<p><code>
-function CyberFriend (age, sex, location, screenname) {
+<pre><code>function CyberFriend (age, sex, location, screenname) {
   Friend.call(this, arge, sex, location); // call the parent (like super() in Java)
   this.screenname = screenname;
 }
-</code></p>
+</code></pre>
 
 <p>Now we want to set CyberFriend's prototype to an instance of Friend's <code>prototype</code>. We don't want to use Friend's <code>prototype</code> directly because then we'd be messing with <code>Friend</code>. So we create a dummy function with a blank constructor so we can instantiate a new <code>Friend</code> prototype:</p>
 
-<p>```
-function dummy() {}; // blank function
-dummy.prototype = Friend.prototype;</p>
+<pre><code>function dummy() {}; // blank function
+dummy.prototype = Friend.prototype;
 
-<p>CyberFriend.prototype = new dummy(); // a new instance of the prototype
+CyberFriend.prototype = new dummy(); // a new instance of the prototype
 CyberFriend.prototype.constructor = CyberFriend; // that's the function that the new keyword calls
-```</p>
+</code></pre>
 
 <p>Nice! Now we've got a CyberFriend using it's constructor but Friend's prototype. How do we add new methods? Just define them on the prototype object:</p>
 
-<p><code>
-CyberFriend.prototype.profile = function () {
+<pre><code>CyberFriend.prototype.profile = function () {
   return this.info() + "/" + this.screenname;
 }
-</code></p>
+</code></pre>
 
 <p>Now if you've been following along, you should be able to do this:</p>
 
-<p><code>
-var myCyberBuddy = new CyberFriend(19, "P", "Cyberspace", "kevinm1tn1k");
-$display.html(myCyberBuddy.profile());
-</code></p>
+<pre><code>var myCyberBuddy = new CyberFriend(19, "P", "Cyberspace", "kevinm1tn1k");
+$display.html(myCyberBuddy.profile()); 
+</code></pre>
 
 <h3>Other Syntax</h3>
 
@@ -443,11 +513,10 @@ $display.html(myCyberBuddy.profile());
 
 <p>Javascript also has a switch statement. This isn't super popular:</p>
 
-<p>```
-function legal (age) {
-  var ableTo = [];</p>
+<pre><code>function legal (age) {
+  var ableTo = [];
 
-<p>switch (age) {
+  switch (age) {
     case 18:
       ableTo.push('vote', 'fight', 'get real estate license');
       break;
@@ -459,102 +528,109 @@ function legal (age) {
       break;
     default:
       ableTo.push('be free');
-  }</p>
+  }
 
-<p>return ableTo;
+  return ableTo;
 }
-```</p>
+</code></pre>
 
 <h4>Loops</h4>
 
-<p>Similar deal here. It looks just like C. The only difference is how you can iterate over an object:</p>
+<p>Similar deal here. It looks just like C:</p>
 
-<p><code>
-for (var key in object) {
+<pre><code>for (var i=0; i &lt; someArray.length; i++){
+  console.log(someArray[i]);
+}
+</code></pre>
+
+<p>The only difference is how you can iterate over an object:</p>
+
+<pre><code>for (var key in object) {
   console.log("key: " + key + " value: " + object[key]);
 }
-</code></p>
+</code></pre>
 
 <p>Note that this syntax gives you all the keys defined on the object <em>including keys of its prototypes</em>. That can lead to some unpleasant surprises, so it's best practice to use <code>hasOwnProperty</code>, which returns <code>true</code> if and only if the property name is defined for that object directly:</p>
 
-<p><code>
-for (var key in object) {
+<pre><code>for (var key in object) {
   if (!object.hasOwnProperty(key)){continue;}
   console.log("key: " + key + " value: " + object[key]);
 }
-</code></p>
+</code></pre>
 
-<p>You can use that syntax with arrays too, but it's pretty pointless, since <code>key</code> would just be the index in the array, and this type of loop is slower. Javascript also has <code>while</code> loops just like C/java, and you can use <code>++/--</code> unary operators on values. Javascript also has a <code>break</code> keyword for getting out of a loop and a <code>continue</code> statement for going to the next iteration.</p>
+<p>You can use that syntax with arrays too, but it's pretty pointless, since <code>key</code> would just be the index in the array, and this type of loop is slower. Javascript also has <code>while</code> loops just like C/Java, and you can use <code>++/--</code> unary operators on values. Javascript also has a <code>break</code> keyword for getting out of a loop and a <code>continue</code> statement for going to the next iteration.</p>
 
 <h2>Cool Demo</h2>
 
 <p>Let's use some of your Javacript knowledge. Get some HTML like this:</p>
 
-<p>```</p>
+<pre><code>
 
-<h1>Age Store</h1>
+md5-c21c825460fa3ed60682dc19ca236a82
 
-<p><label for="name">please input your name:</label>
-<input type="text" id="name" /></p>
 
-<div id="input" style="display:none;">
-  <label type="text" id="age" />
-  <button id="save">save</button>
-</div>
+&lt;label for="name"&gt;please input your name:&lt;/label&gt;
+&lt;input type="text" id="name" /&gt;
 
-<div id="result" style="display:none;">
-  Your age: <span id="display"></span>
-</div>
 
-<p><button id="find">search</div>
-```</p>
 
-<p>We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the <code>result</code> and <code>input</code> div's are set to <code>display:none;</code>. That's CSS's way of saying that they're hidden.</p>
+md5-0472e2cfa6c52c89248661232aaaf2e2
+
+
+
+
+
+md5-b7d6ad869c1bc49c5b9fcdf7c70c310a
+
+
+
+&lt;button id="find"&gt;search&lt;/div&gt;
+</code></pre>
+
+<p>We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the <code>result</code> and <code>input</code> div's are set to <code>display:none;</code>. (So they're hidden.)</p>
 
 <p>First, we need to wrap our code as a callback from jQuery's <code>ready()</code> event. Then we want to save references to the name input, the age input, and the result box.</p>
 
-<p>```
-$(document).ready(function() {</p>
+<pre><code>$(document).ready(function() {
 
-<p>var $nameInput = $('#name');
-  var $ageInput = $('#age');</p>
+  var $nameInput = $('#name');
+  var $ageInput = $('#age');
 
-<p>var $inputBox = $('#input');
+  var $inputBox = $('#input');
   var $resultBox = $('#result');
-  var $display = $('#display');</p>
+  var $display = $('#display');
 
-<p>var $searchBtn = $('#find');
-  var $saveBtn = $('#save');</p>
+  var $searchBtn = $('#find');
+  var $saveBtn = $('#save');
 
-<p>var data = {}; // this is where we store the age data</p>
+  var data = {}; // this is where we store the age data
 
-<p>function showAge (name) {
+  function showAge (name) {
     $inputBox.hide();
     $display.html(data[name]);
     $resultBox.fadeIn();
-  }</p>
+  }
 
-<p>// now let's set up a listener for when someone searches
+  // now let's set up a listener for when someone searches
   $searchBtn.on('click', function (event) {
-    var name = $nameInput.val() // get a value of an input using jQuery</p>
+    var name = $nameInput.val() // get a value of an input using jQuery
 
-<pre><code>// check if it's in the data object:
-if (data[name] !== undefined) {
-  showAge(name);
-} else {
-  $resultBox.hide(); // in case it was showing before
+    // check if it's in the data object:
+    if (data[name] !== undefined) {
+      showAge(name);
+    } else {
+      $resultBox.hide(); // in case it was showing before
 
-  $inputBox.fadeIn();
-  $saveBtn.on('click', function (e) {
-    data[name] = $ageInput.val();
-    showAge(name);
+      $inputBox.fadeIn();
+      $saveBtn.on('click', function (e) {
+        data[name] = $ageInput.val();
+        showAge(name);
+      });
+
+    }
+
   });
-
-}
 </code></pre>
-
-<p>});
-```</p>
 
 <p>Great! When you've gotten to this stage in the lab, ask your TA to check you off.</p>
 
@@ -568,14 +644,15 @@ if (data[name] !== undefined) {
 <li><a href="http://api.jquery.com/">jQuery documentation</a></li>
 <li><a href="http://www.james.padolsey.com/jquery/">jQuery source browser</a></li>
 <li><a href="http://bonsaiden.github.com/JavaScript-Garden/">Javascript Garden (Javascript quirks)</a></li>
-<li><a href="http://jsperf.com/">jsPerf</a> - javascript performance tests</li>
 <li><a href="http://jsfiddle.net/">jsFiddle</a> - in-browser javascript "sandbox"</li>
 </ul>
 
 <h3>Other introductions</h3>
 
 <ul>
-<li><a href="http://www.codecademy.com/tracks/javascript">Codecademy Javascript (beginner)</a></li>
 <li><a href="http://ejohn.org/apps/learn/">John Resig: Learn Advanced Javascript</a></li>
 <li><a href="http://madebyevan.com/jsintro/">Intro to Javascript For Coders</a></li>
 </ul>
+
+</body>
+</html>
