@@ -110,11 +110,13 @@ $('#mylink').on('click', clickMyLink);
 
 What jQuery does here is abstract the process of selecting an element from the DOM. `mylink` can be identified in the DOM a few different ways:
 
-Element | jQuery | DOM
---------|--------|----
-`<a id='mylink'></a>`| `$('#mylink')`| `document.getElementById('mylink')`
-first `a` element | `$('a')[0]` | `document.getElementsByTagName('a')[0]`
-first child of `body` | `$('body:first-child')` | `document.getElementByTagName('body')[0].firstChild`
+(1) Element, (2) jQuery, (3) DOM
+
+(1) `<a id='mylink'></a>`, (2) `$('#mylink')`, (3)`document.getElementById('mylink')`
+
+(1) first `a` element, (2) `$('a')[0]`, (3) `document.getElementsByTagName('a')[0]`
+
+(1) first child of `body`, (2) `$('body:first-child')`, (3) `document.getElementByTagName('body')[0].firstChild`
 
 All selectors are not equal! These are listed in decreasing order of performance. jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).
 
@@ -163,7 +165,7 @@ $(document).on('keyup', function (event) {
 });
 ```
 
-For more info on events, check out [this page on Quirksmode](http://www.quirksmode.org/js/introevents.html)
+For more info on events, check out [this page on Quirksmode](http://www.quirksmode.org/js/introevents.html).
 
 ## Javascript Syntax
 
@@ -195,7 +197,7 @@ myArray.concat(['horse']) // => [ 1, 4, 'cool', myFunction, 'horse']
 
 And there's [a lot more](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array)
 
-An **object** in Javacript is an associative array--a dictionary/hashmap/map, etc. They're easy to use, and can also have mixed types:
+An **object** in Javacript is an associative array &mdash; a dictionary/hashmap/map, etc. They're easy to use, and can also have mixed types:
 
 ```
 var csStudent = {
@@ -234,7 +236,7 @@ One of the most common bugs in Javacript comes from using `==` rather than `===`
 ### Types of False
 In Javascript, variables are "falsy" or "truthy", meaning that you can do `if (myNonBooleanVariable)...`. Here are the main falsy values.
 
-####1. `null`
+#### 1. `null`
 Usually used to indicate a nonexistent object, null is actually of type `object`, which leads to some confusing things like this:
 
 ```
@@ -247,7 +249,7 @@ if (typeof bigMistake === 'object') {
 
 What happens if you put that in your `<script></script>` tags. Is that what you'd expect?
 
-####2.`undefined`
+#### 2.`undefined`
 When you try to access a property on an object or a variable that isn't defined, you'll get the value `undefined`. Say you have this:
 
 ```
@@ -271,11 +273,11 @@ if (myObj.name === undefined) {
 ```
 
 #### 3.`false`
-False is useful for values which are definitely known (like `undefined` or `null`) and definitely false.
+False is useful for values which are definitely known (unlike `undefined` or `null`) and definitely false.
 
 
 ### Surprisingly Truthy
-Just an FYI: empty arrays and objects are always `true`. This is good to know for jQuery, where if you select something that doesn't exist, you'll still end up with a jQuery object (which is truthy). So:
+Empty arrays and objects are always `true`. This is good to know for jQuery, where if you select something that doesn't exist, you'll still end up with a jQuery object (which is truthy). So:
 
 ```
 var $nonExistent = $("#my-box.non-existent");
@@ -468,6 +470,8 @@ var myCyberBuddy = new CyberFriend(19, "P", "Cyberspace", "kevinm1tn1k");
 $display.html(myCyberBuddy.profile()); 
 ```
 
+This can get pretty confusing and might be worth reading twice. Evan Wallace also has a section on the same topic in [Javascript for Coders](http://madebyevan.com/jsintro/#Classes_Prototypes).
+
 ### Other Syntax
 
 #### Conditionals
@@ -484,7 +488,7 @@ function legal (age) {
       ableTo.push('vote', 'fight', 'get real estate license');
       break;
     case 21:
-      ableTo.push('drink', 'patronize adult establishments');
+      ableTo.push('drink', 'gamble');
       break;
     case 65:
       ableTo.push('retire');
@@ -526,7 +530,7 @@ for (var key in object) {
 You can use that syntax with arrays too, but it's pretty pointless, since `key` would just be the index in the array, and this type of loop is slower. Javascript also has `while` loops just like C/Java, and you can use `++/--` unary operators on values. Javascript also has a `break` keyword for getting out of a loop and a `continue` statement for going to the next iteration.
 
 ## Cool Demo
-Let's use some of your Javacript knowledge. Get some HTML like this:
+Let's use some of your Javacript knowledge. Change your index HTML to have this in the `<body>`:
 
 ```
 <h1>Age Store</h1>
@@ -582,8 +586,9 @@ $(document).ready(function() {
 
       $inputBox.fadeIn();
       $saveBtn.on('click', function (e) {
-        data[name] = $ageInput.val();
-        showAge(name);
+        //You need to:
+          //Store the name with whatever is in the age input in data
+          //Show that data for the name
       });
 
     }

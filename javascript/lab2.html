@@ -161,11 +161,13 @@ $('#mylink').on('click', clickMyLink);
 
 <p>What jQuery does here is abstract the process of selecting an element from the DOM. <code>mylink</code> can be identified in the DOM a few different ways:</p>
 
-<p>Element | jQuery | DOM
---------|--------|----
-<code>&lt;a id='mylink'&gt;&lt;/a&gt;</code>| <code>$('#mylink')</code>| <code>document.getElementById('mylink')</code>
-first <code>a</code> element | <code>$('a')[0]</code> | <code>document.getElementsByTagName('a')[0]</code>
-first child of <code>body</code> | <code>$('body:first-child')</code> | <code>document.getElementByTagName('body')[0].firstChild</code></p>
+<p>(1) Element, (2) jQuery, (3) DOM</p>
+
+<p>(1) <code>&lt;a id='mylink'&gt;&lt;/a&gt;</code>, (2) <code>$('#mylink')</code>, (3)<code>document.getElementById('mylink')</code></p>
+
+<p>(1) first <code>a</code> element, (2) <code>$('a')[0]</code>, (3) <code>document.getElementsByTagName('a')[0]</code></p>
+
+<p>(1) first child of <code>body</code>, (2) <code>$('body:first-child')</code>, (3) <code>document.getElementByTagName('body')[0].firstChild</code></p>
 
 <p>All selectors are not equal! These are listed in decreasing order of performance. jQuery is just wrapping the same DOM functions you would use on your own, and often has to do it less efficiently (because it's more generalized).</p>
 
@@ -212,7 +214,7 @@ $(document).on('keyup', function (event) {
 });
 </code></pre>
 
-<p>For more info on events, check out <a href="http://www.quirksmode.org/js/introevents.html">this page on Quirksmode</a></p>
+<p>For more info on events, check out <a href="http://www.quirksmode.org/js/introevents.html">this page on Quirksmode</a>.</p>
 
 <h2>Javascript Syntax</h2>
 
@@ -243,7 +245,7 @@ myArray.concat(['horse']) // =&gt; [ 1, 4, 'cool', myFunction, 'horse']
 
 <p>And there's <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array">a lot more</a></p>
 
-<p>An <strong>object</strong> in Javacript is an associative array--a dictionary/hashmap/map, etc. They're easy to use, and can also have mixed types:</p>
+<p>An <strong>object</strong> in Javacript is an associative array &mdash; a dictionary/hashmap/map, etc. They're easy to use, and can also have mixed types:</p>
 
 <pre><code>var csStudent = {
   name: 'CS Student',
@@ -282,8 +284,9 @@ myArray.concat(['horse']) // =&gt; [ 1, 4, 'cool', myFunction, 'horse']
 
 <p>In Javascript, variables are "falsy" or "truthy", meaning that you can do <code>if (myNonBooleanVariable)...</code>. Here are the main falsy values.</p>
 
-<p>####1. <code>null</code>
-Usually used to indicate a nonexistent object, null is actually of type <code>object</code>, which leads to some confusing things like this:</p>
+<h4>1. <code>null</code></h4>
+
+<p>Usually used to indicate a nonexistent object, null is actually of type <code>object</code>, which leads to some confusing things like this:</p>
 
 <pre><code>var bigMistake = null;
 
@@ -294,8 +297,9 @@ if (typeof bigMistake === 'object') {
 
 <p>What happens if you put that in your <code>&lt;script&gt;&lt;/script&gt;</code> tags. Is that what you'd expect?</p>
 
-<p>####2.<code>undefined</code>
-When you try to access a property on an object or a variable that isn't defined, you'll get the value <code>undefined</code>. Say you have this:</p>
+<h4>2.<code>undefined</code></h4>
+
+<p>When you try to access a property on an object or a variable that isn't defined, you'll get the value <code>undefined</code>. Say you have this:</p>
 
 <pre><code>function sayHi(name) {
   if (name !== undefined) {
@@ -317,11 +321,11 @@ if (myObj.name === undefined) {
 
 <h4>3.<code>false</code></h4>
 
-<p>False is useful for values which are definitely known (like <code>undefined</code> or <code>null</code>) and definitely false.</p>
+<p>False is useful for values which are definitely known (unlike <code>undefined</code> or <code>null</code>) and definitely false.</p>
 
 <h3>Surprisingly Truthy</h3>
 
-<p>Just an FYI: empty arrays and objects are always <code>true</code>. This is good to know for jQuery, where if you select something that doesn't exist, you'll still end up with a jQuery object (which is truthy). So:</p>
+<p>Empty arrays and objects are always <code>true</code>. This is good to know for jQuery, where if you select something that doesn't exist, you'll still end up with a jQuery object (which is truthy). So:</p>
 
 <pre><code>var $nonExistent = $("#my-box.non-existent");
 
@@ -505,6 +509,8 @@ CyberFriend.prototype.constructor = CyberFriend; // that's the function that the
 $display.html(myCyberBuddy.profile()); 
 </code></pre>
 
+<p>This can get pretty confusing and might be worth reading twice. Evan Wallace also has a section on the same topic in <a href="http://madebyevan.com/jsintro/#Classes_Prototypes">Javascript for Coders</a>.</p>
+
 <h3>Other Syntax</h3>
 
 <h4>Conditionals</h4>
@@ -521,7 +527,7 @@ $display.html(myCyberBuddy.profile());
       ableTo.push('vote', 'fight', 'get real estate license');
       break;
     case 21:
-      ableTo.push('drink', 'patronize adult establishments');
+      ableTo.push('drink', 'gamble');
       break;
     case 65:
       ableTo.push('retire');
@@ -562,11 +568,11 @@ $display.html(myCyberBuddy.profile());
 
 <h2>Cool Demo</h2>
 
-<p>Let's use some of your Javacript knowledge. Get some HTML like this:</p>
+<p>Let's use some of your Javacript knowledge. Change your index HTML to have this in the <code>&lt;body&gt;</code>:</p>
 
 <pre><code>
 
-md5-c21c825460fa3ed60682dc19ca236a82
+md5-4b051cd0321d32f3ebcd0adc92b81bd4
 
 
 &lt;label for="name"&gt;please input your name:&lt;/label&gt;
@@ -574,13 +580,13 @@ md5-c21c825460fa3ed60682dc19ca236a82
 
 
 
-md5-0472e2cfa6c52c89248661232aaaf2e2
+md5-08eb5bad46ffac7e8f8aa64043ae5d8f
 
 
 
 
 
-md5-b7d6ad869c1bc49c5b9fcdf7c70c310a
+md5-6fe34625ef5a714e8ebb46e441839767
 
 
 
@@ -623,8 +629,9 @@ md5-b7d6ad869c1bc49c5b9fcdf7c70c310a
 
       $inputBox.fadeIn();
       $saveBtn.on('click', function (e) {
-        data[name] = $ageInput.val();
-        showAge(name);
+        //You need to:
+          //Store the name with whatever is in the age input in data
+          //Show that data for the name
       });
 
     }
