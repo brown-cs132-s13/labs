@@ -440,7 +440,7 @@ But what if we want to create an object that inherits from `Friend`, say, a `Cyb
 
 ```
 function CyberFriend (age, sex, location, screenname) {
-  Friend.call(this, arge, sex, location); // call the parent (like super() in Java)
+  Friend.call(this, age, sex, location); // call the parent (like super() in Java)
   this.screenname = screenname;
 }
 ```

@@ -482,7 +482,7 @@ $display.html(oldMan.info());
 <p>But what if we want to create an object that inherits from <code>Friend</code>, say, a <code>CyberFriend</code>? Since we're working with Functions, calling the super-object is as easy as calling a function with the context (<code>this</code>) set to our new object:</p>
 
 <pre><code>function CyberFriend (age, sex, location, screenname) {
-  Friend.call(this, arge, sex, location); // call the parent (like super() in Java)
+  Friend.call(this, age, sex, location); // call the parent (like super() in Java)
   this.screenname = screenname;
 }
 </code></pre>
