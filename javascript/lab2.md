@@ -325,7 +325,7 @@ var fn = "foo";
 obj[fn]();
 ```
 
-Functions have a special variable called `this` in their scope. When a function is called plain (e.g. `foo()`), `this` is the function itself. If the function is called as the property of another object (e.g. `obj.foo()`) `this` refers to the object before the `.` (`obj`). But in a special case where the function is called with the `new` keyword, `this` is bound to an object, and that object is returned. This is the normal way of declaring and instantiating an object type ("class") in Javascript:
+Functions have a special variable called `this` in their scope. When a function is called plain (e.g. `foo()`), `this` is either the `window` or the object the function is being called on (which could be an instance of the function object). If the function is called as the property of another object (e.g. `obj.foo()`) `this` refers to the object before the `.` (`obj`). But in a special case where the function is called with the `new` keyword, `this` is bound to an object, and that object is returned. This is the normal way of declaring and instantiating an object type ("class") in Javascript:
 
 ```
 function Person(name) {
@@ -579,6 +579,8 @@ $(document).ready(function() {
       });
     }
   });
+  
+});
 ```
 
 Great! When you've gotten this working, ask your TA to check you off.
