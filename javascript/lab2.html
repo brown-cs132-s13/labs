@@ -570,32 +570,32 @@ $display.html(myCyberBuddy.profile());
 
 <p>Let's use some of your Javacript knowledge. Change your index HTML to have this in the <code>&lt;body&gt;</code>:</p>
 
-<pre><code>
-
-md5-4b051cd0321d32f3ebcd0adc92b81bd4
-
-
-&lt;label for="name"&gt;please input your name:&lt;/label&gt;
-&lt;input type="text" id="name" /&gt;
+<div class="codehilite"><pre><code>md5-b6a8a752162ebe9e5d8fab152c6ff242
 
 
 
-md5-08eb5bad46ffac7e8f8aa64043ae5d8f
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>please input your name:<span class="nt">&lt;/label&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;name&quot;</span> <span class="nt">/&gt;</span>
+
+
+
+md5-8d07126542bf42e548f35915e0597f1e
 
 
 
 
 
-md5-6fe34625ef5a714e8ebb46e441839767
+md5-f75f423cc5ab016ff58ebb51a197d7bc
 
 
 
-&lt;button id="find"&gt;search&lt;/div&gt;
-</code></pre>
+<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;find&quot;</span><span class="nt">&gt;</span>search<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 
 <p>We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the <code>result</code> and <code>input</code> div's are set to <code>display:none;</code>. (So they're hidden.)</p>
 
-<p>First, we need to wrap our code as a callback from jQuery's <code>ready()</code> event. Then we want to save references to the name input, the age input, and the result box.</p>
+<p>First, we need to wrap our code as a callback from jQuery's <code>ready()</code> event; this ensures that when we select elements on the page they exist (the browser might run some Javascript before its rendered the whole page). Then we want to save references to the name input, the age input, and the result box.</p>
 
 <pre><code>$(document).ready(function() {
 
@@ -633,13 +633,11 @@ md5-6fe34625ef5a714e8ebb46e441839767
           //Store the name with whatever is in the age input in data
           //Show that data for the name
       });
-
     }
-
   });
 </code></pre>
 
-<p>Great! When you've gotten to this stage in the lab, ask your TA to check you off.</p>
+<p>Great! When you've gotten this working, ask your TA to check you off.</p>
 
 <h2>Javascript Resources</h2>
 

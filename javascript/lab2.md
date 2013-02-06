@@ -532,9 +532,12 @@ You can use that syntax with arrays too, but it's pretty pointless, since `key` 
 ## Cool Demo
 Let's use some of your Javacript knowledge. Change your index HTML to have this in the `<body>`:
 
-```
+```html
+
 <h1>Age Store</h1>
+
 <label for="name">please input your name:</label>
+
 <input type="text" id="name" />
 
 <div id="input" style="display:none;">
@@ -551,7 +554,7 @@ Let's use some of your Javacript knowledge. Change your index HTML to have this 
 
 We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the `result` and `input` div's are set to `display:none;`. (So they're hidden.)
 
-First, we need to wrap our code as a callback from jQuery's `ready()` event. Then we want to save references to the name input, the age input, and the result box.
+First, we need to wrap our code as a callback from jQuery's `ready()` event; this ensures that when we select elements on the page they exist (the browser might run some Javascript before its rendered the whole page). Then we want to save references to the name input, the age input, and the result box.
 
 ```
 $(document).ready(function() {
