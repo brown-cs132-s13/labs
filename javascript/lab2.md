@@ -530,30 +530,14 @@ for (var key in object) {
 You can use that syntax with arrays too, but it's pretty pointless, since `key` would just be the index in the array, and this type of loop is slower. Javascript also has `while` loops just like C/Java, and you can use `++/--` unary operators on values. Javascript also has a `break` keyword for getting out of a loop and a `continue` statement for going to the next iteration.
 
 ## Cool Demo
-Let's use some of your Javacript knowledge. Change your index HTML to have this in the `<body>`:
-
-```
-<h1>Age Store</h1>
-
-<label for="name">please input your name:</label>
-
-<input type="text" id="name" />
-
-<div id="input" style="display:none;">
-  <label type="text" id="age" />
-  <button id="save">save</button>
-</div>
-
-<div id="result" style="display:none;">
-  Your age: <span id="display"></span>
-</div>
-
-<button id="find">search</div>
-```
+Let's use some of your Javacript knowledge. Change your index HTML to have the contents of
+[snippet.html](https://raw.github.com/brown-cs132-s13/labs/master/javascript/snippet.html) in the `<body>`.
 
 We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the `result` and `input` div's are set to `display:none;`. (So they're hidden.)
 
 First, we need to wrap our code as a callback from jQuery's `ready()` event; this ensures that when we select elements on the page they exist (the browser might run some Javascript before its rendered the whole page). Then we want to save references to the name input, the age input, and the result box.
+
+See the TODO.
 
 ```
 $(document).ready(function() {
@@ -588,6 +572,7 @@ $(document).ready(function() {
 
       $inputBox.fadeIn();
       $saveBtn.on('click', function (e) {
+        //TODO
         //You need to:
           //Store the name with whatever is in the age input in data
           //Show that data for the name

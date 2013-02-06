@@ -568,34 +568,14 @@ $display.html(myCyberBuddy.profile());
 
 <h2>Cool Demo</h2>
 
-<p>Let's use some of your Javacript knowledge. Change your index HTML to have this in the <code>&lt;body&gt;</code>:</p>
-
-<div class="codehilite"><pre><code>md5-b6a8a752162ebe9e5d8fab152c6ff242
-
-
-
-<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>please input your name:<span class="nt">&lt;/label&gt;</span>
-
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;name&quot;</span> <span class="nt">/&gt;</span>
-
-
-
-md5-8d07126542bf42e548f35915e0597f1e
-
-
-
-
-
-md5-f75f423cc5ab016ff58ebb51a197d7bc
-
-
-
-<span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;find&quot;</span><span class="nt">&gt;</span>search<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<p>Let's use some of your Javacript knowledge. Change your index HTML to have the contents of
+<a href="https://raw.github.com/brown-cs132-s13/labs/master/javascript/snippet.html">snippet.html</a> in the <code>&lt;body&gt;</code>.</p>
 
 <p>We're going to make a widget where you can save ages by name. We want the user to input a name; if we find it, we'll show the age. Otherwise, we'll show an input for the user to give us the age. Notice that both the <code>result</code> and <code>input</code> div's are set to <code>display:none;</code>. (So they're hidden.)</p>
 
 <p>First, we need to wrap our code as a callback from jQuery's <code>ready()</code> event; this ensures that when we select elements on the page they exist (the browser might run some Javascript before its rendered the whole page). Then we want to save references to the name input, the age input, and the result box.</p>
+
+<p>See the TODO.</p>
 
 <pre><code>$(document).ready(function() {
 
@@ -629,6 +609,7 @@ md5-f75f423cc5ab016ff58ebb51a197d7bc
 
       $inputBox.fadeIn();
       $saveBtn.on('click', function (e) {
+        //TODO
         //You need to:
           //Store the name with whatever is in the age input in data
           //Show that data for the name
