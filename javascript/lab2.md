@@ -590,13 +590,11 @@ $(document).ready(function() {
           //Store the name with whatever is in the age input in data
           //Show that data for the name
       });
-
     }
-
   });
 ```
 
-Great! When you've gotten to this stage in the lab, ask your TA to check you off.
+Great! When you've gotten this working, ask your TA to check you off.
 
 ## Javascript Resources
 
