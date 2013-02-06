@@ -532,8 +532,7 @@ You can use that syntax with arrays too, but it's pretty pointless, since `key` 
 ## Cool Demo
 Let's use some of your Javacript knowledge. Change your index HTML to have this in the `<body>`:
 
-```html
-
+```
 <h1>Age Store</h1>
 
 <label for="name">please input your name:</label>
