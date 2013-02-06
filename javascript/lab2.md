@@ -579,6 +579,8 @@ $(document).ready(function() {
       });
     }
   });
+  
+});
 ```
 
 Great! When you've gotten this working, ask your TA to check you off.
