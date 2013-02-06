@@ -197,7 +197,7 @@ Another handy tool for configuring inline layout is the `<span>` tag. That `<spa
 ## Checkpoint 2
 Please call a TA over to check you off, or come to hours to demonstrate your work.
 
-[div and span](http://www.codecademy.com/courses/web-beginner-en-f8mcL/2?curriculum_id=50579fb998b470000202dc8b#!/exercises/0)
+[Codecademy: Using div and span](http://www.codecademy.com/courses/web-beginner-en-f8mcL/2?curriculum_id=50579fb998b470000202dc8b#!/exercises/0)
 
 ## Final Comments
 
@@ -287,11 +287,11 @@ You can then select for all elements with that class with this syntax:
 
 or for only h1 elements with that class with this:
 
-```css
-h1.headline {
-	/* this is a comment in CSS so it is ignored */
-}
-```
+
+	h1.headline {
+		/* this is a comment in CSS so it is ignored */
+	}
+
 
 or for only h1 and h2 elements (comma specifies multiple selectors):
 
@@ -340,7 +340,7 @@ You can do a lot more than change colors using CSS. The philosophy is that HTML 
 ## Checkpoint 3
 Please call a TA over to check you off, or come to hours to demonstrate your work.
 
-[CSS Positioning](http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b)
+[Codecademy: CSS Positioning](http://www.codecademy.com/courses/web-beginner-en-6merh?curriculum_id=50579fb998b470000202dc8b)
 
 
 There are dozens of CSS properties, although not all of them are supported by every browser.
