@@ -99,7 +99,7 @@ That's better. Note that, instead of `'demo.js'`, you could also use the magic `
 Note that I also included the `path` module so that I could print out just the filename of the JavaScript file, not its full path.
 
 ## Thinking Asynchronously
-One of the ways that Node achieves its speed is through its event-driven architecture. In Node, JavaScript always executes in a single thread, so you never have to worry about locking or traditional concurrency issues. However, by encouraging an event-driven development model, Node allows applications to take full advantage of the main thread's idle time to interleave tasks together, which means it's actually faster than some multi-threaded application servers.
+*Technical sidenote*: One of the ways that Node achieves its speed is through its event-driven architecture. In Node, JavaScript always executes in a single thread, so you never have to worry about locking or traditional concurrency issues. However, by encouraging an event-driven development model, Node allows applications to take full advantage of the main thread's idle time to interleave tasks together, which means it's actually faster than some multi-threaded application servers.
 
 The way Node accomplishes this is with *callbacks*. For pretty much any operation for which CPU time is not the bottleneck -- mostly filesystem and network operations -- the built-in functions require that you pass in a callback function. What this is saying is that those functions return immediately, freeing up your program to do other things. Node will then go off and do the work for you in the background, and when it's ready, it'll call your callback with the results.
 
