@@ -153,7 +153,7 @@ server.listen(8080, function(){
 });
 ```
 
-With the server running, visit [http://localhost:8080/](http://localhost:8080) in your web browser. You should see a simple "Hello, world!" page. Try visiting different paths on the same server (e.g., [http://localhost:8080/foo/bar](http://localhost:8080/foo/bar)) and you should see the same thing. You can quit your server by pressing Ctrl + C.
+With the server running, visit [http://localhost:8080/](http://localhost:8080) in your web browser. You should see a simple "Hello, world!" page. Try visiting different paths on the same server (e.g., [http://localhost:8080/foo/bar](http://localhost:8080/foo/bar)) and you should see the same thing. You can quit your server by pressing Ctrl + C in the terminal.
 
 Every request is handled by the same callback you pass in to `http.createServer(...)`. You can add some logic to the callback to do some interesting things:
 
@@ -212,7 +212,7 @@ Note the uses of `.grey`, `.cyan`, and `.underline` on the strings echoed to the
   [marak]: http://marak.com
   [colors]: https://github.com/marak/colors.js
 
-`npm` has [a large repository][npm] of modules that you can browse. You can also just Google around for Node modules, and more than 95% of the time, the finished products will be on `npm` for you to install. Play around, and see what you can find!
+`npm` has [a large repository][npm] of modules that you can browse. You can also just Google around for Node modules, and most of the time, the finished products will be on `npm` for you to install. Play around, and see what you can find!
 
 **Task 2:** Find one cool module, and add a feature to your web server that uses it.
 
@@ -280,7 +280,7 @@ Express has a ton of cool middleware, most of which is [documented in the API re
 
   [express-api]: http://expressjs.com/api.html
 
-**Task 3:** add a feature to your web server that uses Express or [Connect][connect] (the layer that sits under Express) middleware. If you're short on ideas, adding a static file server might be a good way to go.
+**Task 3:** add a feature to your web server that uses Express or [Connect][connect] (the layer that sits under Express) middleware. If you're short on ideas, using the static file server middleware might be a good way to go.
 
   [connect]: http://www.senchalabs.org/connect/
 
