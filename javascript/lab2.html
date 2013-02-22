@@ -606,15 +606,15 @@ $display.html(myCyberBuddy.profile());
       showAge(name);
     } else {
       $resultBox.hide(); // in case it was showing before
-
       $inputBox.fadeIn();
-      $saveBtn.on('click', function (e) {
-        //TODO
-        //You need to:
-          //Store the name with whatever is in the age input in data
-          //Show that data for the name
-      });
     }
+  });
+
+  $saveBtn.on('click', function (e) {
+    //TODO
+    //You need to:
+      //Store the name with whatever is in the age input in data
+      //Show that data for the name
   });
 
 });
