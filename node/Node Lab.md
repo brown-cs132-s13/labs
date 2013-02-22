@@ -302,7 +302,7 @@ There are plenty of tutorials out there (including [this über-basic one][basics
             console.log('Hi,', name + '!');
         }
     
-        // this line means people can call foodmod.doSomethingCool(...)
+        // this line means people can call foomod.doSomethingCool(...)
         exports.doSomethingCool = doSomethingCool;
 
 If you have time left, see if you can write your own simple module. It's fun!
