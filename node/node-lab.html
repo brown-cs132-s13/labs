@@ -133,6 +133,10 @@ pre .tex .formula {
   opacity: 0.5;
 }
 
+#wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
 
 </style>
 
@@ -250,7 +254,7 @@ fs.readFile(__filename, function(err, data){
 
 <h2 id="thinkingasynchronously">Thinking Asynchronously</h2>
 
-<p>One of the ways that Node achieves its speed is through its event-driven architecture. In Node, JavaScript always executes in a single thread, so you never have to worry about locking or traditional concurrency issues. However, by encouraging an event-driven development model, Node allows applications to take full advantage of the main thread&#8217;s idle time to interleave tasks together, which means it&#8217;s actually faster than some multi-threaded application servers.</p>
+<p><em>Technical sidenote</em>: One of the ways that Node achieves its speed is through its event-driven architecture. In Node, JavaScript always executes in a single thread, so you never have to worry about locking or traditional concurrency issues. However, by encouraging an event-driven development model, Node allows applications to take full advantage of the main thread&#8217;s idle time to interleave tasks together, which means it&#8217;s actually faster than some multi-threaded application servers.</p>
 
 <p>The way Node accomplishes this is with <em>callbacks</em>. For pretty much any operation for which CPU time is not the bottleneck &#8211; mostly filesystem and network operations &#8211; the built-in functions require that you pass in a callback function. What this is saying is that those functions return immediately, freeing up your program to do other things. Node will then go off and do the work for you in the background, and when it&#8217;s ready, it&#8217;ll call your callback with the results.</p>
 
@@ -307,7 +311,7 @@ server.listen(8080, function(){
     console.log(&apos;- Server listening on port 8080&apos;);
 });</code></pre>
 
-<p>With the server running, visit <a href="http://localhost:8080">http://localhost:8080/</a> in your web browser. You should see a simple &#8220;Hello, world!&#8221; page. Try visiting different paths on the same server (e.g., <a href="http://localhost:8080/foo/bar">http://localhost:8080/foo/bar</a>) and you should see the same thing. You can quit your server by pressing Ctrl + C.</p>
+<p>With the server running, visit <a href="http://localhost:8080">http://localhost:8080/</a> in your web browser. You should see a simple &#8220;Hello, world!&#8221; page. Try visiting different paths on the same server (e.g., <a href="http://localhost:8080/foo/bar">http://localhost:8080/foo/bar</a>) and you should see the same thing. You can quit your server by pressing Ctrl + C in the terminal.</p>
 
 <p>Every request is handled by the same callback you pass in to <code>http.createServer(...)</code>. You can add some logic to the callback to do some interesting things:</p>
 
@@ -363,7 +367,7 @@ server.listen(8080, function(){
 
 <p>Note the uses of <code>.grey</code>, <code>.cyan</code>, and <code>.underline</code> on the strings echoed to the console. Rerun the server, and you should notice some subtle, but welcome, changes!</p>
 
-<p><code>npm</code> has <a href="http://npmjs.org">a large repository</a> of modules that you can browse. You can also just Google around for Node modules, and more than 95% of the time, the finished products will be on <code>npm</code> for you to install. Play around, and see what you can find!</p>
+<p><code>npm</code> has <a href="http://npmjs.org">a large repository</a> of modules that you can browse. You can also just Google around for Node modules, and most of the time, the finished products will be on <code>npm</code> for you to install. Play around, and see what you can find!</p>
 
 <p><strong>Task 2:</strong> Find one cool module, and add a feature to your web server that uses it.</p>
 
@@ -433,7 +437,7 @@ app.listen(8080, function(){
 
 <p>Express has a ton of cool middleware, most of which is <a href="http://expressjs.com/api.html">documented in the API reference</a>.</p>
 
-<p><strong>Task 3:</strong> add a feature to your web server that uses Express or <a href="http://www.senchalabs.org/connect/">Connect</a> (the layer that sits under Express) middleware. If you&#8217;re short on ideas, adding a static file server might be a good way to go.</p>
+<p><strong>Task 3:</strong> add a feature to your web server that uses Express or <a href="http://www.senchalabs.org/connect/">Connect</a> (the layer that sits under Express) middleware. If you&#8217;re short on ideas, using the static file server middleware might be a good way to go.</p>
 
 <h2 id="checkoff">Check Off</h2>
 
@@ -454,7 +458,7 @@ app.listen(8080, function(){
     console.log('Hi,', name + '!');
 }
 
-// this line means people can call foodmod.doSomethingCool(...)
+// this line means people can call foomod.doSomethingCool(...)
 exports.doSomethingCool = doSomethingCool;
 </code></pre></li>
 </ol>
