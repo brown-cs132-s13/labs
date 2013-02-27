@@ -28,10 +28,25 @@ in the United States (a town, a part of a city, etc.). For example:
 
 ## Setup
 
-Run 'npm install' at the command line to install required libraries for this lab.
+Download the stencil folder for this lab [here](UPLOADTOSERVER) and extract
+it. Open a terminal and `cd` into that directory.
 
-Download from github...
+Run `npm install` at the command line to install required libraries for this lab.
+
+This shouldn't raise any errors but flag a TA if it does!
 
 ## The loader
 
 ## The server
+
+The second portion of your task for this project is to write a server using Node and
+Express to allow users to look up the locations of Zipcodes. You can implement this
+any way that works, but one simple (and uninteresting!) way might be to display the
+location of a Zipcode in the URL:
+
+```
+localhost:8080/02912
+
+-> PROVIDENCE, RI
+```
+
