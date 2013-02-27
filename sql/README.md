@@ -161,6 +161,9 @@ before too.
 Specifically, anyDB supports `row`, `end` and `error` events. The `end` event is
 fired when, as you might have guessed, the query has completed.
 
+The row or result objects will correspond to rows, so if you have a table with column `age` you
+should be able to read that value with `row.age` in the example above.
+
 Hopefully now the stencil code makes sense. It's your job to fill in the SQL to
 create the table that will store the zip codes. Make sure you create a column
 for each field you will be storing. What type should each field be?
@@ -214,7 +217,7 @@ You can parametrize the path with Express simply:
 ```
 app.get('/:zipcode', function(request, response){
 	//request.params.zipcode contains the Zipcode from the path!
-	//Use that to write a query for your database and send the result.
+	//Use that to write a parametrized query for your database and send the result.
 });
 ```
 
