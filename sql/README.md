@@ -159,7 +159,7 @@ before too.
 `conn.query('SQL STATEMENT').on('row', function(row) {...});`
 
 Specifically, anyDB supports `row`, `end` and `error` events. The `end` event is
-fired when, as you might have guessed, the query has completed.  
+fired when, as you might have guessed, the query has completed.
 
 Hopefully now the stencil code makes sense. It's your job to fill in the SQL to
 create the table that will store the zip codes. Make sure you create a column
