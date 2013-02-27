@@ -99,7 +99,7 @@ in the United States (a town, a part of a city, etc.). For example:
 
 ## Setup
 
-Download the stencil folder for this lab [here](UPLOADTOSERVER) and extract
+Download the stencil folder for this lab [here](http://cs.brown.edu/courses/cs132/labs/SQL-lab.zip) and extract
 it. Open a terminal and `cd` into that directory.
 
 Run `npm install` at the command line to install required libraries for this lab.
