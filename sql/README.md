@@ -6,13 +6,13 @@ Structured Query Language is a language to speak to databases.
 A database is a collection of tables. Each table has a number of columns (or fields)
 and rows. Rows usually represent a thing, and columns are one aspect of that thing.
 For example, we might have a table of "people" with columns for first name, last name,
-and age. Columns usually have types like "text" or "integer" to indicate what sort
+and age. Columns usually have types like `text` or `integer` to indicate what sort
 of data they are.
 
 Databases are complicated and you won't have to implement one -- but you will have
 to leverage one. There are many SQL databases such as MySQL, PostgreSQL, and what
 you'll be using today: SQLite3. SQLite is a little bit different from most other
-databases because it's simply stored in a file. (Yours will be named
+databases because the database is simply stored in a file. (Yours will be named
 zipcodes.db and should appear in the same directory as everything else when you run
 your loader.) The library you'll be using to talk to the database, AnyDB, abstracts
 many of these differences, however.
@@ -24,9 +24,10 @@ SQL statements referred to as "queries." *We'll get into the specifics of sendin
 and receiving later.*
 
 The three types of statements you'll need to know for this lab (as well as project 3)
-are CREATE TABLE, INSERT INTO, and SELECT.
+are `CREATE TABLE`, `INSERT INTO`, and `SELECT`. (Most databases don't care about
+the case, but SQL commands are conventionally typed in upper-case.)
 
-CREATE TABLE does exactly what it sounds like. It creates a new table in the database
+`CREATE TABLE` does exactly what it sounds like. It creates a new table in the database
 given a specification of the columns the table should contain. A newly created table
 has 0 rows. A `CREATE TABLE` statement for the people database might look like this:
 
@@ -34,13 +35,13 @@ has 0 rows. A `CREATE TABLE` statement for the people database might look like t
 CREATE TABLE people (firstname TEXT, lastname TEXT, age INTEGER);
 ```
 
-The database doesn't say much in response to a CREATE TABLE unless there's an error,
-so you can mostly ignore it. Note though that issuing a CREATE TABLE when a table
+The database doesn't say much in response to a `CREATE TABLE` unless there's an error,
+so you can mostly ignore it. Note though that issuing a `CREATE TABLE` when a table
 with that name exists already is an error! The most straightforward way to deal with
 this is to delete the database (which isn't destructive because you're filling it back
 up again every time when you run your loader.)
 
-INSERT INTO is also pretty straightforward: it inserts (adds) a row into a table. You'll give
+`INSERT INTO` is also pretty straightforward: it inserts (adds) a row into a table. You'll give
 it the name of the table as well as the values for each column and it creates a new row.
 We could add a new person to people like this:
 
@@ -48,11 +49,11 @@ We could add a new person to people like this:
 INSERT INTO people VALUES ('Sam', 'Birch', 20)
 ```
 
-Again, the server doesn't say much in response to an INSERT INTO.
+Again, the server doesn't say much in response to an `INSERT INTO`.
 
-SELECT is a little trickier, but a good metaphor might be "find me rows." It takes
+`SELECT` is a little trickier, but a good metaphor might be "find me rows." It takes
 three components: a what (which columns, or `*` for all of them), a table, and a corollary
-clause called WHERE. It's clearer when it's written out:
+clause called `WHERE`. It's clearer when it's written out:
 
 ```
 SELECT lastname FROM people WHERE age=20
@@ -66,9 +67,9 @@ know their first name too:
 SELECT * FROM people WHERE age=20
 ```
 
-Unlike CREATE TABLE and INSERT INTO, the database's response to a SELECT is important!
+Unlike `CREATE TABLE` and `INSERT INTO`, the database's response to a `SELECT` is important!
 Again, we'll get into the specifics of reading responses later, but for now understand
-that the database will be sending you a list of rows which fulfil your WHERE clause.
+that the database will be sending you a list of rows which fulfil your `WHERE` clause.
 
 (More about indexes and why you should have a key?)
 
