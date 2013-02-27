@@ -50,3 +50,11 @@ localhost:8080/02912
 -> PROVIDENCE, RI
 ```
 
+You can parametrize the path with Express simply:
+
+```
+app.get('/:zipcode', function(request, response){
+	//request.params.zipcode contains the Zipcode from the path!
+	//Use that to write a query for your database and return the result.
+});
+```
