@@ -171,7 +171,8 @@ inserting.
 SQL statement from outside data. So instead of building the query string with variables:
 `'INSERT INTO people VALUES (' + firstname + ', ' + lastname + ', ' + age + ')'`, use
 `'INSERT INTO people VALUES ($1, $2, $3)'` and pass the values that those `$` should
-be replaced with in the parameters array.
+be replaced with in the parameters array. It's faster, easier for you to read and write,
+and secure.
 
 ## The server
 
