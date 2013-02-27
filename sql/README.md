@@ -128,7 +128,7 @@ before too.
 
 `conn.query('SQL STATEMENT').on('row', ...);`
 
-Specifically, anyDB supports 'row', 'end' and 'error' events. The 'end' event is
+Specifically, anyDB supports `row`, `end` and `error` events. The 'end' event is
 fired when, as you might have guessed, the query has completed.  
 
 Hopefully now the stencil code makes sense. It's your job to fill in the SQL to
@@ -142,7 +142,10 @@ for each field you will be storing. What type should each field be?
 
 Once you have created a table, you'll need to populate it with data from one of
 the .csv files. We've provided you with the zipcoder module to help you do this.
-As you'll find in the stencil code, zipcoder takes a .csv file of regions and calls a callback function on each region. The stencil code prints out the region, which might be useful for testing, but you will want to insert each region into your table here.
+As you'll find in the stencil code, zipcoder takes a .csv file of regions and
+calls a callback function on each region. The stencil code prints out the
+region, which might be useful for testing, but you will want to insert each
+region into your table here.
 
     zipcoder('some\_zipcodes.csv', function(region) {
       console.log(region);
