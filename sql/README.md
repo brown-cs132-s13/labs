@@ -156,12 +156,16 @@ quite a useful feature of AnyDB since we can, for instance with a `SELECT` query
 are read from the database, instead of all at once. We've seen this pattern
 before too.
 
+The `result` objects will have an array of rows in `result.rows`, so if you have 
+10 results with all with column `age` you should be able to read values
+with `results.rows[0].age` (or any other index to read other returned rows).
+
 `conn.query('SQL STATEMENT').on('row', function(row) {...});`
 
 Specifically, anyDB supports `row`, `end` and `error` events. The `end` event is
 fired when, as you might have guessed, the query has completed.
 
-The row or result objects will correspond to rows, so if you have a table with column `age` you
+The row objects will correspond to rows, so if you have a table with column `age` you
 should be able to read that value with `row.age` in the example above.
 
 Hopefully now the stencil code makes sense. It's your job to fill in the SQL to
