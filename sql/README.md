@@ -15,7 +15,7 @@ you'll be using today: SQLite3. SQLite is a little bit different from most other
 databases because the database is simply stored in a file. (Yours will be named
 zipcodes.db and should appear in the same directory as everything else when you run
 your loader.) The library you'll be using to talk to the database, AnyDB, abstracts
-many of these differences, however.
+many of these differences.
 
 Once you're able to talk to a database you can manipulate its contents through
 saying SQL statements, which the server will respond to. The process of sending
@@ -36,8 +36,7 @@ CREATE TABLE people (firstname TEXT, lastname TEXT, age INTEGER);
 ```
 
 The database doesn't say much in response to a `CREATE TABLE` unless there's an error,
-so you can mostly ignore it. Note though that issuing a `CREATE TABLE` when a table
-with that name exists already is an error! The most straightforward way to deal with
+so you can ignore it for now. _Note_: asking the database to `CREATE TABLE` with that name exists already is an error! The most straightforward way to deal with
 this is to delete the database (which isn't destructive because you're filling it back
 up again every time when you run your loader.)
 
@@ -52,16 +51,15 @@ INSERT INTO people VALUES ('Sam', 'Birch', 20)
 Again, the server doesn't say much in response to an `INSERT INTO`.
 
 `SELECT` is a little trickier, but a good metaphor might be "find me rows." It takes
-three components: a what (which columns, or `*` for all of them), a table, and a corollary
+three components: a what (a comma seperated list of columns, or `*` for all of them), a table, and a corollary
 clause called `WHERE`. It's clearer when it's written out:
 
 ```
-SELECT lastname FROM people WHERE age=20
+SELECT lastname, firstname FROM people WHERE age=20
 ```
 
-The database would return the last names of all the people in the table who have
-an age of 20. We could fetch the whole row instead, since we probably want to
-know their first name too:
+The database would return the last and first names of all the people in the table who have
+an age of 20. We could fetch the whole row instead:
 
 ```
 SELECT * FROM people WHERE age=20
@@ -71,7 +69,19 @@ Unlike `CREATE TABLE` and `INSERT INTO`, the database's response to a `SELECT` i
 Again, we'll get into the specifics of reading responses later, but for now understand
 that the database will be sending you a list of rows which fulfil your `WHERE` clause.
 
-(More about indexes and why you should have a key?)
+One final note: finding rows which fulfill a WHERE clause is a tricky operation because
+databases don't like to check every row one-by-one (called a table scan) -- it's quite slow.
+Even on the relatively small scales you'll be using for this class it's important to speed it
+up. The way databases do this is called indexing. Luckily the only thing you have to do
+to make this work is tell the database to do it. You should choose one column which will
+always have a distinct value and which you will be using frequently as a predicate in your
+`WHERE` clause. For the people database we don't really have a good example (since people
+can have the same name) -- we might use Social Security number, phone number, or email
+instead. The syntax is as follows:
+
+```
+CREATE TABLE people (phone TEXT PRIMARY KEY, firstname TEXT, lastname TEXT, age INTEGER);
+```
 
 # Your task
 
