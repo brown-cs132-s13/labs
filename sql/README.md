@@ -132,14 +132,14 @@ straightforward method is to provide the query with a callback function to be ca
 `conn.query('SQL STATEMENT', function(error, result) {...});`
 
 Alternatively we can attach callbacks to specific events on the query. This is
-quite a useful feature of AnyDB since we can, for instance with a SELECT query, process rows as they
+quite a useful feature of AnyDB since we can, for instance with a `SELECT` query, process rows as they
 are read from the database, instead of all at once. We've seen this pattern
 before too.
 
 `conn.query('SQL STATEMENT').on('row', function(row) {...});`
 
-Specifically, AnyDB supports 'row', 'end' and 'error' events. The 'end' event is
-fired when, as you might have guessed, the query has completed.
+Specifically, anyDB supports `row`, `end` and `error` events. The `end` event is
+fired when, as you might have guessed, the query has completed.  
 
 Hopefully now the stencil code makes sense. It's your job to fill in the SQL to
 create the table that will store the zip codes. Make sure you create a column
@@ -152,7 +152,10 @@ for each field you will be storing. What type should each field be?
 
 Once you have created a table, you'll need to populate it with data from one of
 the .csv files. We've provided you with the zipcoder module to help you do this.
-As you'll find in the stencil code, zipcoder takes a .csv file of regions and calls a callback function on each region. The stencil code prints out the region, which might be useful for testing, but you will want to insert each region into your table here.
+As you'll find in the stencil code, zipcoder takes a .csv file of regions and
+calls a callback function on each region. The stencil code prints out the
+region, which might be useful for testing, but you will want to insert each
+region into your table here.
 
     zipcoder('some_zipcodes.csv', function(region) {
       console.log(region);
