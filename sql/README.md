@@ -1,1 +1,1 @@
-Nothing here :)
+Run 'npm install' at the command line to install required libraries for this lab.

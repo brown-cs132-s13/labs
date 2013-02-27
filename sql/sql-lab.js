@@ -1,4 +1,4 @@
-//Run 'npm install' at the command line to install required libraries.
+//See README.md
 
 var anyDB = require('any-db');
 var conn = anyDB.createConnection('sqlite3://:memory:');
