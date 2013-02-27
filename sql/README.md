@@ -97,6 +97,26 @@ in the United States (a town, a part of a city, etc.). For example:
 
 02906: Region around Brown in Providence
 
+You'll be implementing this in two parts. In the first part -- the loader -- you'll be
+writing a Node program (not a server of any kind) which loads Zipcodes
+from a CSV file into a SQLite database. In the second part you'll write a server
+using that database to answer queries.
+
+Using your programs should go like this:
+
+```
+#if zipcodes.db already exists, delete it to start fresh
+rm zipcodes.db
+
+#build a new zipcodes.db
+node loader.js
+
+#run your server
+node server.js
+
+#test your service in your browser!
+```
+
 ## Setup
 
 Download the stencil folder for this lab [here](http://cs.brown.edu/courses/cs132/labs/SQL-lab.zip) and extract
