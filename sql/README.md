@@ -108,13 +108,13 @@ This shouldn't raise any errors but flag a TA if it does!
 
 ## The loader
 
-Open up 'loader.js' and you will notice we've required two modules at the top,
+Open up `loader.js` and you will notice we've required two modules at the top,
 'anyDB' and 'zipcoder.js'. Zipcoder is a local module that we've written for you
 to read in a comma seperated list of zipcodes (.csv files), more on that later. 
 
 [AnyDB](https://github.com/grncdr/node-any-db) is a package on npm that provides
-a simplified interface between your node.js app and a database. One nice thing
-about anyDB is that it makes it easy to swap one type of database for another.
+a simplified interface between your Node app and a database. One nice thing
+about AnyDB is that it makes it easy to swap one type of database for another.
 In this lab we'll be using SQLite3, but in your next project you'll be using
 PostgreSQL. AnyDB provides a common way to interact with databases, regardless of
 which specific one we choose. The first step is to create a connection to our
@@ -127,7 +127,7 @@ database file. For instance if we want to run a bit of SQL on our database we
 use `conn.query('INSERT SQL HERE')`.
 
 AnyDB actually lets us run queries in two different ways. Perhaps the most
-straightforward method is to provide the query with a callback function to be called once the SQL has run on our db. This style is hopefully becoming a familiar pattern by now. 
+straightforward method is to provide the query with a callback function to be called once the SQL has run on our database. This style is hopefully becoming a familiar pattern by now. 
 
 `conn.query('SQL STATEMENT', function(error, result) {...});`
 
@@ -164,8 +164,14 @@ region into your table here.
         .on('error', console.error);
     });
 
-> Hint: the parameters should line up with the each column in the row you are
+_Notes_
+* The parameters should line up with the each column in the row you are
 inserting.
+* You should use *parameterized queries* whenever you're constructing a
+SQL statement from outside data. So instead of building the query string with variables:
+`'INSERT INTO people VALUES (' + firstname + ', ' + lastname + ', ' + age + ')'`, use
+`'INSERT INTO people VALUES ($1, $2, $3)'` and pass the values that those `$` should
+be replaced with in the parameters array.
 
 ## The server
 
@@ -185,6 +191,6 @@ You can parametrize the path with Express simply:
 ```
 app.get('/:zipcode', function(request, response){
 	//request.params.zipcode contains the Zipcode from the path!
-	//Use that to write a query for your database and return the result.
+	//Use that to write a query for your database and send the result.
 });
 ```
