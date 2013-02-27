@@ -193,6 +193,8 @@ SQL statement from outside data. So instead of building the query string with va
 `'INSERT INTO people VALUES ($1, $2, $3)'` and pass the values that those `$` should
 be replaced with in the parameters array. It's faster, easier for you to read and write,
 and secure.
+* You should treat Zipcodes as strings or text for this assignment (if you make
+them integers leading 0s will be stripped off).
 
 ## The server
 
