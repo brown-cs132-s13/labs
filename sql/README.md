@@ -132,13 +132,13 @@ straightforward method is to provide the query with a callback function to be ca
 `conn.query('SQL STATEMENT', function(error, result) {...});`
 
 Alternatively we can attach callbacks to specific events on the query. This is
-quite a useful feature of AnyDB since we can, for instance with a SELECT query, process rows as they
+quite a useful feature of AnyDB since we can, for instance with a `SELECT` query, process rows as they
 are read from the database, instead of all at once. We've seen this pattern
 before too.
 
 `conn.query('SQL STATEMENT').on('row', function(row) {...});`
 
-Specifically, anyDB supports `row`, `end` and `error` events. The 'end' event is
+Specifically, anyDB supports `row`, `end` and `error` events. The `end` event is
 fired when, as you might have guessed, the query has completed.  
 
 Hopefully now the stencil code makes sense. It's your job to fill in the SQL to
