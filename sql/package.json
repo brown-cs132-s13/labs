@@ -3,7 +3,9 @@
 	"description": "SQL Lab for CS132",
 	"version": "0.0.1",
 	"dependencies": {
+		"express": "3.0.x",
 		"any-db": "0.3.x",
-		"sqlite3": "2.1.x"
+		"sqlite3": "2.1.x",
+		"csv": "0.2.7"
 	}
 }
