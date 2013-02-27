@@ -5,7 +5,7 @@ Structured Query Language is a language to speak to databases.
 
 A database is a collection of tables. Each table has a number of columns (or fields)
 and rows. Rows usually represent a thing, and columns are one aspect of that thing.
-For example, we might have a table of "people" with columns for first name, last name,
+For example, we might have a table `people` with columns for first name, last name,
 and age. Columns usually have types like `text` or `integer` to indicate what sort
 of data they are.
 
@@ -29,7 +29,7 @@ the case, but SQL commands are conventionally typed in upper-case.)
 
 `CREATE TABLE` does exactly what it sounds like. It creates a new table in the database
 given a specification of the columns the table should contain. A newly created table
-has 0 rows. A `CREATE TABLE` statement for the people database might look like this:
+has 0 rows. A `CREATE TABLE` statement for the `people` database might look like this:
 
 ```
 CREATE TABLE people (firstname TEXT, lastname TEXT, age INTEGER);
@@ -43,7 +43,7 @@ up again every time when you run your loader.)
 
 `INSERT INTO` is also pretty straightforward: it inserts (adds) a row into a table. You'll give
 it the name of the table as well as the values for each column and it creates a new row.
-We could add a new person to people like this:
+We could add a new person to `people` like this:
 
 ```
 INSERT INTO people VALUES ('Sam', 'Birch', 20)
