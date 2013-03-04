@@ -24,15 +24,10 @@ npm install express
 ```
 
 This will install all of the dependencies needed for Express.
-Next we can initialize an Express application in the directory.
-This will just set up a simple directory structure to get you going
-quickly:
 
-```
-./node_modules/express/bin/express .
-```
-
-(It's OK that the directory isn't empty: type 'y' and then enter.)
+We've already initialized an Express application in the directory,
+which is just a simple directory structure to get you going
+quickly. The main application is in `app.js`.
 
 What are sessions?
 -----------------
@@ -139,8 +134,8 @@ The best way to learn some of the syntax is [this interactive
 tutorial](http://naltatis.github.com/jade-syntax-docs/). (You'll
 only need what they show in the first couple examples.)
 
-The Jade files should go under the views directory that Express has so generously
-made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
+The Jade files should go under the views directory.
+If our file `doc1.jade` is in `views/doc1.jade` we can load
 in on request by adding the following to `app.js`.
 
 ```
