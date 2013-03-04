@@ -6,14 +6,18 @@ Setup
 ------
 Create a new directory in your cs132 directory and `cd` to it. The first thing that we need to do is install Express. For that we enter: 
 
-```npm install express```
+```
+npm install express
+```
 
 As we learned earlier, this will install all of the dependencies needed for Express,
 as well as adding it to your path. Next we can initialize an Express application in
 the directory. This will just set up a simple directory structure to get you going
 quickly:
 
-```express```
+```
+express
+```
 
 What are sessions?
 -----------------
