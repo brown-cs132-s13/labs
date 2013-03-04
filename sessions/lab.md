@@ -140,8 +140,7 @@ only need what they show in the first couple examples.)
 
 The Jade files should go under the `views` directory.
 
-If our file `doc1.jade` is in `views/doc1.jade` we can load
-in on request by adding the following to `app.js`.
+If our file `doc1.jade` is in `views/doc1.jade` we can render it by adding the following to `app.js`:
 
 ```
 app.get('/doc1', function(req,res) {
