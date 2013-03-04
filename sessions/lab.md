@@ -27,8 +27,9 @@ that we need to do is install Express. For that we enter:
 npm install express
 ```
 
-This will install all of the dependencies needed for Express. Next we can initialize an Express application in
-the directory. This will just set up a simple directory structure to get you going
+This will install all of the dependencies needed for Express.
+Next we can initialize an Express application in the directory.
+This will just set up a simple directory structure to get you going
 quickly:
 
 ```
@@ -65,8 +66,7 @@ Using Express Sessions
 There are a couple of things that we need to setup sessions in Express,
 as they are not included on the bare-bones stencil.
 
-Remember, earlier we said that this implementation used cookies.
-Thus we need to tell Express that we are going to use cookies.
+First we need to tell Express that we are going to use cookies.
 So we add the following inside app.configure:
 
 ```
