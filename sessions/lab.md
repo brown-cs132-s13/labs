@@ -1,6 +1,22 @@
 CS132 Lab 4: Sessions in Node.js
 ================================
-In this lab you will write a basic web application in <a href="http://nodejs.org/">Node</a> that will rememeber its users after they sign in.
+In this lab you will write a Node web application
+that will rememeber its users after they sign in.
+
+Project Description
+-------------------
+You have been hired by the British government to make sure some of 
+their files can not be seen by non-citizens.
+
+In other words, for British eyes only.
+
+They have supplied you with their documents. They need you to
+make a login page that protects their index page of
+British documents.
+
+#TODO?
+
+You can find the documents in `/course/cs132/pub/lab5`.
 
 Setup
 ------
@@ -42,57 +58,8 @@ The browser sends the cookies associated with a domain along with
 every request that is sent there in an HTTP header. Cookies
 can be set via a response HTTP header or by Javascript.
 
-Project Description
--------------------
-You have been hired by the British government to make sure some of 
-their files can not be seen by non-citizens.
 
-In other words, for British eyes only.
-
-They have supplied you with their documents. They need you to
-make a login page that protects their index page of
-British documents.
-
-#TODO?
-
-You can find the documents in `/course/cs132/pub/lab5`.
-
-Using Jade
------
-
-As you saw in the Node lab, writing HTML pages with Javascript becomes
-unpleasant quickly as your page gets bigger. In order to build large
-pages which incorporate data provided by your application, you should
-use a templating language. These languages are mixes of HTML-like syntax
-and code which allow you to write HTML with application-provided values
-interspersed.
-
-The British use a templating engine called <a href="http://jade-lang.com/">Jade</a>,
-which is a somewhat simpler way of writing HTML. It omits the `<> </>` marks from
-HTML and is instead based on indents.
-
-For example, if you wanted to create a page with a header and an image you would write:
-
-```
-h1 This is my header
-img(src="img.jpg")
-```
-
-To see an example, go to the <a href="http://jade-lang.com">Jade</a> website.
-The Jade files should go under the views directory that Express has so generously
-made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
-in on request by adding the following to `app.js`.
-
-```
-app.get('/doc1', function(req,res) {
-  res.render("doc1.jade", {title: "Top Secret"});
-});
-```
-
-Passing the title along will display it at the top of the page (A Jade feature).
-You may also pass along an empty Javascript object "{}".
-
-Express Sessions
+Using Express Sessions
 ----------------
 There are a couple of things that we need to setup sessions in Express,
 as they are not included on the bare-bones stencil. In Express, when we
@@ -154,6 +121,43 @@ The next time a request comes in, we can access that param once again through th
 ```
 var previous_param = req.session.param_name
 ```
+
+Using Jade
+-----
+
+As you saw in the Node lab, writing HTML pages with Javascript becomes
+unpleasant quickly as your page gets bigger. In order to build large
+pages which incorporate data provided by your application, you should
+use a templating language. These languages are mixes of HTML-like syntax
+and code which allow you to write HTML with application-provided values
+interspersed.
+
+The British use a templating engine called <a href="http://jade-lang.com/">Jade</a>,
+which is a somewhat simpler way of writing HTML. It omits the `<> </>` marks from
+HTML and is instead based on indents.
+
+For example, if you wanted to create a page with a header and an image you would write:
+
+```
+h1 This is my header
+img(src="img.jpg")
+```
+
+http://naltatis.github.com/jade-syntax-docs/
+
+To see an example, go to the <a href="http://jade-lang.com">Jade</a> website.
+The Jade files should go under the views directory that Express has so generously
+made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
+in on request by adding the following to `app.js`.
+
+```
+app.get('/doc1', function(req,res) {
+  res.render("doc1.jade", {title: "Top Secret"});
+});
+```
+
+Passing the title along will display it at the top of the page (A Jade feature).
+You may also pass along an empty Javascript object "{}".
 
 British Orders
 ---------------
