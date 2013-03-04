@@ -14,7 +14,7 @@ British documents.
 
 Setup
 ------
-Extract [Sessions-Lab.zip]() and `cd` to the directory.
+Extract [Sessions-Lab.zip](http://cs.brown.edu/courses/cs132/labs/Sessions-Lab.zip) and `cd` to the directory.
 
 The first thing that we need to do is install Express. For that we enter: 
 
