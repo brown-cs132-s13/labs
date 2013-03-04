@@ -49,9 +49,11 @@ their files can not be seen by non-citizens.
 
 In other words, for British eyes only.
 
-They have supplied you with the files. They need you to
+They have supplied you with their documents. They need you to
 make a login page that protects their index page of
 British documents.
+
+#TODO?
 
 You can find the documents in `/course/cs132/pub/lab5`.
 
@@ -60,23 +62,23 @@ Using Jade
 
 As you saw in the Node lab, writing HTML pages with Javascript becomes
 unpleasant quickly as your page gets bigger. In order to build large
-pages which incorporate data fed in by your application, you should
-use a templating language. These languages are mixes of HTML-like syntaxes
-and code which allow you to build 
+pages which incorporate data provided by your application, you should
+use a templating language. These languages are mixes of HTML-like syntax
+and code which allow you to write HTML with application-provided values
+interspersed.
 
 The British use a templating engine called <a href="http://jade-lang.com/">Jade</a>,
-which is a somewhat simpler way of writing HTML. It omits the <> </> marks from
+which is a somewhat simpler way of writing HTML. It omits the `<> </>` marks from
 HTML and is instead based on indents.
 
-For example, if you would like to create a webpage with a header and an image you would write:
+For example, if you wanted to create a page with a header and an image you would write:
 
 ```
 h1 This is my header
-
 img(src="img.jpg")
 ```
 
-To see a go example, go to the <a href="http://jade-lang.com">Jade</a> website.
+To see an example, go to the <a href="http://jade-lang.com">Jade</a> website.
 The Jade files should go under the views directory that Express has so generously
 made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
 in on request by adding the following to `app.js`.
@@ -92,38 +94,78 @@ You may also pass along an empty Javascript object "{}".
 
 Express Sessions
 ----------------
-There are a couple of things that we need to setup sessions in Express, as they are not included on the bare-bones stencil. In Express, when we need to have a memory store in which to store the session information and we also need to specify a time interval to clear the cache (remember that sessions are semi-persistent). I like to create a temporary variable called MemStore to do this:
+There are a couple of things that we need to setup sessions in Express,
+as they are not included on the bare-bones stencil. In Express, when we
+need to have a memory store in which to store the session information
+and we also need to specify a time interval to clear the cache (remember
+that sessions are semi-persistent). I like to create a temporary
+variable called MemStore to do this:
 
-> <b> var MemStore = express.session.MemoryStore; </b>
+```
+var MemStore = express.session.MemoryStore;
+```
 
-Remeber, earlier we said that this implementation used cookies. Thus we need to tell Express that we are going to use cookies. So we add the following inside app.configure:
+Remeber, earlier we said that this implementation used cookies.
+Thus we need to tell Express that we are going to use cookies.
+So we add the following inside app.configure:
 
-> <b> app.use(express.cookieParser()); </b>
+```
+app.use(express.cookieParser());
+```
 
-Then we need to tell the app config that we are going to be using sessions. To do this we add the following snippet inside the app.configure method:
+Then we need to tell the app config that we are going to be using sessions.
+To do this we add the following snippet inside the app.configure method:
 
-> <b> app.use(express.session({secret: 'secret_key', store: MemStore({<br/>reapInterval: 60000 * 10<br/>})}));</b>
+```
+app.use(express.session({
+  secret: 'secret_key',
+  store: MemStore({reapInterval: 60000 * 10})
+}));
+```
 
-Note that I made the reapInterval 10 minutes (the value needs to be in miliseconds), but I could have made it as long or as short as I wanted. Also, notice how I used my temporary variable <b>MemStore</b>. This is for cosmetic purposes only. You could have written:
+Note that I made the reapInterval 10 minutes (the value needs to be in miliseconds),
+but I could have made it as long or as short as I wanted. Also, notice 
+how I used my temporary variable <b>MemStore</b>. This is for cosmetic purposes only.
+You could have written:
 
-> <b> app.use(express.session({secret: 'secret_key', store: express.session.MemoryStore({<br/>reapInterval: 60000 * 10<br/>})}));</b>
+```
+app.use(express.session({
+  secret: 'secret_key',
+  store: express.session.MemoryStore({reapInterval: 60000 * 10})
+}));
+```
 
-Now Express knows that we are going to be using sessions, so we can use them freely. Before we do this, we need to know how to recieve post parameters from node. To do this we need to access the request object:
+Now Express knows that we are going to be using sessions, so we can use them freely.
+Before we do this, we need to know how to recieve post parameters from node.
+To do this we need to access the request object:
 
-> <b> req.param('param_name') </b>
+```
+req.param('param_name')
+```
 
 Knowing this, if we want to store a post param in the session, all we have to do is:
 
-> <b> req.session.param_name = req.param('param_name');</b>
+```
+req.session.param_name = req.param('param_name');
+```
 
 The next time a request comes in, we can access that param once again through the request object
 
-> <b> var previous_param = req.session.param_name </b>
+```
+var previous_param = req.session.param_name
+```
 
 British Orders
 ---------------
-The British government wants you to have people enter their name, password, and click a checkbox confirming that they are indeed British (because no one lies on the internet). You should store their credentials in their session, and when they try to access one of the documents, check whether or not they are British. If they are, then you should display the "docN.jade" page they requested, otherwise you should send them to an error page that you created.
+The British government wants you to have people enter their name, password,
+and click a checkbox confirming that they are indeed British (because no one lies on the internet).
+You should store their credentials in their session, and when they try to access one 
+of the documents, check whether or not they are British. If they are,
+then you should display the "docN.jade" page they requested, otherwise you should
+send them to an error page that you created.
 
 Checkoff
 -------------
 When you are finished, call over a TA, and we will check you off. If you have questions, just ask! 
+
+You can also get checked off during hours for the next week.
