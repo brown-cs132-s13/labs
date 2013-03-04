@@ -92,7 +92,7 @@ we add the following snippet inside the `app.configure` method:
 ```
 app.use(express.session({
   secret: 'some_secret_key',
-  store: express.session.MemoryStore({reapInterval: 60000 * 10})
+  store: new express.session.MemoryStore({reapInterval: 60000 * 10})
 }));
 ```
 
