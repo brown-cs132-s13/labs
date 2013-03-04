@@ -20,27 +20,28 @@ You can find the documents in `/course/cs132/pub/lab5`.
 
 Setup
 ------
-Create a new directory in your cs132 directory and `cd` to it. The first thing that we need to do is install Express. For that we enter: 
+Create a new directory and `cd` to it. The first thing
+that we need to do is install Express. For that we enter: 
 
 ```
 npm install express
 ```
 
-As we learned earlier, this will install all of the dependencies needed for Express,
-as well as adding it to your path. Next we can initialize an Express application in
+This will install all of the dependencies needed for Express. Next we can initialize an Express application in
 the directory. This will just set up a simple directory structure to get you going
 quickly:
 
 ```
-express
+./node_modules/express/bin/express .
 ```
 
 What are sessions?
 -----------------
 Sessions are temporary data associated with a user by a web application.
-They last for between 15 minutes and several weeks, or until a user signs out.
+They typically last for between 15 minutes and several weeks, or until a user signs out.
 Sessions are used by many web applications to keep track of
-information from one request to another, especially authentication.
+information from one request to another, especially authentication information.
+
 HTTP is a stateless protocol: a server has no idea of knowing from
 HTTP alone that the request it just got came from the same user as another
 5 minutes ago. For example, without sessions, a user would have to log in
@@ -62,23 +63,20 @@ can be set via a response HTTP header or by Javascript.
 Using Express Sessions
 ----------------
 There are a couple of things that we need to setup sessions in Express,
-as they are not included on the bare-bones stencil. In Express, when we
-need to have a memory store in which to store the session information
-and we also need to specify a time interval to clear the cache (remember
-that sessions are semi-persistent). I like to create a temporary
-variable called MemStore to do this:
+as they are not included on the bare-bones stencil.
 
-```
-var MemStore = express.session.MemoryStore;
-```
-
-Remeber, earlier we said that this implementation used cookies.
+Remember, earlier we said that this implementation used cookies.
 Thus we need to tell Express that we are going to use cookies.
 So we add the following inside app.configure:
 
 ```
 app.use(express.cookieParser());
 ```
+
+In Express, when we
+need to have a memory store in which to store the session information
+and we also need to specify a time interval to clear the cache (remember
+that sessions are semi-persistent).
 
 Then we need to tell the app config that we are going to be using sessions.
 To do this we add the following snippet inside the app.configure method:
