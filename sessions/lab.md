@@ -1,44 +1,94 @@
 CS132 Lab 4: Sessions in Node.js
 ================================
-In this lab you will write a basic web application in <a href="http://nodejs.org/">Node</a> that will rememeber it's users after they sign in using the <a href="http://expressjs.com/">Express</a> Framework.
+In this lab you will write a basic web application in <a href="http://nodejs.org/">Node</a> that will rememeber its users after they sign in.
 
 Setup
 ------
-Create a new directory in your cs132 directory and change to it. The first thing that we need to do is install express. For that we enter: 
+Create a new directory in your cs132 directory and `cd` to it. The first thing that we need to do is install Express. For that we enter: 
 
-> <b> npm install express </b>
+```npm install express```
 
-As we learned earlier, this will install all of the dependencies needed for express, as well as adding it to your path. Next we need to initialize a express application in the directory. Again, this should be review from the Node.js lab.
+As we learned earlier, this will install all of the dependencies needed for Express,
+as well as adding it to your path. Next we can initialize an Express application in
+the directory. This will just set up a simple directory structure to get you going
+quickly:
 
-> <b> express </b>
-
-This will add everything needed for the bare-bones web application.
+```express```
 
 What are sessions?
 -----------------
-Sessions are a semi-permanent information interchange between a user and the web application itself. Sessions are used by the majority of modern web applications to keep track of relevant information from one request to another. For example, without sessions, the user would have to log in to amazon or facebook at every page request to make sure that the user has the right to view the information on the page. 
+Sessions are temporary data associated with a user by a web application.
+They last for between 15 minutes and several weeks, or until a user signs out.
+Sessions are used by many web applications to keep track of
+information from one request to another, especially authentication.
+HTTP is a stateless protocol: a server has no idea of knowing from
+HTTP alone that the request it just got came from the same user as another
+5 minutes ago. For example, without sessions, a user would have to log in
+to Amazon or Facebook for every page loaded!
 
-There are multiple types of ways of mimicing sessions. The method we will be using today makes use of Cookies. Cookies are little chunks of persistent information from the web application that the browser allows to be stored locally on the computer. Each cookie is web application specific, and can store any information the user has given the web application. In the case of sessions, it will store a unique number called a session ID which will be sent back to the web application on request to make sure the user has the appropriate credentials.
+There are multiple ways of implementing sessions, but the fundamentals are
+the same: the server generates a random string, called the session ID, which
+the client then presents on subsequent requests -- like a temporary
+password.
+
+The method we will be using in this lab uses cookies.
+Cookies are small pieces of data (a few kilobytes at most)
+stored by the browser associated with some domain (such as `twitter.com`).
+The browser sends the cookies associated with a domain along with
+every request that is sent there in an HTTP header. Cookies
+can be set via a response HTTP header or by Javascript.
 
 Project Description
 -------------------
-You have been hired by the British government to make sure some of their files can not be seen by non citizens. In other words, for British eyes only. They have supplied you with the files. They need you ta make a login page that links the their index page of the British documents. You can find the jade files in /course/cs132/pub/lab5
+You have been hired by the British government to make sure some of 
+their files can not be seen by non-citizens.
 
-Jade
+In other words, for British eyes only.
+
+They have supplied you with the files. They need you to
+make a login page that protects their index page of
+British documents.
+
+You can find the documents in `/course/cs132/pub/lab5`.
+
+Using Jade
 -----
-The British use a templating engine called <a href="http://jade-lang.com/">Jade</a> which is a cleaner way of writing html. Jade is quite simple. It removes the <> </> tags from html and is instead indent based. For example, if you would like to create a webpage with a header and an image you would write:
 
-> <b>h1 This is my header <br/> img(src="img.jpg")</b>
+As you saw in the Node lab, writing HTML pages with Javascript becomes
+unpleasant quickly as your page gets bigger. In order to build large
+pages which incorporate data fed in by your application, you should
+use a templating language. These languages are mixes of HTML-like syntaxes
+and code which allow you to build 
 
-To see a go example, go to the <a href="http://jade-lang.com">Jade</a> website. The Jade files should go under the views directory that <a href="http://expressjs.com/">Express</a> has so generously made for us. If our file "doc1.jade" is in "views/doc1.jade" we can lode in on request by adding the following to app.js.
+The British use a templating engine called <a href="http://jade-lang.com/">Jade</a>,
+which is a somewhat simpler way of writing HTML. It omits the <> </> marks from
+HTML and is instead based on indents.
 
-> <b>app.get('/doc1', function(req,res) {<br/> res.render("doc1.jade", {title: "Top Secret"}) :<br/> });</b>
+For example, if you would like to create a webpage with a header and an image you would write:
 
-Passing the title along will display it at the top of the page (A Jade feature). You may also pass along an empty Javascript object "{}".
+```
+h1 This is my header
+
+img(src="img.jpg")
+```
+
+To see a go example, go to the <a href="http://jade-lang.com">Jade</a> website.
+The Jade files should go under the views directory that Express has so generously
+made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
+in on request by adding the following to `app.js`.
+
+```
+app.get('/doc1', function(req,res) {
+  res.render("doc1.jade", {title: "Top Secret"});
+});
+```
+
+Passing the title along will display it at the top of the page (A Jade feature).
+You may also pass along an empty Javascript object "{}".
 
 Express Sessions
 ----------------
-There are a couple of things that we need to setup sessions in express, as they are not included on the bare-bones stencil. In Express, when we need to have a memory store in which to store the session information and we also need to specify a time interval to clear the cache (remember that sessions are semi-persistent). I like to create a temporary variable called MemStore to do this:
+There are a couple of things that we need to setup sessions in Express, as they are not included on the bare-bones stencil. In Express, when we need to have a memory store in which to store the session information and we also need to specify a time interval to clear the cache (remember that sessions are semi-persistent). I like to create a temporary variable called MemStore to do this:
 
 > <b> var MemStore = express.session.MemoryStore; </b>
 
