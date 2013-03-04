@@ -113,7 +113,7 @@ app.get('/my-name-is', function(req, res){
 	//this sets the "name" property of the session
 	//to the name provided in the query paramters
 	//e.g. http://localhost:8080/my-name-is?name=Kyle
-	req.session.name = req.query('name');
+	req.session.name = req.query.name;
 })
 ```
 
