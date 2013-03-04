@@ -1,7 +1,5 @@
 CS132 Lab 4: Sessions in Node.js
 ================================
-In this lab you will write a Node web application
-that will rememeber its users after they sign in.
 
 Project Description
 -------------------
@@ -27,7 +25,9 @@ This will install all of the dependencies needed for Express.
 
 We've already initialized an Express application in the directory,
 which is just a simple directory structure to get you going
-quickly. The main application is in `app.js`.
+quickly. (You could autogenerate this yourself with the `express` command,
+if you'd installed Express globally with `-g`).
+The main application is in `app.js`.
 
 What are sessions?
 -----------------
@@ -37,13 +37,13 @@ Sessions are used by many web applications to keep track of
 information from one request to another, especially authentication information.
 
 HTTP is a stateless protocol: a server has no idea of knowing from
-HTTP alone that the request it just got came from the same user as another
+HTTP alone that the request it just received came from the same user as another request
 5 minutes ago. For example, without sessions, a user would have to log in
 to Amazon or Facebook for every page loaded!
 
 There are multiple ways of implementing sessions, but the fundamentals are
 the same: the server generates a random string, called the session ID, which
-the client then presents on subsequent requests -- like a temporary
+the client (the browser) then presents on subsequent requests -- like a temporary
 password.
 
 The method we will be using in this lab uses cookies.
@@ -56,23 +56,27 @@ can be set via a response HTTP header or by Javascript.
 
 Using Express Sessions
 ----------------
-There are a couple of things that we need to setup sessions in Express,
+There are a couple of things that we need to set up sessions in Express,
 as they are not included on the bare-bones stencil.
 
-First we need to tell Express that we are going to use cookies.
+First we need to tell Express that we're going to use cookies.
 So we add the following inside app.configure:
 
 ```
 app.use(express.cookieParser());
 ```
 
+This tells Express to parse the appropriate headers in the HTTP
+request and make the data available to your application.
+
 We'll use a very simple storage system for our sessions, called
 a `MemoryStore`. (Technical: This maintains a data structure in the memory
-of your process to keep track of state.) Although it's very simple,
-the downside is that your sessions will be deleted whenever your
-Node application restarts. More advanced applications would use
-a database system to store this sort of information. We also need to
-specify a time interval to clear the cache (remember that sessions are
+of your process to keep track of state.) It's very simple, and
+your sessions will be deleted whenever your Node application restarts.
+More advanced applications would use
+a database system to store this sort of information.
+
+We also need to specify a time interval to clear the cache (remember that sessions are
 temporary). 
 
 To tell Express that we are going to be using sessions with a `MemoryStore`
@@ -85,10 +89,10 @@ app.use(express.session({
 }));
 ```
 
-Note that the reapInterval is 10 minutes (the value needs to be in miliseconds),
-but I could have made it as long or as short as I wanted. (The secret key is used
+Note that the reapInterval is 10 minutes (the value needs to be in milliseconds),
+but it could be as long or as short as needed. (The secret key is used
 to digitally sign session IDs so that clients can't try to impersonate other
-session IDs.)
+session IDs or falsify other session data.)
 
 With sessions enabled and configured you can use the `session`
 property of the request object in any handler:
@@ -116,7 +120,7 @@ use a templating language. These languages are mixes of HTML-like syntax
 and code which allow you to write HTML with application-provided values
 interspersed.
 
-Templating usually requires a template (usually stored in a file) and data
+Rendering a page usually requires a template (usually stored in a file) and the data
 which will be provided to it.
 
 The British use a templating engine called <a href="http://jade-lang.com/">Jade</a>,
@@ -134,7 +138,8 @@ The best way to learn some of the syntax is [this interactive
 tutorial](http://naltatis.github.com/jade-syntax-docs/). (You'll
 only need what they show in the first couple examples.)
 
-The Jade files should go under the views directory.
+The Jade files should go under the `views` directory.
+
 If our file `doc1.jade` is in `views/doc1.jade` we can load
 in on request by adding the following to `app.js`.
 
@@ -149,15 +154,15 @@ directory, and the second is the data that will be rendered in the template.
 (If you don't template in any variables you can just send it `{}`.)
 
 (You should also know that Express automatically wraps your views in
-the contents of `layout.jade`. This functionality is deprecated in
+the contents of `views/layout.jade`. This functionality is deprecated in
 favor of using extension in the templating language itself, but
 for our simple pages it's useful.)
 
 You'll probably want to write templates for:
 
-* The index page (where the user logs in)
+* The index page (where the user logs in with a form)
 * The /documents directory
-* The error / access denied page
+* An "access denied" page (super semantic kudos if you make the page return the right status code)
 
 Forms
 -----
