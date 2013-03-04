@@ -73,51 +73,44 @@ So we add the following inside app.configure:
 app.use(express.cookieParser());
 ```
 
-In Express, when we
-need to have a memory store in which to store the session information
-and we also need to specify a time interval to clear the cache (remember
-that sessions are semi-persistent).
+We'll use a very simple storage system for our sessions, called
+a `MemoryStore`. (Technical: This maintains a data structure in the memory
+of your process to keep track of state.) Although it's very simple,
+the downside is that your sessions will be deleted whenever your
+Node application restarts. More advanced applications would use
+a database system to store this sort of information. We also need to
+specify a time interval to clear the cache (remember that sessions are
+temporary). 
 
-Then we need to tell the app config that we are going to be using sessions.
-To do this we add the following snippet inside the app.configure method:
-
-```
-app.use(express.session({
-  secret: 'secret_key',
-  store: MemStore({reapInterval: 60000 * 10})
-}));
-```
-
-Note that I made the reapInterval 10 minutes (the value needs to be in miliseconds),
-but I could have made it as long or as short as I wanted. Also, notice 
-how I used my temporary variable <b>MemStore</b>. This is for cosmetic purposes only.
-You could have written:
+To tell Express that we are going to be using sessions with a `MemoryStore`
+we add the following snippet inside the `app.configure` method:
 
 ```
 app.use(express.session({
-  secret: 'secret_key',
+  secret: 'some_secret_key',
   store: express.session.MemoryStore({reapInterval: 60000 * 10})
 }));
 ```
 
-Now Express knows that we are going to be using sessions, so we can use them freely.
-Before we do this, we need to know how to recieve post parameters from node.
-To do this we need to access the request object:
+Note that the reapInterval is 10 minutes (the value needs to be in miliseconds),
+but I could have made it as long or as short as I wanted. (The secret key is used
+to digitally sign session IDs so that clients can't try to impersonate other
+session IDs.)
+
+With sessions enabled and configured you can use the `session`
+property of the request object in any handler:
 
 ```
-req.param('param_name')
-```
+app.get('/what-is-my-name, function(req, res){
+    res.end('Hello, ' + req.session.name);
+});
 
-Knowing this, if we want to store a post param in the session, all we have to do is:
-
-```
-req.session.param_name = req.param('param_name');
-```
-
-The next time a request comes in, we can access that param once again through the request object
-
-```
-var previous_param = req.session.param_name
+app.get('/my-name-is', function(req, res){
+	//this sets the "name" property of the session
+	//to the name provided in the query paramters
+	//e.g. http://localhost:8080/my-name-is?name=Kyle
+	req.session.name = req.query('name');
+})
 ```
 
 Using Jade
@@ -130,6 +123,9 @@ use a templating language. These languages are mixes of HTML-like syntax
 and code which allow you to write HTML with application-provided values
 interspersed.
 
+Templating usually requires a template (usually stored in a file) and data
+which will be provided to it.
+
 The British use a templating engine called <a href="http://jade-lang.com/">Jade</a>,
 which is a somewhat simpler way of writing HTML. It omits the `<> </>` marks from
 HTML and is instead based on indents.
@@ -141,9 +137,9 @@ h1 This is my header
 img(src="img.jpg")
 ```
 
-http://naltatis.github.com/jade-syntax-docs/
+The best way to learn some of the more involved syntax is [this interactive
+tutorial](http://naltatis.github.com/jade-syntax-docs/).
 
-To see an example, go to the <a href="http://jade-lang.com">Jade</a> website.
 The Jade files should go under the views directory that Express has so generously
 made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
 in on request by adding the following to `app.js`.
@@ -154,8 +150,66 @@ app.get('/doc1', function(req,res) {
 });
 ```
 
-Passing the title along will display it at the top of the page (A Jade feature).
-You may also pass along an empty Javascript object "{}".
+Note that the first argument is the name of a template file in the `views`
+directory, and the second is the data that will be rendered in the template.
+(If you don't template in any variables you can just send it `{}`.)
+
+(You should also know that Express automatically wraps your views in
+the contents of `layout.jade`. This functionality is deprecated in
+favor of using extension in the templating language itself, but
+for our simple pages it's useful.)
+
+You'll probably want to write templates for:
+
+* The index page (where the user logs in)
+* The /documents directory
+* The error / access denied page
+
+Forms
+-----
+
+You'll also be using forms with Node for the first time
+in this lab. A form usually sends data to the server
+using a POST request rather than the GET request
+used for links and direct navigations.
+
+You can recieve POST parameters in Node from the request object:
+
+```
+req.param('param_name')
+```
+
+This corresponds to the `name` attribute of a form field.
+
+Your form (in Jade syntax) might look something like this:
+
+```
+form(method='post', action='/documents')
+    | Username:
+    input(name="username", type="text")
+    br
+    | Password: 
+    input(name="password", type="password")
+    br
+    | Are you British?
+    input(name="brit", type="checkbox")
+    br
+    input(value="Submit", type="submit")
+```
+
+And you should define a POST handler for `/documents`:
+
+```
+app.post('/documents', function(req, res) {
+    //Read values from your form
+    var username = req.param('username');
+    var password = req.param('password');
+    var brit = req.param('brit');
+
+    //Show the list of documents or an error,
+    //depending on whether they're British.
+});
+```
 
 British Orders
 ---------------
@@ -165,6 +219,9 @@ You should store their credentials in their session, and when they try to access
 of the documents, check whether or not they are British. If they are,
 then you should display the "docN.jade" page they requested, otherwise you should
 send them to an error page that you created.
+
+You don't need to check whether their username and password are valid, though you
+can if you like. As long as they promised they're British they're good to go.
 
 Checkoff
 -------------
