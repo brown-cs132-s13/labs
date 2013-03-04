@@ -6,7 +6,7 @@ Project Description
 You have been hired by the British government to make sure some of 
 their files can not be seen by non-citizens.
 
-In other words, for British eyes only.
+They are *for British eyes only*.
 
 They have supplied you with their documents. They need you to
 make a login page that protects their index page of
