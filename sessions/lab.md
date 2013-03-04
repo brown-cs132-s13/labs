@@ -24,6 +24,12 @@ npm install express
 
 This will install all of the dependencies needed for Express.
 
+Likewise for <a href="http://jade-lang.com/">Jade</a>, a templating language we'll be using:
+
+```
+npm install jade
+```
+
 We've already initialized an Express application in the directory,
 which is just a simple directory structure to get you going
 quickly. (You could autogenerate this yourself with the `express` command,
