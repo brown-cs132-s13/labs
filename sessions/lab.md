@@ -114,8 +114,15 @@ app.get('/my-name-is', function(req, res){
 	//to the name provided in the query paramters
 	//e.g. http://localhost:8080/my-name-is?name=Kyle
 	req.session.name = req.query.name;
+	res.send('Name set.')
 })
 ```
+
+*Troubleshooting*: make sure your middlewares (`app.use`) is in the correct order:
+
+* `cookieParser()`
+* `session()`
+* `app.router`
 
 Using Jade
 -----
