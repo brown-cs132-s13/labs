@@ -105,7 +105,7 @@ With sessions enabled and configured you can use the `session`
 property of the request object in any handler:
 
 ```
-app.get('/what-is-my-name, function(req, res){
+app.get('/what-is-my-name', function(req, res){
     res.end('Hello, ' + req.session.name);
 });
 
