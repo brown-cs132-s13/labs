@@ -14,10 +14,6 @@ They have supplied you with their documents. They need you to
 make a login page that protects their index page of
 British documents.
 
-#TODO?
-
-You can find the documents in `/course/cs132/pub/lab5`.
-
 Setup
 ------
 Create a new directory and `cd` to it. The first thing
@@ -35,6 +31,8 @@ quickly:
 ```
 ./node_modules/express/bin/express .
 ```
+
+(It's OK that the directory isn't empty: type 'y' and then enter.)
 
 What are sessions?
 -----------------
@@ -137,8 +135,9 @@ h1 This is my header
 img(src="img.jpg")
 ```
 
-The best way to learn some of the more involved syntax is [this interactive
-tutorial](http://naltatis.github.com/jade-syntax-docs/).
+The best way to learn some of the syntax is [this interactive
+tutorial](http://naltatis.github.com/jade-syntax-docs/). (You'll
+only need what they show in the first couple examples.)
 
 The Jade files should go under the views directory that Express has so generously
 made for us. If our file `doc1.jade` is in `views/doc1.jade` we can load
