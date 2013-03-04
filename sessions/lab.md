@@ -1,4 +1,4 @@
-CS132 Lab 4: Sessions in Node.js
+CS132 Lab 5: Sessions in Node.js
 ================================
 
 Project Description
@@ -14,8 +14,9 @@ British documents.
 
 Setup
 ------
-Create a new directory and `cd` to it. The first thing
-that we need to do is install Express. For that we enter: 
+Extract [Sessions-Lab.zip]() and `cd` to the directory.
+
+The first thing that we need to do is install Express. For that we enter: 
 
 ```
 npm install express
