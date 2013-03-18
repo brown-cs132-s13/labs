@@ -23,7 +23,7 @@ We'll concern ourselves mostly with the first two.
 
 ### The client side (the browser) is not secure
 
-Nothing that happens in the browser is secure: the user can manipulate everything that happens on a page, from its content to the Javascript that it runs to the requests it makes. The *only thing you have full control over* as a developer is the server.
+Nothing that happens in the browser is secure: the user can manipulate everything that happens on a page, from its content to the Javascript that it runs to the requests it makes. The *only thing you have full control over as a developer is the server*.
 
 That means, for example:
 
@@ -35,14 +35,14 @@ That means, for example:
 If a resource (i.e. a handler, a path, an endpoint) does not check that the request being made is authenticated by a user with appropriate permissions then that resource isn't secure. Imagine, for example the resources of Insecure Banking Inc.:
 
 `/login` Login page for the bank, redirects to `/myaccount`
+
 `/myaccount` Makes sure the user is authenticated and if so, shows their balance and assorted interfaces (such as a link to `/transfer-money`.)
+
 `/transfer-money` Moves money between two accounts as specified by the request. 
 
 If `/transfer-money` does not explicitly check that the sending account is authenticated, any user can send money from anyone's bank account -- even if they're never shown the interface to it. *An attacker can always make a request to any URL (i.e. any resource on your server) with any parameters of their choice.* This means any path, any parameters, and any headers (and therefore any cookies). If you don't check to make sure in some way that they should be allowed to make that request then they can.
 
 ### Things sent in plaintext are not secure
-
-(We won't look at this, but it's something which is important to know.)
 
 The default protocol for the web, HTTP, sends everything over the internet
 in plain text. This means that if someone else controls a router between
@@ -84,13 +84,13 @@ Imagine we're writing some code to display user information for their profile pa
 //But what if user_name was equal to:
 "'; DROP TABLE users;"
 
-//Now we would get the following query:
+//We would get the following query:
 "SELECT * FROM users WHERE username=''; DROP TABLE users;"
 //Which is a valid query with predictable consequences.
 //(Everything in the users table would be deleted.)
 ```
 
-The best practice to avoid SQL injection is to stored procedures. Parameterized queries, where the query and data are sent separately, are also relatively secure.
+The best practice to avoid SQL injection is to use stored procedures. Parameterized queries, where the query and data are sent separately, are also relatively secure.
 
 #### XSS
 
@@ -100,7 +100,7 @@ Cross-site scripting (abbreviated XSS) is an attack where an attacker is able to
 * Make fraudulent requests from the victim's browser to your site, which will be indistinguishable from a legitimate request by the victim. (This is like CSRF below, but same-site rather than cross-site.)
 * Change the content and behavior of your website to anything they want.
 
-XSS is possible when user content is rendered onto the page directly without escaping HTML. If the attacker can find a way to control some user content they can inject Javascript into the page in a number of ways. This can either be reflected in a single request (the user would have to click on a link), or persistent (its displayed to the user when they visit a page.)
+XSS is possible when user content is rendered onto the page directly without escaping HTML. If the attacker can find a way to control some user content they can inject Javascript into the page in a number of ways. This can either be reflected in a single request (the user would have to click on a link), or persistent (it's displayed to the user when they visit a page.)
 
 Like SQL injection, this can happen when you construct the response to the user with string concatenation. Consider the following example:
 
@@ -108,10 +108,10 @@ I have a route /search which takes a query parameter:
 
 `http://example.com/search?query=Preventing%20XSS`
 
-(That %20 is from URL escaping.)
+(That `%20` is from [URL escaping](http://en.wikipedia.org/wiki/Percent-encoding).)
 
 And imagine I construct the title somewhere in my code,
-where searched_for is a variable with the user's query:
+where `searched_for` is a variable with the user's query:
 
 `"<h1>Search for " + searched_for + "</h1>"`
 
@@ -121,19 +121,19 @@ Then for the above example the resulting HTML would be:
 
 But if an attacker chose a malicious URL (hiding the link behind a bit.ly, perhaps) we could have:
 
-`http://example.com/search?query=<script>/* up to no good here*/</script>`
+`http://example.com/search?query=<script>/* up to no good here */</script>`
 
 (This would be URL encoded too, but for clarity I haven't encoded it.)
 
 And the result:
 
-`"<h1>Search for <script>/* up to no good here*/</script></h1>"`
+`"<h1>Search for <script>/* up to no good here */</script></h1>"`
 
 XSS is prevented by carefully controlling the outputs of your application with escaping where it's appropriate. *It's important to note that you should not try to escape HTML on your own -- use a templating language which handles this automatically.* (There are many subtle edge cases.)
 
 #### CSRF
 
-Cross-site request forgery allows attackers to appear to make a request by the user.
+Cross-site request forgery allows attackers to complete a request with the user's own browser.
 
 To understand how it works it's important to understand that cookies are sent with every request on a per-domain basis. If a cookie is set for `example.com`, any request sent to that domain will include the cookies set for `example.com` regardless of how that request was made.
 
@@ -161,7 +161,7 @@ if (given_password === correct_password){
 }
 ```
 
-And this would work, more or less -- except for the following problem. Under the hood, the equality operator on two strings is running `strcmp`, or something similar which looks something like this (in Javascript, although `strcmp` would be implemented in C):
+And this would work, more or less -- except for the following problem. Under the hood, the equality operator on two strings is running `strcmp`, or something similar which looks something like this (in Javascript, although `strcmp` would be implemented at a much lower level):
 
 ```javascript
 function strcmp(a, b){
@@ -169,8 +169,8 @@ function strcmp(a, b){
 	if (a.length != b.length){return false;}
 	for(var i=0;i<a.length;i++){
 		// If the characters at index i do not match
-		// the strings are not equal
-		if (a[i] != b[i]){return false;}
+		// the strings are not equal.
+		if (a[i] !== b[i]){return false;}
 	}
 	return true;
 }
