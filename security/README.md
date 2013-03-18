@@ -274,7 +274,7 @@ And presto, you have his password too!
 
 ### Practicing CSRF
 
-Following the example payload above, post as `jbeiber` with something which causes any visitor to write a post when they load the homepage. You'll probably want to write your payload in plain text, but when you're done URL-encode it [with this tool](http://meyerweb.com/eric/tools/dencoder/). (This allows you to have things like slashes and spaces in your query parameters.)
+Following the example payload above, post as `jbeiber` with something which causes `sbraun` to write a post when he loads the homepage. You'll probably want to write your payload in plain text, but when you're done URL-encode it [with this tool](http://meyerweb.com/eric/tools/dencoder/). (This allows you to have things like slashes and spaces in your query parameters.)
 
 Be especially careful with ampersands in your payload. Ampersands specifying parameters to the post you're making should remain unescaped, ampersands within URLs within the `body` parameter should be escaped (`& => %26`).
 
