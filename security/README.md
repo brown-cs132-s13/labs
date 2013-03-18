@@ -198,7 +198,7 @@ Fortunately, there are many systems that allow you to leverage third parties to 
 
 ## Your tasks
 
-Download the lab from [TODOTODOTODOTODO]() and unzip it.
+Download the lab from [here](http://cs.brown.edu/courses/cs132/labs/Security-Lab.zip) and unzip it. Run `npm install` to install Express and any-db locally.
 
 You'll get a chance to practice SQL injection, XSS, and CSRF with a toy Node application
 which is riddled with holes and bad practices.
