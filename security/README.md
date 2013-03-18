@@ -106,7 +106,7 @@ XSS is possible when user content is rendered onto the page directly without esc
 
 Like SQL injection, this can happen when you construct the response to the user with string concatenation. Consider the following example:
 
-I have a route /search which takes a query parameter:
+I have a route `/search` which takes a query parameter:
 
 `http://example.com/search?query=Preventing%20XSS`
 
@@ -131,7 +131,9 @@ And the result:
 
 `"<h1>Search for <script>/* up to no good here */</script></h1>"`
 
-XSS is prevented by carefully controlling the outputs of your application with escaping where it's appropriate. *It's important to note that you should not try to escape HTML on your own -- use a templating language which handles this automatically.* (There are many subtle edge cases.)
+The attacker has now included Javascript on the search page!
+
+XSS is prevented by carefully controlling the outputs of your application with [escaping](http://en.wikipedia.org/wiki/HTML#Character_and_entity_references) where it's appropriate. *It's important to note that you should not try to escape HTML on your own -- use a templating language which handles this automatically.* (There are many subtle edge cases.)
 
 #### CSRF
 
@@ -139,7 +141,7 @@ Cross-site request forgery allows attackers to complete a request with the user'
 
 To understand how it works it's important to understand that cookies are sent with every request on a per-domain basis. If a cookie is set for `example.com`, any request sent to that domain will include the cookies set for `example.com` regardless of how that request was made.
 
-In an attack the victim is somehow lured into clicking a button or link on an attacker-controlled site. That in turn submits a request to another site the user might be logged into. If the user is indeed logged in via cookies those will be sent in the request. This can either be a GET request (through a simple link), or a POST request (though Javascript or a button submitting a hidden form.)
+In an attack the victim is somehow lured into clicking a button or link on an attacker-controlled site (if the attacker also has an XSS vector, "attacker controlled site" means "your site"). That in turn submits a request to another site the user might be logged into. If the user is indeed logged in via cookies those will be sent in the request. This can either be a GET request (through a simple link), or a POST request (though Javascript or a button submitting a hidden form.)
 
 For example, for the `http://bank.example.com/transfer-money` endpoint (which we're assuming uses GET parameters, although you shouldn't for actions which are not idempotent) the attacker could include an image in his malicious site:
 
@@ -206,6 +208,7 @@ The endpoints for the application are:
 * `/` Shows recent posts
 * `/user/:username` Shows information about a user
 * `/login?username=user&password=somepassword` Log in to the application (it is just the endpoint, there is no proper login form.)
+* `/become-sbraun` Login as `sbraun`
 * `/write-post?username=user&body=sometext` Write a new post
 * `/my-password` Show the password for the current user
 
@@ -261,7 +264,7 @@ Now you're authenticated as `sbraun` and can post as him, etc. Critically, when 
 
 ### Sidejacking
 
-Now, donning your attacker hat again, you can use his authentication cookie to steal his password with the `/my-password` endpoint. You can use `curl`, a command line utility to make HTTP requests, to do this. It might look something like this (with your own stolen cookie):
+Now, donning your attacker hat again, you can use his authentication cookie to steal his password with the `/my-password` endpoint. You can use `curl`, a command line utility to make HTTP requests, to do this. Note that this is all from the attacker's server -- we don't even need to involve `sbraun`'s browser once we've stolen his cookies. It might look something like this (with your own stolen cookie):
 
 `curl -b "user=s:sbraun.2pnRJRduah87bTyZt5KPLOADSHD8wsq1N0h8pCs30" http://localhost:8080/my-password`
 
@@ -271,7 +274,7 @@ And presto, you have his password too!
 
 ### Practicing CSRF
 
-Following the example payload above, post as jbeiber with something which causes any visitor to write a post when they load the homepage. You'll probably want to write your payload in plain text, but when you're done URL-encode it [with this tool](http://meyerweb.com/eric/tools/dencoder/). (This allows you to have things like slashes and spaces in your query parameters.)
+Following the example payload above, post as `jbeiber` with something which causes any visitor to write a post when they load the homepage. You'll probably want to write your payload in plain text, but when you're done URL-encode it [with this tool](http://meyerweb.com/eric/tools/dencoder/). (This allows you to have things like slashes and spaces in your query parameters.)
 
 Be especially careful with ampersands in your payload. Ampersands specifying parameters to the post you're making should remain unescaped, ampersands within URLs within the `body` parameter should be escaped (`& => %26`).
 
