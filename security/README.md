@@ -226,6 +226,8 @@ Your goals are going to be as follows:
 
 First, you'll have to steal the password to an account in order to post to it. Use [a query with `UNION`](http://en.wikipedia.org/wiki/Set_operations_%28SQL%29#UNION_operator) to figure out the password in the information for the `jbieber` account shown at `/user/jbieber`. The constructed SQL is also printed in the server logs if you're having trouble.
 
+Note that only the first result is shown on the user's page.
+
 ### Practicing XSS
 
 Use that password and username to login to the application as `jbeiber`:
