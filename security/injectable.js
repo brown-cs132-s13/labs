@@ -65,6 +65,7 @@ app.get('/write-post', function(request, response){
 		response.end('<h1>Not authenticated!</h1>')
 		return;
 	}
+	console.log('Post:', request.query.username, request.query.body);
 	conn.query('INSERT INTO posts VALUES ($1, $2)', [request.query.username, request.query.body]);
 	response.end('<h1>Posted!</h1><a href="/">See posts</a>');
 });

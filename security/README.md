@@ -229,7 +229,7 @@ Use that password and username to login to the application as `jbeiber`:
 
 `http://localhost:8080/login?username=jbieber&password=somepasswordyoufound`
 
-You've now got a cookie set in your browser which will authenticate `/write-post`. Your post is going to have a special payload, of course.
+You've now got a cookie set in your browser which will authenticate `/write-post`. The body of your post is going to have a special payload, of course.
 
 Your payload will be the following snippet:
 
@@ -265,11 +265,15 @@ Now, donning your attacker hat again, you can use his authentication cookie to s
 
 `curl -b "user=s:sbraun.2pnRJRduah87bTyZt5KPLOADSHD8wsq1N0h8pCs30" http://localhost:8080/my-password`
 
+This simply sends a GET request to the given URL with the cookie you supply via `-b`.
+
 And presto, you have his password too!
 
 ### Practicing CSRF
 
 Following the example payload above, post as jbeiber with something which causes any visitor to write a post when they load the homepage. You'll probably want to write your payload in plain text, but when you're done URL-encode it [with this tool](http://meyerweb.com/eric/tools/dencoder/). (This allows you to have things like slashes and spaces in your query parameters.)
+
+Be especially careful with ampersands in your payload. Ampersands specifying parameters to the post you're making should remain unescaped, ampersands within URLs within the `body` parameter should be escaped (`& => %26`).
 
 ## Checkoff
 
