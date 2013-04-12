@@ -199,3 +199,17 @@ sudo update-rc.d project defaults
 sudo /etc/init.d/project start
 tail -f /var/log/project.log
 sudo /etc/init.d/project stop
+
+
+## Checkoff
+
+Show a TA your static page and "Welcome to Express" page (or anything fancier you care to come up with).
+
+## *Important*: Shut down your instance!
+> When you're done with the lab it's very important to terminate your instance
+> and delete your data from S3. This will stop them from continuing to charge
+> you on a monthly basis! You can terminate your instance and delete the data in
+> S3 via the [console](http://console.aws.amazon.com/console/home "AWS console").
+> If you're planning to finish this lab at a later date it's OK to leave your
+> server on for a couple days. At $0.06 per hour it's $1.44 a day, which is
+> well within your $100 budget. But you absoutely must remember to shut it down!
