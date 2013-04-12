@@ -202,7 +202,7 @@ unexpected reason. Processes of this sort are often called
 <a href="http://en.wikipedia.org/wiki/Daemon_(computing)">daemons</a> or services.
 
 The traditional way to manage a daemon is through a script in `/etc/init.d`.
-A very simple `/etc/init.d` file is included in this repository as `project`.
+A very simple `/etc/init.d` file is included in this repository as `project` [here](project).
 Set it up with the following:
 
 ```
