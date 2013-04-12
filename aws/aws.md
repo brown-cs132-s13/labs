@@ -199,7 +199,7 @@ Besides this problem, a proper server should do a number of other things like
 write its output to a log file which you can see later, start up when the system
 reboots and restart automatically (or raise an alarm) when it dies for an 
 unexpected reason. Processes of this sort are often called
-[daemons](http://en.wikipedia.org/wiki/Daemon_(computing)) or services.
+<a href="http://en.wikipedia.org/wiki/Daemon_(computing)">daemons</a> or services.
 
 The traditional way to manage a daemon is through a script in `/etc/init.d`.
 A very simple `/etc/init.d` file is included in this repository as `project`.
