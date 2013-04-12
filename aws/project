@@ -32,8 +32,7 @@ case "$1" in
 	else
 	    echo "Starting $name"
 	    cd "$dir"
-            sudo -u "$user" $cmd &> "$stdout_log" \
-		& echo $! > "$pid_file"
+            sudo -u "$user" $cmd &> "$stdout_log" & echo $! > "$pid_file"
 	    if ! is_running; then
 		echo "Unable to start, see $stdout_log"
 		exit 1
