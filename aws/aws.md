@@ -206,10 +206,8 @@ A very simple `/etc/init.d` file is included in this repository as `project` [he
 Set it up with the following:
 
 ```
-#open up a new script under init.d
-sudo nano /etc/init.d/project
-# Paste contents of project from the repo
-# write (Ctrl-O) and exit (Ctrl-X)
+#Write the project script to /etc/init.d/project
+sudo curl 'https://raw.github.com/brown-cs132-s13/labs/master/aws/project' -o /etc/init.d/project
 
 # Set the execute permission for the
 # script
@@ -226,7 +224,11 @@ Now it's relatively easy to manage with a couple of commands:
 #Start the server
 sudo /etc/init.d/project start
 
-#Watch the logs from the server (Ctrl-C to exit)
+#View the logs
+less /var/log/project.log
+
+#Follow the logs from the server as they
+#update (Ctrl-C to exit)
 tail -f /var/log/project.log
 
 #Stop the server
