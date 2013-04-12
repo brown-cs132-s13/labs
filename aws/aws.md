@@ -224,8 +224,10 @@ Now it's relatively easy to manage with a couple of commands:
 #Start the server
 sudo /etc/init.d/project start
 
-#View the logs
+#View the logs (stdout)
 less /var/log/project.log
+#stderr
+less /var/log/project.err
 
 #Follow the logs from the server as they
 #update (Ctrl-C to exit)

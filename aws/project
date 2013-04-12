@@ -16,6 +16,7 @@ cmd="PORT=80 node app.js"
 name=`basename $0`
 pid_file="/var/run/$name.pid"
 stdout_log="/var/log/$name.log"
+stderr_log="/var/log/$name.err"
 
 get_pid() {
     cat "$pid_file"    
@@ -32,7 +33,8 @@ case "$1" in
 	else
 	    echo "Starting $name"
 	    cd "$dir"
-            sudo -u "$user" $cmd &> "$stdout_log" & echo $! > "$pid_file"
+        sudo -u "$user" $cmd > "$stdout_log" 2> "$stderr_log" \
+			& echo $! > "$pid_file"
 	    if ! is_running; then
 		echo "Unable to start, see $stdout_log"
 		exit 1
