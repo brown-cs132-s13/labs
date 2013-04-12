@@ -10,8 +10,8 @@
 ### END INIT INFO
 
 dir="/home/bitnami/project"
-user="nobody"
-cmd="PORT=80 node app.js"
+user="bitnami"
+cmd="sudo PORT=80 node app.js"
 
 name=`basename $0`
 pid_file="/var/run/$name.pid"
