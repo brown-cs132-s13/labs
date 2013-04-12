@@ -254,3 +254,4 @@ Show a TA your static page and "Welcome to Express" page (or anything fancier yo
 > If you're planning to finish this lab at a later date it's OK to leave your
 > server on for a couple days. At $0.06 per hour it's $1.44 a day, which is
 > well within your $100 budget. But you absoutely must remember to shut it down!
+
