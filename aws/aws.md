@@ -189,17 +189,54 @@ Finally, you should be able to run your application:
 Now if you put your machine's address (like `ec2-184-72-92-237.compute-1.amazonaws.com`) into your browser you should see a "Welcome to Express!" page.
 
 
-John: do you think we should cover starting/running this with an init.d script?
+## Running your application as a service
 
+You've got your application running, but currently when you launch the application
+it's attached to your SSH session. When you leave the server it will automatically
+close, which is bad! (Technical: when the SSH session closes the program gets a [SIGHUP](http://en.wikipedia.org/wiki/Unix_signal).)
+
+Besides this problem, a proper server should do a number of other things like
+write its output to a log file which you can see later, start up when the system
+reboots and restart automatically (or raise an alarm) when it dies for an 
+unexpected reason. Processes of this sort are often called
+[daemons](http://en.wikipedia.org/wiki/Daemon_(computing)) or services.
+
+The traditional way to manage a daemon is through a file in `/etc/init.d`
+and running it with command arguments. A very simple `/etc/init.d` file
+is included in this repository as `project`. Set it up with the following:
+
+```
+#open up a new script under init.d
 sudo nano /etc/init.d/project
-paste contents of project
+# Paste contents of project from the repo
+# write (Ctrl-O) and exit (Ctrl-X)
+
+# Set the execute permission for the
+# script
 sudo chmod a+x /etc/init.d/project
+
+# Update the init system to let it
+# know there's a new script!
 sudo update-rc.d project defaults
+```
 
+Now it's relatively easy to manage with a couple of commands:
+
+```
+#Start the server
 sudo /etc/init.d/project start
-tail -f /var/log/project.log
-sudo /etc/init.d/project stop
 
+#Watch the logs from the server (Ctrl-C to exit)
+tail -f /var/log/project.log
+
+#Stop the server
+sudo /etc/init.d/project stop
+```
+
+This version doesn't restart the process if it has an error and quits.
+The best tool for that job is probably [forever](https://github.com/nodejitsu/forever),
+but combining forever and init.d gets a little complicated and doesn't
+generalize to running other applications. [You can find a guide here.](http://www.exratione.com/2011/07/running-a-nodejs-server-as-a-service-using-forever/)
 
 ## Checkoff
 
