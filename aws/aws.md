@@ -1,4 +1,4 @@
-# CS132 Lab Four: AWS
+# CS132 Lab 7: AWS
 
 ## AWS
 Amazon Web Services, or AWS, is a suite of cloud services provided by Amazon. AWS provide tools for computing, storage, databases, management and more. The services are designed to be massively scalable, so they work well for small projects but can support huge sites as well. In CS132 we will be using EC2 to run our server and S3 to serve static content.
